@@ -44,7 +44,7 @@ exports.pod = function(mediator)
 	{
 		mediator.pull('say/hello', function(name)
 		{
-			console.log(name)
+			console.log(name);//hello!
 		})
 	}
 	
@@ -75,7 +75,164 @@ exports.pod = function(mediator)
 
 ```
 
+
+Streaming
+---------
+
+```javascript
+
+exports.pod = function(mediator)
+{
+	
+	function init()
+	{
+		mediator.pull('-stream final/countdown/10', function(reader)
+		{
+			reader.on({
+				write: function(chunk)
+				{
+					
+				},
+				end: function()
+				{
+					console.log("BOOOOSSHHHHH!")
+				}
+			})
+		})
+	}
+	
+	mediator.on({
+		'push init': init
+	})
+}
+
+```
+
+in pods/my.test.pod2/index.js:
+
+
+```javascript
+
+exports.pod = function(mediator)
+{
+	
+	function pullCountdown(pull)
+	{
+		var tminus = pull.data.time;
+
+		var interval = setTimeout(function()
+		{
+			if(!(--tminus))
+			{
+				pull.end("WE HAVE LIFTOFF!");	
+			}
+
+			pull.write('T minus: '+tminus);
+		},1000);
+	}
+	
+	mediator.on({
+		'pull final/countdown/:time': pullCountdown
+	});
+}
+
+```
+
+
+Passing through other routes
+----------------------------
+
+```javascript
+
+exports.pod = function(mediator)
+{
+	
+	function init()
+	{
+		mediator.pull('say/hello', { name: craig }, function(data)
+		{
+			console.log(data)
+		})
+	}
+
+	function pullDelay(pull)
+	{
+		setTimeout(function()
+		{
+
+			//if there's nothing next, then we're calling delay directly
+			if(!pull.next())
+			{
+				pull.end('done delaying!');
+			}
+		}, pull.data.time * 1000);
+	}
+
+	function sayHello(pull)
+	{
+		pull.end('hello ' + pull.data.name);
+	}
+	
+	mediator.on({
+		'pull delay/:time': pullDelay,
+		'pull delay/3 -> delay/2 -> delay/1 -> say/hello': sayHello 
+		'push init': init
+	})
+}
+
+```
+
+Auto-pass through other routes
+------------------------------
+
+```javascript
+
+exports.pod = function(mediator)
+{
+	
+	function init()
+	{
+		mediator.pull('my/secret', { user: 'craig', pass: 'jefferds' }, function(data)
+		{
+			console.log(data)
+		})
+	}
+
+	function authenticate(pull)
+	{
+		if(pull.data.user != 'craig' || pull.data.pass != 'secret')
+		{
+			return pull.end('You shall not pass!');
+		}
+
+		if(!pull.next())
+		{
+			pull.end('You have been authenticated');
+		}
+	}
+
+	function showSecret(pull)
+	{
+		pull.end("You don't have any secrets")
+	}
+	
+	mediator.on({
+		'pull my/*': authenticate,
+		'pull my/secret': showSecret 
+		'push init': init
+	})
+}
+
+```
+
+
 Other Examples
 --------------
 
 See examples
+
+
+To Do
+-----
+
+- errors need to be handleable
