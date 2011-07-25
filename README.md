@@ -155,6 +155,10 @@ exports.pod = function(mediator)
 	
 	function init()
 	{
+
+		//Delayed for 2 seconds
+		//Delayed for 1 seconds
+		//hello craig
 		mediator.pull('say/hello', { name: craig }, function(data)
 		{
 			console.log(data)
@@ -163,6 +167,7 @@ exports.pod = function(mediator)
 
 	function pullDelay(pull)
 	{
+		console.log("Delayed for %d seconds", pull.data.time);
 		setTimeout(function()
 		{
 
