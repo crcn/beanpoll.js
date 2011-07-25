@@ -7,10 +7,8 @@ What are some benefits?
 ----------------------
 
 - Makes your code more asyncronous, and keeps pods decoupled. 
-- Allows your code to be used in other protocols, such as HTTP, and WebSockets, without adding support, or changing anything. 
-	- The communcation between each plugin is similar to how you'd handle / push a request with http, or websockets. You can send files, handle http headers, etc. 
 - Pods are completely bindable, even ones across networks. If one pod is to make a particular request, say "get/file", that same pod can easily bind to it, so it receives any changes to "get/file" if anything changes.
-- Communication between pods in-app, and across multiple platforms is universal. Brazil Nut does *not* care if a push / pull request comes from within the app, or from a different platform. 
+- Communication between pods in-app, and across multiple platforms is universal. Brazil Nut does *not* care if a push / pull request comes from within the app, or from a different platform. Heck, you could even create a pod which makes your app visible via an HTTP api, or websockets.
 
 What are some features?
 -----------------------
