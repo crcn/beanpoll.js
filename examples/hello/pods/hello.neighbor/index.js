@@ -1,13 +1,13 @@
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 
 	function sayHello(pull)
 	{
-		pull.callback('Hello Neighbor!');
+		pull.end('Hello Neighbor!');
 	}
 
 
 	mediator.on({
-		'pull public say.hello': sayHello
+		'pull -public say.hello': sayHello
 	})
 }

@@ -1,3 +1,3 @@
-var brazln = require('../../node');
+var beanpole = require('../../node');
 
-brazln.require(__dirname + '/pods').push('init');
+beanpole.require(__dirname + '/beans').push('init');

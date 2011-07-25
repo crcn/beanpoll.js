@@ -1,7 +1,7 @@
 var http = require('http'),
 	Url = require('url')
 
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 
 	function pullLoadSite(pull)

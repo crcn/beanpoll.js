@@ -1,1 +1,1 @@
-These notes are just so I can straighten ideas about the architecture.
+These notes are just so I can straighten out ideas about the architecture. 

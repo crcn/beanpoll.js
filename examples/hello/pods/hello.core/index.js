@@ -1,4 +1,4 @@
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 	
 	function init()

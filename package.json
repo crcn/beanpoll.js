@@ -1,11 +1,11 @@
 {
-    "name": "brazilnut",
-    "description": "Module framework for Javascript.",
+    "name": "beanpole",
+    "description": "Component Architecture",
     "version": "0.0.2",
     "author": "Craig Condon",
     "repository": {
         "type": "git",
-        "url": "http://github.com/spiceapps/brazln.git"
+        "url": "http://github.com/spiceapps/beanpole.git"
     },
     
     "dependencies": {
@@ -14,5 +14,5 @@
         "express":"*"
     },
     
-    "main": "./node/index.js"
+    "main": "./lib/node/index.js"
 }

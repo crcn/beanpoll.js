@@ -1,4 +1,4 @@
-var brazln = require('../../src/node'),
+var beanpole = require('../../src/node'),
 	argv = process.argv.concat();
 	
 argv.splice(0,2);
@@ -7,8 +7,8 @@ var name = argv[0];
 
 function onName(name)
 {
-	brazln.require(['glue.core','glue.http']).
-	require(__dirname + '/pods').push('init', name.toString().replace('\n',''));
+	beanpole.require(['glue.core','glue.http']).
+	require(__dirname + '/beans').push('init', name.toString().replace('\n',''));
 	
 	process.stdin.removeListener('data', onName);
 };

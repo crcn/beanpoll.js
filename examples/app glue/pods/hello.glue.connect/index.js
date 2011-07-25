@@ -1,7 +1,7 @@
 var lazy = require('sk/core/lazy').callback;
 
 
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 	var myName;
 	

@@ -1,14 +1,14 @@
-Brazil Nut - Super scale your node.js apps 
+Beanpole - Super scale your node.js apps 
 ==========================================
 
-Brazil Nut distributes your application into "pods" (modules) which can run in-app, in the browser, or on another server. Think of it like building an application with plugins across platforms.
+Beanpole distributes your application into "beans" (modules) which can run in-app, in the browser, or on another server. Think of it like building an application with plugins across platforms.
 
 What are some benefits?
 ----------------------
 
-- Makes your code more asyncronous, and keeps pods decoupled. 
-- Pods are completely bindable, even ones across networks. If one pod is to make a particular "pull", say "get/file", that same pod can easily bind to it, so it receives any "push" to "get/file" if anything changes.
-- Communication between pods in-app, and across multiple platforms is universal. Brazil Nut does *not* care if a push / pull request comes from within the app, or from a different platform. Heck, you could even create a pod which makes your app visible via an HTTP api, or WebSockets. 
+- Makes your code more asyncronous, and keeps beans decoupled. 
+- beans are completely bindable, even ones across networks. If one pod is to make a particular "pull", say "get/file", that same pod can easily bind to it, so it receives any "push" to "get/file" if anything changes.
+- Communication between beans in-app, and across multiple platforms is universal. Beanpole does *not* care if a push / pull request comes from within the app, or from a different platform. Heck, you could even create a pod which makes your app visible via an HTTP api, or WebSockets. 
 
 What are some features?
 -----------------------
@@ -26,18 +26,18 @@ index.js:
 ```javascript
 
 require('brazilnut').
-require(__dirname + '/pods/my.test.pod').
-require(__dirname + '/pods/my.test.pod2').
+require(__dirname + '/beans/my.test.pod').
+require(__dirname + '/beans/my.test.pod2').
 push('init');
 
 ```
 
-in pods/my.test.pod/index.js:
+in beans/my.test.pod/index.js:
 
 
 ```javascript
 
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 	
 	function init()
@@ -55,12 +55,12 @@ exports.pod = function(mediator)
 
 ```
 
-in pods/my.test.pod2/index.js:
+in beans/my.test.pod2/index.js:
 
 
 ```javascript
 
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 	
 	function pullSayHello(pull)
@@ -81,7 +81,7 @@ Streaming
 
 ```javascript
 
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 	
 	function init()
@@ -114,12 +114,12 @@ exports.pod = function(mediator)
 
 ```
 
-in pods/my.test.pod2/index.js:
+in beans/my.test.pod2/index.js:
 
 
 ```javascript
 
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 	
 	function pullCountdown(pull)
@@ -150,7 +150,7 @@ Passing through other routes
 
 ```javascript
 
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 	
 	function init()
@@ -198,7 +198,7 @@ Auto-pass through other routes
 
 ```javascript
 
-exports.pod = function(mediator)
+exports.plugin = function(mediator)
 {
 	
 	function init()

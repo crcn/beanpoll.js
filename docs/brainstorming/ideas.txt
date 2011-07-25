@@ -1,5 +1,5 @@
 ---------------------------------
-Abstracting Brazln:
+Abstracting beanpole:
 ---------------------------------
 
 Plugins *MUST NOT* know if whether a computer is networked. That job is delegated for *one* particular module: glue.core. If a client connects to a server, and contains a hook which acts like a plugin, the backend should treat it exactly as it would with a another networked server, or even internally. Glue.core would handle the handshake / authentication. 
@@ -20,7 +20,7 @@ All metadata is handled by the parser / router.
 Routing:
 ---------------------------------
 
-The routing mechanism should parse syntactic sugar to identify how a particular channel is handled. Each channel must be separated by backslashes to allow for parameters. This is primarily for future implementation where brazln might support HTTP requests. 
+The routing mechanism should parse syntactic sugar to identify how a particular channel is handled. Each channel must be separated by backslashes to allow for parameters. This is primarily for future implementation where beanpole might support HTTP requests. 
 
 '[type] [meta]* [channel_name]* [channel/:param] [additional]*'
 
@@ -32,7 +32,7 @@ The routing mechanism should parse syntactic sugar to identify how a particular 
 
 on push application/ready: function(data){}
 
-'push private andPull application/ready'
+'push private -pull application/ready'
 
 on private pull of application ready passing through application exists:
 
@@ -52,7 +52,7 @@ Types of channels:
 
 Why I chose for push/pull to be different handlers with the same name:
 
-Inspiration was actually taken back in the day when I was developing in Actionscript (I know, stfu). Bindable metadata was a slick way of getting a particular property from an object, and then sticking to it for any changes. For Brazln, "pull" would be the action of getting the current value of a particular "pod" (object), and "push" is the method of sticking to it.
+Inspiration was actually taken back in the day when I was developing in Actionscript (I know, stfu). Bindable metadata was a slick way of getting a particular property from an object, and then sticking to it for any changes. For beanpole, "pull" would be the action of getting the current value of a particular "pod" (object), and "push" is the method of sticking to it.
 
 Problems:
 
@@ -89,7 +89,7 @@ Multiple pulls also need to return to the requestor how many items are handling 
 
 Streaming:
 
-Without adding too much shit to the architecture, there may come a time where content is streamed to the particular requestor. This could be highly beneficial for programs which send files back and forth. Something which brazln isn't necessarily equipped for at the moment. So, without changing the architecture, perhaps providing a method for supporting such a feature. For example:
+Without adding too much shit to the architecture, there may come a time where content is streamed to the particular requestor. This could be highly beneficial for programs which send files back and forth. Something which beanpole isn't necessarily equipped for at the moment. So, without changing the architecture, perhaps providing a method for supporting such a feature. For example:
 
 This could be used:
 
