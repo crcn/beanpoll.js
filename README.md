@@ -1,17 +1,15 @@
 Brazil Nut - Super scale your node.js apps 
 ==========================================
 
-Brazil nut was built to abstract routing calls, whether it's via HTTP, websockets, or within the application. All communication is handled exactly the same. What does this mean?
-
-
-	- To Do. it's f'n 2:17 AM. My brain is off.
+Brazil nut was built to abstract routing calls, whether it's via HTTP, websockets, or within the application. All communication is handled exactly the same. 
 
 
 What are the features?
 ----------------------
 	
-	- syntactic sugar
-	- push / pull changes
+- syntactic sugar for defining routes
+- push / pull routes
+- easy network mapping
 
 Code Usage
 ----------
