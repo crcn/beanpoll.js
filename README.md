@@ -244,7 +244,9 @@ Other Examples
 See examples
 
 
+
 To Do
 -----
 
 - errors need to be handleable
+- round-robin for hooks with same pull handles registered to glue.core
