@@ -7,7 +7,7 @@ What are some benefits?
 ----------------------
 
 - Makes your code more asyncronous, and keeps pods decoupled. 
-- Pods are completely bindable, even ones across networks. If one pod is to make a particular request, say "get/file", that same pod can easily bind to it, so it receives any changes to "get/file" if anything changes.
+- Pods are completely bindable, even ones across networks. If one pod is to make a particular "pull", say "get/file", that same pod can easily bind to it, so it receives any "push" to "get/file" if anything changes.
 - Communication between pods in-app, and across multiple platforms is universal. Brazil Nut does *not* care if a push / pull request comes from within the app, or from a different platform. Heck, you could even create a pod which makes your app visible via an HTTP api, or websockets.
 
 What are some features?
