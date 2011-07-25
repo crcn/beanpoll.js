@@ -1,3 +1,3 @@
-var brazln = require('../../node');
+var brazilnut = require('../../src/node');
 
-brazln.require(__dirname + '/pods').push('init');
+brazilnut.require(__dirname + '/pods').push('init');

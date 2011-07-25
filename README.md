@@ -50,7 +50,55 @@ exports.pod = function(mediator)
 
 ```
 
+in pods/my.test.pod2/index.js:
+
+
+```javascript
+
+exports.pod = function(mediator)
+{
+	
+	function pullSayHello(pull)
+	{
+		pull.end('hello world!')
+	}
+	
+	mediator.on({
+		'pull say/hello': pullSayHello
+	})
+}
+
+```
+
+Abstracting 
+-----------
+
+index.js: same as above
+
 in pods/my.test.pod/index.js:
+
+
+```javascript
+
+exports.pod = function(mediator)
+{
+	
+	function init()
+	{
+		mediator.pull('loadSite', { site: 'http://engadget.com' } function(name)
+		{
+			console.log(name)
+		})
+	}
+	
+	mediator.on({
+		'push init': init
+	})
+}
+
+```
+
+in pods/my.test.pod2/index.js:
 
 
 ```javascript

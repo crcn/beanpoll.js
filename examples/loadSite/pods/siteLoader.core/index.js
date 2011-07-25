@@ -1,13 +1,30 @@
+var http = require('http'),
+	Url = require('url')
+
 exports.pod = function(mediator)
 {
 
-	function sayHello(pull)
+	function pullLoadSite(pull)
 	{
-		pull.callback('Hello Friend!');
+		var parts = Url.parse(pull.data.site);
+
+		// console.log(require('sys').inspect(parts, false, null));
+		http.get({ host: parts.host, port: 80, path: parts.pathname }, function(res)
+		{
+			res.on('data', function(data)
+			{
+				pull.write(data);
+			});
+
+			res.on('end', function(data)
+			{
+				pull.end();
+			})
+		});
 	}
 	
 
 	mediator.on({
-		'pull public say.hello': sayHello
+		'pull load/site': pullLoadSite
 	});	
 }
