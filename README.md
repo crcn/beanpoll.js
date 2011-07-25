@@ -1,15 +1,28 @@
 Brazil Nut - Super scale your node.js apps 
 ==========================================
 
-Brazil nut was built to abstract routing calls, whether it's via HTTP, websockets, or within the application. All communication is handled exactly the same. 
+Brazil Nut distributes your application into "pods" (modules) which can be run in-app, in the browser, or on another server. Think of it like building an application with plugins across platforms.
 
-
-What are the features?
+What are some benefits?
 ----------------------
+
+- Makes your code more asyncronous, and keeps pods decoupled. 
+- Allows your code to be used in other protocols, such as HTTP, and WebSockets, without adding support, or changing anything. 
+	- The communcation between each plugin is similar to how you'd handle / push a request with http, or websockets. You can send files, handle http headers, etc. 
+- Pods are completely bindable, even ones across networks. If one pod is to make a particular request, say "get/file", that same pod can easily bind to it, so it receives any changes to "get/file" if anything changes.
+- Communication between pods in-app, and across multiple platforms is universal. Brazil Nut does *not* care if a push / pull request comes from within the app, or from a different platform. 
+
+What are some features?
+-----------------------
 	
-- syntactic sugar for defining routes
-- push / pull routes
-- easy network mapping
+- Fully fledged routing framework
+	- Syntactic sugar for easily defining routes
+	- Easily wrap around other routes without adding logic. E.g: "authenticate/user -> my/account" tells the router first to go through "authenticate/user", 
+	then go to "my/account" if successful
+	- Easily define routes which are always passed through. E.g: "my/*", and "my/account", where "my/account" automatically passes through "my/*".
+- Chunking messages. This allows you to easily send / receive large amounts of data.
+- push/pull requests
+
 
 Code Usage
 ----------
@@ -68,67 +81,7 @@ exports.pod = function(mediator)
 
 ```
 
-Abstracting 
------------
+Other Examples
+--------------
 
-index.js: same as above
-
-in pods/my.test.pod/index.js:
-
-
-```javascript
-
-exports.pod = function(mediator)
-{
-	
-	function init()
-	{
-		mediator.pull('loadSite', { site: 'http://engadget.com' } function(name)
-		{
-			console.log(name)
-		})
-	}
-	
-	mediator.on({
-		'push init': init
-	})
-}
-
-```
-
-in pods/my.test.pod2/index.js:
-
-
-```javascript
-
-exports.pod = function(mediator)
-{
-	
-	function pullSayHello(pull)
-	{
-		pull.end('hello world!')
-	}
-	
-	mediator.on({
-		'pull say/hello': pullSayHello
-	})
-}
-
-```
-
-
-Experimental
-------------
-
-
-
-
-
-
-
-	
-
-
-
-
-
+See examples
