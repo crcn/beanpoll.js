@@ -13,13 +13,9 @@ What are some benefits?
 What are some features?
 -----------------------
 	
-- Fully fledged routing framework
-	- Syntactic sugar for easily defining routes
-	- Easily wrap around other routes without adding logic. E.g: "authenticate/user -> my/account" tells the router first to go through "authenticate/user", 
-	then go to "my/account" if successful
-	- Easily define routes which are always passed through. E.g: "my/*", and "my/account", where "my/account" automatically passes through "my/*".
+- Fully fledged routing framework with sntactic sugar (see below for examples).
 - Chunking messages. This allows you to easily send / receive large amounts of data.
-- push/pull requests
+- "push" changes, or "pull" current data. Similar to publish / subscribe.
 
 
 Code Usage
