@@ -13,7 +13,7 @@ What are some benefits?
 What are some features?
 -----------------------
 	
-- Fully fledged routing framework with syntactic sugar (see below for examples).
+- Fully fledged routing framework with syntactic sugar (see below for examples). 
 - Chunking messages. This allows you to easily send / receive large amounts of data.
 - "push" changes, or "pull" current data. Similar to publish / subscribe.
 
