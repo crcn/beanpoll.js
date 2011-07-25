@@ -91,7 +91,13 @@ exports.pod = function(mediator)
 			reader.on({
 				write: function(chunk)
 				{
-					
+					//T minus: 10
+					//T minus: 9
+					//T minus: 8
+					//T minus: 7
+					//...
+					//WE HAVE LIFTOFF!
+					console.log(chunk);
 				},
 				end: function()
 				{
@@ -194,7 +200,8 @@ exports.pod = function(mediator)
 	{
 		mediator.pull('my/secret', { user: 'craig', pass: 'jefferds' }, function(data)
 		{
-			console.log(data)
+			//You shall not pass!
+			console.log(data);
 		})
 	}
 
