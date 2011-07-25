@@ -1,0 +1,1 @@
+These notes are just so I can straighten ideas about the architecture.

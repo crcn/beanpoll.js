@@ -1,0 +1,18 @@
+{
+    "name": "brazilnut",
+    "description": "Module framework for Javascript.",
+    "version": "0.0.2",
+    "author": "Craig Condon",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/spiceapps/brazln.git"
+    },
+    
+    "dependencies": {
+        "sk":"*",
+        "structr":"*",
+        "express":"*"
+    },
+    
+    "main": "./node/index.js"
+}
