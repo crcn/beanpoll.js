@@ -1,7 +1,7 @@
 Brazil Nut - Super scale your node.js apps 
 ==========================================
 
-Brazil Nut distributes your application into "pods" (modules) which can be run in-app, in the browser, or on another server. Think of it like building an application with plugins across platforms.
+Brazil Nut distributes your application into "pods" (modules) which can run in-app, in the browser, or on another server. Think of it like building an application with plugins across platforms.
 
 What are some benefits?
 ----------------------
