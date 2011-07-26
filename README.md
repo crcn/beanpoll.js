@@ -233,6 +233,10 @@ exports.plugin = function(mediator)
 ```
 
 
+Oh look, an HTTP server
+-----------------------
+
+
 Other Examples
 --------------
 
