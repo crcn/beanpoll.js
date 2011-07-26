@@ -254,12 +254,6 @@ bean one:
 
 exports.plugin = function(mediator)
 {
-	
-	function init()
-	{
-		
-
-	}
 
 	function delay(pull)
 	{
@@ -280,7 +274,6 @@ exports.plugin = function(mediator)
 	}
 	
 	mediator.on({
-		'push init': init,
 		'pull -public delay/:seconds': delay,
 		'pull -public delay/:delay -> say/hello/:delay/:name': sayHello
 	});
