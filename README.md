@@ -249,6 +249,7 @@ See /examples
 To Do
 -----
 
+- parser should not care if type exists.
 - errors need to be handleable.
 - need putBackToken method for parser.
 - need to implement response in Request. Allow for http headers to be handleable. 
