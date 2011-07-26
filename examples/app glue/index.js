@@ -1,4 +1,4 @@
-var beanpole = require('../../src/node'),
+var beanpole = require('../../lib/node'),
 	argv = process.argv.concat();
 	
 argv.splice(0,2);

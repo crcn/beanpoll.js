@@ -250,3 +250,5 @@ To Do
 
 - errors need to be handleable
 - round-robin for hooks with same pull handles registered to glue.core
+- need putBackToken method for parser
+- middleware for router for metadata. e.g: load balancer: round-robin, leastconn, et.c
