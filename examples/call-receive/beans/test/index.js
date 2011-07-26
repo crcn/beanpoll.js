@@ -1,0 +1,68 @@
+var lazy = require('sk/core/lazy').callback;
+
+
+exports.plugin = function(mediator)
+{
+	var ops, sent = 0, received = 0, margin = 0, pulls = 0, interval;
+	
+	function testSend(pull)
+	{
+		// console.log('received: %d', ++received);
+
+		/*if(received != sent)
+		{
+			console.log(recieved-sent)
+		}*/
+
+
+		pull.end(++received);
+	}
+		
+	function pushGlueConnection(data, push)
+	{
+		console.success('starting test.');
+
+		timeout(data, push);
+	}
+
+	function timeout(data, push)
+	{
+		setTimeout(function()
+		{
+			for(var i = ops.concurrent; i--;)
+			{
+				// console.log('sent %d', ++sent);
+
+				margin++;
+
+				push.from.pull('test/send', function(rcv)
+				{
+					// console.log('received: %d', rcv);
+
+					//wait till everything's done. Stop if anything's missed.
+					if(!(--margin))
+					{
+						timeout(data, push);
+					}
+
+					console.log('#%d: remaining pulls from hooked app: %d', ++pulls, margin);
+				});	
+			}
+			
+		}, ops.speed);
+	}
+	
+	function init(op)
+	{
+		ops = op;
+		console.success('ready: speed=%d, concurrent=%d', ops.speed, ops.concurrent);
+
+		console.success('Now open another terminal window with the same script'.underline);
+	}
+	
+	mediator.on({
+		'push init': init,
+		'pull -public test/send': testSend,
+		'push glue/connection': pushGlueConnection
+	})
+}
