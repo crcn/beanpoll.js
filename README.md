@@ -245,6 +245,8 @@ require('glue.core').
 require(__dirname + '/beans').
 push('init');
 
+```
+
 bean one:
 
 ```javascript
