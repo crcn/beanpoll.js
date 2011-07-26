@@ -3,7 +3,7 @@ var lazy = require('sk/core/lazy').callback;
 
 exports.plugin = function(mediator)
 {
-	var ops, sent = 0, received = 0, margin = 0, pulls = 0, interval;
+	var ops, sent = 0, received = 0, pulls = 0, capp = 0, interval;
 	
 	function testSend(pull)
 	{
@@ -22,11 +22,13 @@ exports.plugin = function(mediator)
 	{
 		console.success('starting test.');
 
-		timeout(data, push);
+		timeout(data, ++capp, push);
 	}
 
-	function timeout(data, push)
+	function timeout(data, index, push)
 	{
+		var margin = 0;
+
 		setTimeout(function()
 		{
 			for(var i = ops.concurrent; i--;)
@@ -42,10 +44,10 @@ exports.plugin = function(mediator)
 					//wait till everything's done. Stop if anything's missed.
 					if(!(--margin))
 					{
-						timeout(data, push);
+						console.log('#%d: done pulling %d requests from app #%d', ++pulls, ops.concurrent, index);
+						timeout(data, index, push);
 					}
 
-					console.log('#%d: remaining pulls from hooked app: %d', ++pulls, margin);
 				});	
 			}
 			
