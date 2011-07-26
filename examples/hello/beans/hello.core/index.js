@@ -5,7 +5,7 @@ exports.plugin = function(mediator)
 	{
 		console.log('calling plugins to say hello...');
 		
-		mediator.pull('say.hello', function(response)
+		mediator.pull(' -multi say/hello', function(response)
 		{
 			console.log(response);
 		});

@@ -32,8 +32,8 @@ exports.plugin = function(mediator)
 	mediator.on({
 		'push init': init,
 		'pull -rotate say/hello': sayHello3,
-		'pull -rotate say/hello': sayHello2,
-		'pull -rotate say/hello': sayHello1,
+		'pull -rotate=1 say/hello': sayHello2,
+		'pull -rotate=2 say/hello': sayHello1,
 	});
 	
 }

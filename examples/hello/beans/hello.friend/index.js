@@ -8,6 +8,6 @@ exports.plugin = function(mediator)
 	
 
 	mediator.on({
-		'pull -public say.hello': sayHello
+		'pull -multi -public say/hello': sayHello
 	});	
 }
