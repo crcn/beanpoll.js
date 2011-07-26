@@ -3,6 +3,11 @@ Beanpole - Routing on Steroids
 
 Beanpole is a universal routing framework on steriods. Use it for HTTP, WebSockets, or go ahead and use it to distrubte your application across platforms. 
 
+What isn't it?
+--------------
+
+It's *not* a server, so don't get the wrong idea. Beanpole's more like an evolved EventEmitter. Think of it that way... Now get that idea out of your head >.>.
+
 What are some features?
 -----------------------
 	
@@ -10,8 +15,8 @@ What are some features?
 - Messages are streamed, so you can send large files back and forth.
 - Data-bind to any channel via push / pull.
 - Distribution built in, helping you create decoupled, scalable applications.
-- Asyncronous
-
+- Use it to augment pre-existing frameworks, such as [express](https://github.com/visionmedia/express)!
+- Asyncronous, or Synchronous. Pick your flavor.
 
 Code Usage
 ----------
