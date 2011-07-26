@@ -1,13 +1,16 @@
 Beanpole - Routing on Steroids 
 ==============================
 
-Beanpole is a universal routing framework built for whatever your heart desires. Use it for HTTP, WebSockets, or use it as a plugin framework. 
+Beanpole is a universal routing framework on steriods. Use it for HTTP, WebSockets, or go ahead and use it to distrubte your application across platforms. 
 
 What are some features?
 -----------------------
 	
 - Fully fledged routing framework with syntactic sugar (see below for examples). 
-- Messages are streamed, so you can go ahead and use it with large files. 
+- Messages are streamed, so you can send large files back and forth.
+- Data-bind to any channel via push / pull.
+- Distribution built in, helping you create decoupled, scalable applications.
+- Asyncronous
 
 
 Code Usage
@@ -240,7 +243,7 @@ See examples
 To Do
 -----
 
-- errors need to be handleable
-- round-robin for hooks with same pull handles registered to glue.core
-- need putBackToken method for parser
-- middleware for router for metadata. e.g: load balancer: round-robin, leastconn, et.c
+- errors need to be handleable.
+- need putBackToken method for parser.
+- need to implement response in Request. Allow for http headers to be handleable. 
+- bridge.js needs to also cache errors, and responses. 
