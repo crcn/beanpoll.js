@@ -233,8 +233,107 @@ exports.plugin = function(mediator)
 ```
 
 
-Oh look, an HTTP server
------------------------
+Oh look, a HTTP server example
+--------------------------------
+
+index.js:
+
+```javascript
+
+require('beanpole').
+require('glue.core').
+require(__dirname + '/beans').
+push('init');
+
+bean one:
+
+```javascript
+
+
+exports.plugin = function(mediator)
+{
+	
+	function init()
+	{
+		
+
+	}
+
+	function delay(pull)
+	{
+		console.log('delaying for %d seconds', pull.data.seconds);
+
+		setTimeout(function()
+		{
+			if(!pull.next())
+			{
+				pull.end('Done!');
+			}
+		}, pull.data.seconds * 1000);
+	}
+
+	function sayHello(pull)
+	{
+		pull.end('hello '+pull.data.name+'!');
+	}
+	
+	mediator.on({
+		'push init': init,
+		'pull -public delay/:seconds': delay,
+		'pull -public delay/:delay -> say/hello/:delay/:name': sayHello
+	});
+	
+}
+
+```
+
+bean two:
+
+```javascript 
+
+var express = require('express');
+
+exports.plugin = function(mediator)
+{
+
+	function init(pull)
+	{
+		var srv = express.createServer();
+
+		mediator.pull('glue', function(data)
+		{
+			data.channels.forEach(function(channel)
+			{
+				srv.get('/'+channel.name, function(req, res)
+				{
+					var name = channel.name;
+
+					for(var param in req.params)
+					{
+						name = name.replace(':'+param,req.params[param])	
+					}
+
+					mediator.pull('-stream ' + name, function(writer)
+					{
+						writer.pipe(res);
+					})
+				});
+			});
+
+			srv.listen(8032);
+		});
+
+	}
+
+	console.log('Server running on port ' + 8032+'. try http://localhost:8032/say/hello/craig');
+	
+
+	mediator.on({
+		'push init': init
+	});	
+}
+
+```
 
 
 Other Examples
