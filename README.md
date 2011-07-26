@@ -1,21 +1,13 @@
-Beanpole - Super scale your node.js apps 
-==========================================
+Beanpole - Routing on Steroids 
+==============================
 
-Beanpole distributes your application into "beans" (modules) which can run in-app, in the browser, or on another server. Think of it like building an application with plugins across platforms.
-
-What are some benefits?
-----------------------
-
-- Makes your code more asyncronous, and keeps beans decoupled. 
-- beans are completely bindable, even ones across networks. If one pod is to make a particular "pull", say "get/file", that same pod can easily bind to it, so it receives any "push" to "get/file" if anything changes.
-- Communication between beans in-app, and across multiple platforms is universal. Beanpole does *not* care if a push / pull request comes from within the app, or from a different platform. Heck, you could even create a pod which makes your app visible via an HTTP api, or WebSockets. 
+Beanpole is a universal routing framework built for whatever your heart desires. Use it for HTTP, WebSockets, or use it as a plugin framework. 
 
 What are some features?
 -----------------------
 	
 - Fully fledged routing framework with syntactic sugar (see below for examples). 
-- Chunking messages. This allows you to easily send / receive large amounts of data.
-- "push" changes, or "pull" current data. Similar to publish / subscribe.
+- Messages are streamed, so you can go ahead and use it with large files. 
 
 
 Code Usage
