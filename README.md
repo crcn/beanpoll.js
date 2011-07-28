@@ -249,11 +249,7 @@ See /examples
 To Do
 -----
 
-- parser should not care if type exists.
 - errors need to be handleable.
-- need putBackToken method for parser.
 - need to implement response in Request. Allow for http headers to be handleable. 
 - bridge.js needs to also cache errors, and responses. 
 - pass-thru routes need to be parsed since they're re-dispatched
-- ability to set metadata outside querystring ~ in data, or ops parameter.
-- $data parameter is alternative in second param. Sets param up for options.
