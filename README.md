@@ -60,6 +60,11 @@ function init()
 {
 	for(var i = 3; i--;)
 	{
+
+		//output:
+		//I.
+		//Love.
+		//Coffee.
 		beanpole.pull('say/hi', function (res)
 		{
 			console.log(res)
