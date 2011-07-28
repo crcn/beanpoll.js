@@ -1,7 +1,7 @@
 Beanpole - Routing on Steroids 
 ==============================
 
-Beanpole is a universal routing framework on steriods. Use it for HTTP, WebSockets, or go ahead and use it to distrubte your application across platforms. 
+Beanpole is a universal routing framework on steriods. Use it for HTTP, WebSockets, or go ahead and use it to distrubte your application across platforms.
 
 Beanpole is *not* a server
 --------------------------
@@ -94,3 +94,7 @@ To Do
 - bridge.js needs to also cache errors, and responses. 
 - params in ops so they can fill in URI params vs string concatenation (yuck)
 - need to implement beanpole.router().require(...) vs benapole.require(...);
+- push -store? (pushing data, and allowing subscribers to pull it - use mongodb maybe)
+	- pull search in data parameter?
+- need to have data parameter for on('push -pull');
+- need to have middleware for certain types of metadata (rotate, store, ...). Use beans? Placement = where rotate logic currently is.
