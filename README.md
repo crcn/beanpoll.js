@@ -88,3 +88,4 @@ To Do
 - need to implement response in Request. Allow for http headers to be handleable. 
 - bridge.js needs to also cache errors, and responses. 
 - params in ops so they can fill in URI params vs string concatenation (yuck)
+- need to implement beanpole.router().require(...) vs benapole.require(...);
