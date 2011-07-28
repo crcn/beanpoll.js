@@ -22,229 +22,63 @@ What are some features?
 Code Usage
 ----------
 
-index.js:
+TODO
+
+Example
+-------
+
+Lot's of them in are in the [examples directory](https://github.com/spiceapps/beanpole/tree/master/examples), but here's a quick one which scratches the surface:
 
 ```javascript
 
-require('brazilnut').
-require(__dirname + '/beans/my.test.pod').
-require(__dirname + '/beans/my.test.pod2').
-push('init');
-
-```
-
-in beans/my.test.pod/index.js:
-
-
-```javascript
-
-exports.plugin = function(mediator)
+var beanpole = require('../../lib/node').router();
+	
+function delay(pull)
 {
-	
-	function init()
+	setTimeout(function()
 	{
-		mediator.pull('say/hello', function(name)
-		{
-			console.log(name);//hello!
-		})
-	}
-	
-	mediator.on({
-		'push init': init
-	})
+		pull.next();
+	}, pull.data.seconds * 1000);
 }
 
-```
-
-in beans/my.test.pod2/index.js:
-
-
-```javascript
-
-exports.plugin = function(mediator)
+function sayHi(data)
 {
-	
-	function pullSayHello(pull)
-	{
-		pull.end('hello world!')
-	}
-	
-	mediator.on({
-		'pull say/hello': pullSayHello
-	})
+	console.log('I.');
 }
 
-```
-
-
-Streaming
----------
-
-```javascript
-
-exports.plugin = function(mediator)
+function sayHi2(data)
 {
-	
-	function init()
-	{
-		mediator.pull('-stream final/countdown/10', function(reader)
-		{
-			reader.on({
-				write: function(chunk)
-				{
-					//T minus: 10
-					//T minus: 9
-					//T minus: 8
-					//T minus: 7
-					//...
-					//WE HAVE LIFTOFF!
-					console.log(chunk);
-				},
-				end: function()
-				{
-					console.log("BOOOOSSHHHHH!")
-				}
-			})
-		})
-	}
-	
-	mediator.on({
-		'push init': init
-	})
+	console.log('Love.');
 }
 
-```
-
-in beans/my.test.pod2/index.js:
-
-
-```javascript
-
-exports.plugin = function(mediator)
+function sayHi3(data)
 {
-	
-	function pullCountdown(pull)
-	{
-		var tminus = pull.data.time;
-
-		var interval = setTimeout(function()
-		{
-			if(!(--tminus))
-			{
-				pull.end("WE HAVE LIFTOFF!");	
-			}
-
-			pull.write('T minus: '+tminus);
-		},1000);
-	}
-	
-	mediator.on({
-		'pull final/countdown/:time': pullCountdown
-	});
+	console.log('Coffee.');
 }
 
-```
-
-
-Passing through other routes
-----------------------------
-
-```javascript
-
-exports.plugin = function(mediator)
+function init()
 {
-	
-	function init()
+	for(var i = 3; i--;)
 	{
-
-		//Delayed for 2 seconds
-		//Delayed for 1 seconds
-		//hello craig
-		mediator.pull('say/hello', { name: craig }, function(data)
+		beanpole.pull('say/hi', function (res)
 		{
-			console.log(data)
-		})
+			console.log(res)
+		});	
 	}
-
-	function pullDelay(pull)
-	{
-		console.log("Delayed for %d seconds", pull.data.time);
-		setTimeout(function()
-		{
-
-			//if there's nothing next, then we're calling delay directly
-			if(!pull.next())
-			{
-				pull.end('done delaying!');
-			}
-		}, pull.data.time * 1000);
-	}
-
-	function sayHello(pull)
-	{
-		pull.end('hello ' + pull.data.name);
-	}
-	
-	mediator.on({
-		'pull delay/:time': pullDelay,
-		'pull delay/3 -> delay/2 -> delay/1 -> say/hello': sayHello 
-		'push init': init
-	})
 }
 
-```
+beanpole.on({
+	'push init': init,
+	'pull delay/:seconds': delay,
+	'pull -rotate delay/1 -> say/hi': sayHi,
+	'pull -rotate delay/2 -> say/hi': sayHi2,
+	'pull -rotate delay/3 -> say/hi': sayHi3
+})
 
-Auto-pass through other routes
-------------------------------
 
-```javascript
-
-exports.plugin = function(mediator)
-{
-	
-	function init()
-	{
-		mediator.pull('my/secret', { user: 'craig', pass: 'jefferds' }, function(data)
-		{
-			//You shall not pass!
-			console.log(data);
-		})
-	}
-
-	function authenticate(pull)
-	{
-		if(pull.data.user != 'craig' || pull.data.pass != 'secret')
-		{
-			return pull.end('You shall not pass!');
-		}
-
-		if(!pull.next())
-		{
-			pull.end('You have been authenticated');
-		}
-	}
-
-	function showSecret(pull)
-	{
-		pull.end("You don't have any secrets")
-	}
-	
-	mediator.on({
-		'pull my/*': authenticate,
-		'pull my/secret': showSecret 
-		'push init': init
-	})
-}
+beanpole.push('init');
 
 ```
-
-
-
-Other Examples
---------------
-
-See /examples
-
 
 
 To Do
@@ -253,3 +87,4 @@ To Do
 - errors need to be handleable.
 - need to implement response in Request. Allow for http headers to be handleable. 
 - bridge.js needs to also cache errors, and responses. 
+- params in ops so they can fill in URI params vs string concatenation (yuck)
