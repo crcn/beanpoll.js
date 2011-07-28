@@ -27,7 +27,7 @@ TODO
 Example
 -------
 
-Lot's of them in are in the [examples directory](https://github.com/spiceapps/beanpole/tree/master/examples), but here's a quick one which scratches the surface:
+Lot's of them in are in the [examples directory](https://github.com/spiceapps/beanpole/tree/master/examples), but here's a that scratches the surface:
 
 ```javascript
 
