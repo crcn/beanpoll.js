@@ -41,19 +41,19 @@ function delay(pull)
 	}, pull.data.seconds * 1000);
 }
 
-function sayHi(data)
+function sayHi(pull)
 {
-	console.log('I.');
+	pull.end('I.');
 }
 
-function sayHi2(data)
+function sayHi2(pull)
 {
-	console.log('Love.');
+	pull.end('Love.');
 }
 
-function sayHi3(data)
+function sayHi3(pull)
 {
-	console.log('Coffee.');
+	pull.end('Coffee.');
 }
 
 function init()
