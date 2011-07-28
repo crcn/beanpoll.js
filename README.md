@@ -11,7 +11,7 @@ Don't get the wrong idea. Beanpole's more like an evolved EventEmitter. Think of
 What are some features?
 -----------------------
 	
-- Fully fledged routing framework with syntactic sugar (see below for examples). 
+- Syntactic sugar (see below for examples). 
 - Messages are streamed, so you can send large files back and forth.
 - Data-bind to any channel via push / pull.
 - Distribution built in, helping you create decoupled, scalable applications.
