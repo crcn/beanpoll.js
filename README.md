@@ -18,6 +18,7 @@ What are some features?
 - Use it to augment pre-existing frameworks, such as [express](https://github.com/visionmedia/express)!
 - Asyncronous, or Synchronous. Pick your flavor.
 
+
 Code Usage
 ----------
 
@@ -252,4 +253,3 @@ To Do
 - errors need to be handleable.
 - need to implement response in Request. Allow for http headers to be handleable. 
 - bridge.js needs to also cache errors, and responses. 
-- pass-thru routes need to be parsed since they're re-dispatched
