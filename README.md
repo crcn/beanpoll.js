@@ -17,7 +17,7 @@ What are some features?
 - Distribution built in, helping you create decoupled, scalable applications.
 - Use it to augment pre-existing frameworks, such as [express](https://github.com/visionmedia/express)!
 - Asyncronous, or Synchronous. Pick your flavor.
-- Intercept push / pulls based on data (seee below).
+- Intercept push / pulls based on data (seee examples).
 
 
 Code Usage
