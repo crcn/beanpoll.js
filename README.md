@@ -91,14 +91,4 @@ beanpole.push('init');
 To Do
 -----
 
-- intercept data based on other parameters ~ responses, ip addresses, etc.
-- errors need to be handleable.
-- ability to set the same metadata twice for different values?
-- need to implement response in Request. Allow for http headers to be handleable. 
-- bridge.js needs to also cache errors, and responses. 
-- params in ops so they can fill in URI params vs string concatenation (yuck)
-- need to implement beanpole.router().require(...) vs benapole.require(...);
-- push -store? (pushing data, and allowing subscribers to pull it - use mongodb maybe)
-	- pull search in data parameter?
-- need to have data parameter for on('push -pull');
-- need to have middleware for certain types of metadata (rotate, store, ...). Use beans? Placement = where rotate logic currently is.
+See in issues
