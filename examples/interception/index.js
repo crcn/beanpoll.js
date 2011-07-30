@@ -3,7 +3,7 @@ var beanpole = require('../../lib/node').router();
 function intercept(pull)
 {
 
-	//change the data
+	//change the sport. 
 	pull.data.sport = 'soccer';
 
 	pull.next();
@@ -11,14 +11,14 @@ function intercept(pull)
 
 function test(pull)
 {
-	pull.end(pull.data.sport)
+	pull.end(pull.data.sport);
 }
 
 function init()
 {
 	beanpole.pull('test', { sport: 'football' }, function(result)
 	{
-		console.log(result)
+		console.log(result);//soccer
 	});
 }
 
