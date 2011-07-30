@@ -106,7 +106,7 @@ function throwBall(pull)
 
 function init()
 {
-	beanpole.pull('throw/ball', { throw: 'football' }, function(result)
+	beanpole.pull('throw/ball', { 'throw': 'football' }, function(result)
 	{
 		console.log(result);//INTERCEPTED!
 	})
