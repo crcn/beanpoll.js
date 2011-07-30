@@ -6,7 +6,7 @@ Beanpole is a universal routing framework on steriods. Use it for HTTP, WebSocke
 Beanpole is *not* a server
 --------------------------
 
-Don't get the wrong idea. Beanpole's more like an evolved EventEmitter. Think of it that way... Now get that idea out of your head >.>.
+Beanpole's more like an evolved EventEmitter. 
 
 What are some features?
 -----------------------
