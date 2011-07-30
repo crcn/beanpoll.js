@@ -35,7 +35,7 @@ exports.plugin = function(mediator)
 	mediator.on({
 		'push init': init,
 		'push glue/connection': pushGlueConnection,
-		'push say/hello': pushSayHello,
-		'push say/hello/back': pushSayHelloBack,
+		'push -public say/hello': pushSayHello,
+		'push -public say/hello/back': pushSayHelloBack,
 	})
 }
