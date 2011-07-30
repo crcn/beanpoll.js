@@ -15,7 +15,7 @@ What are some features?
 - Messages are streamed, so you can send large files back and forth.
 - Data-bind to any channel via push / pull.
 - Distribution built in, helping you create decoupled, scalable applications.
-- Use it to augment pre-existing frameworks, such as [express](https://github.com/visionmedia/express)!
+- Use it to augment pre-existing frameworks, such as [express](https://github.com/visionmedia/express).
 - Asyncronous, or Synchronous. Pick your flavor.
 - Intercept push / pulls based on data (seee examples).
 
