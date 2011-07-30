@@ -128,6 +128,7 @@ beanpole.push('init');
 To Do
 -----
 
+- intercept data based on other parameters ~ responses, ip addresses, etc.
 - errors need to be handleable.
 - ability to set the same metadata twice for different values?
 - need to implement response in Request. Allow for http headers to be handleable. 
