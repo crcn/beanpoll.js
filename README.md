@@ -17,7 +17,7 @@ What are some features?
 - Distribution built in, helping you create decoupled, scalable applications.
 - Use it to augment pre-existing frameworks, such as [express](https://github.com/visionmedia/express)!
 - Asyncronous, or Synchronous. Pick your flavor.
-- Intercept push / pulls based on data (see examples).
+- Intercept push / pulls based on data (seee below).
 
 
 Code Usage
@@ -85,6 +85,44 @@ beanpole.on({
 beanpole.push('init');
 
 ```
+
+
+Here's another cool example demonstrating interceptions:
+--------------------------------------------------------
+
+```javascript
+
+var beanpole = require('../../lib/node').router();
+	
+function intercept(pull)
+{
+	pull.end('INTERCEPTED!');
+}
+
+function throwBall(pull)
+{
+	pull.end('Caught!');
+}
+
+function init()
+{
+	beanpole.pull('throw/ball', { throw: 'football' }, function(result)
+	{
+		console.log(result);//INTERCEPTED!
+	})
+}
+
+beanpole.on({
+	'push init': init,
+	'pull -intercept=throw intercept/throw': intercept,
+	'pull throw/ball': throwBall
+})
+
+
+beanpole.push('init');
+
+```
+
 
 
 To Do
