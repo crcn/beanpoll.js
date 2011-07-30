@@ -11,13 +11,13 @@ Beanpole's more like an evolved EventEmitter.
 What are some features?
 -----------------------
 	
-- Syntactic sugar (see below for examples). 
+- Syntactic sugar (see below). 
 - Messages are streamed, so you can send large files back and forth.
 - Data-bind to any channel via push / pull.
 - Distribution built in, helping you create decoupled, scalable applications.
 - Use it to augment pre-existing frameworks, such as [express](https://github.com/visionmedia/express).
 - Handle responses asyncronously (via streams), or syncronously. Pick your flavor.
-- Intercept push / pulls based on data (seee examples).
+- Intercept push / pulls based on data (see examples).
 
 
 Code Usage
