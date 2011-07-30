@@ -16,7 +16,7 @@ What are some features?
 - Data-bind to any channel via push / pull.
 - Distribution built in, helping you create decoupled, scalable applications.
 - Use it to augment pre-existing frameworks, such as [express](https://github.com/visionmedia/express).
-- Handle responses asyncronously (via streams), or get them in one response. Pick your flavor.
+- Handle responses asyncronously (via streams), or syncronously. Pick your flavor.
 - Intercept push / pulls based on data (seee examples).
 
 
