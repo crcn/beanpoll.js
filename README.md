@@ -91,6 +91,7 @@ To Do
 -----
 
 - errors need to be handleable.
+- ability to set the same metadata twice for different values?
 - need to implement response in Request. Allow for http headers to be handleable. 
 - bridge.js needs to also cache errors, and responses. 
 - params in ops so they can fill in URI params vs string concatenation (yuck)
