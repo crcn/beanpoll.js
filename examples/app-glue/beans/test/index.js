@@ -20,7 +20,7 @@ exports.plugin = function(mediator)
 		console.log('%s said hello back!', guestName);
 	}
 		
-	function pushGlueConnection(data, push)
+	function pushHook(data, push)
 	{
 		console.success('A person decided to join the partayyy.');
 		push.from.push('say/hello', myName)
@@ -34,7 +34,7 @@ exports.plugin = function(mediator)
 	
 	mediator.on({
 		'push init': init,
-		'push glue/connection': pushGlueConnection,
+		'push hook/connection': pushHook,
 		'push -public say/hello': pushSayHello,
 		'push -public say/hello/back': pushSayHelloBack,
 	})

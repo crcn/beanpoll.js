@@ -7,7 +7,7 @@ exports.plugin = function(mediator)
 	{
 		var srv = express.createServer();
 
-		mediator.pull('glue', function(data)
+		mediator.pull('hook', function(data)
 		{
 			data.channels.forEach(function(channel)
 			{

@@ -1,3 +1,3 @@
-var brazilnut = require('../../lib/node');
+var beanpole = require('../../lib/node');
 
-brazilnut.require('glue.core').require(__dirname + '/beans').push('init');
+beanpole.require('http.core').require(__dirname + '/beans').push('init');

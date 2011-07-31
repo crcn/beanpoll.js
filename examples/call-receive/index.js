@@ -15,7 +15,7 @@ cli.next(function(arg)
 	{
 		ops.speed = Number(arg) || 200;
 
-		beanpole.require(['glue.core','glue.http']).
+		beanpole.require(['hook.core','hook.http']).
 		require(__dirname + '/beans').push('init', ops);
 	})
 })

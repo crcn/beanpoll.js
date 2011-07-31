@@ -18,7 +18,7 @@ exports.plugin = function(mediator)
 		pull.end(++received);
 	}
 		
-	function pushGlueConnection(data, push)
+	function pushHook(data, push)
 	{
 		console.success('starting test.');
 
@@ -65,6 +65,6 @@ exports.plugin = function(mediator)
 	mediator.on({
 		'push init': init,
 		'pull -public test/send': testSend,
-		'push glue/connection': pushGlueConnection
+		'push hook/connection': pushHook
 	})
 }
