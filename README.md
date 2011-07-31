@@ -34,12 +34,9 @@ Lot's of them in are in the [examples directory](https://github.com/spiceapps/be
 
 var beanpole = require('../../lib/node').router();
 	
-function delay(pull)
+function delay()
 {
-	setTimeout(function()
-	{
-		pull.next();
-	}, pull.data.seconds * 1000);
+	setTimeout(function (self){ self.next(); }, this.data.seconds * 1000, this);
 }
 
 function sayHi()
