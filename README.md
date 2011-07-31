@@ -42,33 +42,33 @@ function delay(pull)
 	}, pull.data.seconds * 1000);
 }
 
-function sayHi(pull)
+function sayHi()
 {
-	pull.end('I.');
+	this.end('I.');
 }
 
-function sayHi2(pull)
+function sayHi2()
 {
-	pull.end('Love.');
+	this.end('Love.');
 }
 
-function sayHi3(pull)
+function sayHi3()
 {
-	pull.end('Coffee.');
+	this.end('Coffee.');
 }
 
 function init()
 {
 	for(var i = 3; i--;)
 	{
-
-		//output:
-		//I.
-		//Love.
-		//Coffee.
-		beanpole.pull('say/hi', function (res)
+		beanpole.pull('say/hi', function (message)
 		{
-			console.log(res)
+
+			//output:
+			//I.
+			//Love.
+			//Coffee.
+			console.log(message)
 		});	
 	}
 }
