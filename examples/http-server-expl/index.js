@@ -2,10 +2,12 @@ var beanpole = require('../../lib/node').router(),
 express = require('express'),
 Url = require('url');
 
-
 beanpole.on({
 
-	'http -rotate thru': function()
+	/**
+	 */
+
+	'pull -rotate thru': function()
 	{
 		console.log('rotate thru 1');
 
@@ -15,14 +17,20 @@ beanpole.on({
 		}
 	},
 
-	'http -rotate=1 thru': function()
+	/**
+	 */
+
+	'pull -rotate=1 thru': function()
 	{
 		console.log('rotate thru 2');
 
 		return 'rotate thru 2 - not nexted';	
 	},
 
-	'http -rotate=2 thru': function()
+	/**
+	 */
+
+	'pull -rotate=2 thru': function()
 	{
 		console.log('rotate thru 3');
 
@@ -35,15 +43,38 @@ beanpole.on({
 	/**
 	 */
 
-	'http -rotate thru -> hello/:name': function()
+	'pull -rotate thru -> hello/:name': function()
 	{
 		return 'hello '+this.data.name+'!';
 	},
 	
-	'http -rotate=1 thru -> hello/:name': function()
+	/**
+	 */
+
+	'pull -rotate=1 thru -> hello/:name': function()
 	{
 		return 'sup';
 	},
+
+	/**
+	 */
+
+
+	'http session': function()
+	{
+		console.log(this.req.headers)
+		console.log("TESTING")
+		this.next();
+	},
+
+	/**
+	 */
+
+	'pull session -> test/session': function()
+	{
+		return "TESTED!"
+	},
+
 
 	/**
 	 */
@@ -58,7 +89,7 @@ beanpole.on({
 		{
 			srv.get('/' + path, function(req, res)
 			{
-				beanpole.http(Url.parse(req.url).pathname, null, { meta: { stream: 1 }, req: req }, function(writer)
+				beanpole.pull(Url.parse(req.url).pathname, null, { meta: { stream: 1 }, req: req }, function(writer)
 				{
 					writer.pipe(res);
 				})
@@ -69,7 +100,7 @@ beanpole.on({
 		{
 			var expr = channels[channel];
 
-			if(expr.type == 'http')
+			if(expr.type == 'pull')
 			{
 				initPath(channel, expr);
 			}
