@@ -32,7 +32,7 @@ exports.plugin = function(mediator)
 
 	}
 
-	console.log('Server running on port ' + 8032+'. try http://localhost:8032/say/hello/craig');
+	console.log('Server running on port ' + 8032+'. try http://localhost:8032/say/hello/1/craig');
 	
 
 	mediator.on({
