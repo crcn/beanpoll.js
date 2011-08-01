@@ -1,5 +1,4 @@
-var beanpole = require('../../lib/node').router(),
-	Parser = require('../../lib/core/proxy/router/parser');
+var beanpole = require('../../lib/node').router();
 	
 
 
