@@ -41,17 +41,17 @@ function delay()
 
 function sayHi()
 {
-	this.end('I.');
+	return "I.";
 }
 
 function sayHi2()
 {
-	this.end('Love.');
+	return "Love.";
 }
 
 function sayHi3()
 {
-	this.end('Coffee.');
+	return "Coffee.";
 }
 
 function init()
@@ -76,7 +76,7 @@ beanpole.on({
 	'pull -rotate delay/1 -> say/hi': sayHi,
 	'pull -rotate delay/2 -> say/hi': sayHi2,
 	'pull -rotate delay/3 -> say/hi': sayHi3
-})
+});
 
 
 beanpole.push('init');

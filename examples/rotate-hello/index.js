@@ -5,19 +5,19 @@ function delay()
 	setTimeout(function (self){ self.next(); }, this.data.seconds * 1000, this);
 }
 
-function sayHi(pull)
+function sayHi()
 {
-	pull.end('I.');
+	return "I.";
 }
 
-function sayHi2(pull)
+function sayHi2()
 {
-	pull.end('Love.');
+	return "Love.";
 }
 
-function sayHi3(pull)
+function sayHi3()
 {
-	pull.end('Coffee.');
+	return "Coffee.";
 }
 
 function init()
