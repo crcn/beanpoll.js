@@ -1,6 +1,4 @@
 var beanpole = require('../../lib/node').router();
-	
-
 
 function sayHi(message)
 {
