@@ -1,43 +1,45 @@
 var beanpole = require('../../lib/node').router();
 	
-function delay(pull)
-{
-	setTimeout(function()
-	{
-		pull.next();
-	}, pull.data.seconds * 1000);
-}
+
 
 function sayHi()
 {
-	if(!this.next())
-	{
-		this.end("END")
-	}
+	return "don't pass " + this.data.name;
 }
 
 function sayHi2()
 {
-	this.end('hello')
+	console.log('pass!')
+
+	if(!this.next())
+	{
+		pull.end("GO")
+	}
 }
 
 function sayHi3()
 {
-	console.log('Coffee.');
+	return "hello";
 }
+
 
 function init()
 {
-	beanpole.pull('hello2', function(result)
+	for(var i = 4; i--;)
 	{
-		console.log(result)
-	});
+		beanpole.pull('hello2', function(result)
+		{
+			console.log(result)
+		});	
+	}
+	
 }
 
 beanpole.on({
 	'push init': init,
-	'pull hello': sayHi,
-	'pull hello -> hello2': sayHi2
+	'pull -rotate=1 hello/:name': sayHi,
+	'pull -rotate=2 hello/:name': sayHi2,
+	'pull hello/craig -> hello2': sayHi3
 })
 
 
