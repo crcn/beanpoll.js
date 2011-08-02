@@ -6,14 +6,27 @@ beanpole.require('middleware.core');
 
 beanpole.on({
 
+
 	/**
 	 */
 
-	'pull session -> test/session': function()
+	'pull -public basic/auth/user/pass -> auth/test': function()
 	{
-		return "TESTED!"
+		return 'authorized!';
 	},
+	/**
+	 */
 
+	'pull -public session -> test/session': function()
+	{
+		var sess = this.internal.session.data;
+
+		if(!sess.numVisits) sess.numVisits = 0;
+
+		sess.numVisits++;
+
+		return 'Num Visits: '+sess.numVisits;
+	},
 
 	/**
 	 */
@@ -30,7 +43,31 @@ beanpole.on({
 			{
 				beanpole.pull(Url.parse(req.url).pathname, null, { meta: { stream: 1 }, req: req }, function(writer)
 				{
-					writer.pipe(res);
+					writer.on({
+						response: function(headers)
+						{
+							if(headers.session)
+							{
+								res.setHeader('Set-Cookie', headers.session.http)
+							}
+
+							if(headers.authorization)
+							{
+								// console.log(res.statusCode)
+								res.statusCode = 401;
+								res.setHeader('WWW-Authenticate', headers.authorization.http);
+							}
+						},
+						write: function(data)
+						{
+							res.write(typeof data == 'object' ? JSON.stringify(data) : data);
+						},
+						end: function()
+						{
+							res.end();
+						}
+					});
+
 				})
 			});
 		}
@@ -39,7 +76,7 @@ beanpole.on({
 		{
 			var expr = channels[channel];
 
-			if(expr.type == 'pull')
+			if(expr.type == 'pull' && expr.meta.public)
 			{
 				initPath(channel, expr);
 			}

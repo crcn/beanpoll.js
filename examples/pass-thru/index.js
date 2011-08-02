@@ -13,7 +13,7 @@ function sayHi2()
 
 	if(!this.next())
 	{
-		pull.end("GO")
+		this.end("GO")
 	}
 }
 
