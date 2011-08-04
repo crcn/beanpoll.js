@@ -20,8 +20,7 @@ beanpole.on({
 
 	'pull -public basic/auth -> auth/text': function()
 	{
-
-		return "authorized: " + this.internal.user.name;
+		return "authorized: " + this.user.name;
 	},
 
 	
@@ -30,7 +29,7 @@ beanpole.on({
 
 	'pull -public session -> test/session': function()
 	{
-		var sess = this.internal.session.data;
+		var sess = this.session.data;
 
 		if(!sess.numVisits) sess.numVisits = 0;
 
@@ -64,7 +63,6 @@ beanpole.on({
 
 							if(headers.authorization)
 							{
-								// console.log(res.statusCode)
 								res.statusCode = 401;
 								res.setHeader('WWW-Authenticate', headers.authorization.http);
 							}
