@@ -4,7 +4,9 @@ var beanpole = require('../../lib/node').router();
 
 function sayHi()
 {
-	return "don't pass " + this.data.name;
+
+	// this.next();
+	return "don't pass " + this.data.name+ " "+this.data.last;
 }
 
 function sayHi2()
@@ -17,30 +19,33 @@ function sayHi2()
 	}
 }
 
+function sayHiCraig()
+{
+	if(!this.next()) return "GO"
+}
+
 function sayHi3()
 {
-	return "hello";
+	if(!this.next()) return "hello";
 }
 
 
 function init()
 {
-	for(var i = 4; i--;)
+	beanpole.pull('hello2', function(result)
 	{
-		beanpole.pull('hello2', function(result)
-		{
-			console.log(result)
-		});	
-	}
+		console.log(result)
+	});	
 	
 }
 
 beanpole.on({
 	'push init': init,
-	'pull -rotate=1 hello/:name': sayHi,
-	'pull -rotate=2 hello/:name': sayHi2,
-	'pull hello/craig -> hello2': sayHi3
-})
+	'pull hello/:name/:last': sayHi,
+	'pull hello/craig/condon -> hello/test': sayHiCraig,
+	'pull hello/test -> hello2': sayHi3
+});
 
+// console.log(beanpole.routeMiddleware._routers.pull._collection._routes)
 
 beanpole.push('init');
