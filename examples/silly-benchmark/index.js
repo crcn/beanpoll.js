@@ -1,15 +1,22 @@
-var beanpole = require('../../lib/node').router();
+var beanpole = require('../../lib/node').router(),
+Structr = require('structr');
 	
 
 
 function hello()
 {
 	return "hello!.";
-}
+}                            
+       
 
-function init()
-{
-	var start = new Date();
+
+
+
+beanpole.on({                      
+	'pull hello/world/my/name/is/craig': hello
+})        
+
+var start = new Date();
 
 	for(var i = 10000; i--;)
 	{
@@ -17,15 +24,9 @@ function init()
 		{
 			// console.log(res)
 		});
+		                
 	}
 
 	console.log(new Date().getTime() - start.getTime());
-}
 
-beanpole.on({
-	'push init': init,
-	'pull hello/world/my/name/is/craig': hello
-})
-
-
-beanpole.push('init');
+                                

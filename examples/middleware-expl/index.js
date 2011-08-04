@@ -10,10 +10,21 @@ beanpole.on({
 	/**
 	 */
 
-	'pull -public basic/auth/user/pass -> auth/test': function()
+	'pull -public basic/auth/root/pass -> basic/auth': function()
 	{
-		return 'authorized!';
+		if(!this.next()) return 'authorized!';
 	},
+
+	/**
+	 */
+
+	'pull -public basic/auth -> auth/text': function()
+	{
+
+		return "authorized: " + this.internal.user.name;
+	},
+
+	
 	/**
 	 */
 
