@@ -5,28 +5,16 @@ beanpole.require(['hook.http','hook.core']);
 
 beanpole.on({
 
-	'pull -public thru/hook2/again': function()
-	{
-		console.log("through hook 2 (again). Working  a little faster.... ");
-		setTimeout(function(self){
-			console.log("done!")
-			if(!self.next()) self.end('done!');
-		}, 500, this);
-	},
-
 	'pull -public thru/hook2': function()
 	{
-		console.log("through hook 2. Pretending to do stuff...");
-		
-		setTimeout(function(self){
-			console.log("done!")
-			if(!self.next()) self.end('done!');
-		}, 1000, this);
+		console.log("Through hook 2");
+
+		this.next();
 	},
 
 	'push -public hook1/ready': function()
 	{
-		console.log("connected to hook 1");
+		console.log("Connected to hook 1");
 	}
 });
 

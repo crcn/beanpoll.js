@@ -4,19 +4,18 @@ var beanpole = require('../../lib/node'),
 beanpole.require(['hook.http','hook.core']);
 
 beanpole.on({
-	'pull -public thru/hook2 -> thru/hook2/again -> account': function()
+	'pull -public thru/hook2 -> test/hook': function()
 	{
 		console.log("fetching account...");
 
-		return "some user account details";
+		return "Successfuly passed through remote middleware";
 	},
 	'push -public hook2/ready': function()
 	{
-		console.log("connected to hook 2");
+		console.log("Connected to hook 2");
 
-		beanpole.pull('account', function(message)
+		beanpole.pull('test/hook', function(message)
 		{
-			console.ok("Much success! Here's the message:  ");
 			console.success(message);
 		})
 	}
