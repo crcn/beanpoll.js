@@ -31,7 +31,11 @@ beanpole.on({
 		console.log("delay!")
 		setTimeout(function(self){ self.next(); }, 500, this)
 	},
-	'push -pull through -> name': function(name)
+	'push -pull name': function(name)
+	{
+		console.log(name)
+	},
+	'push -pull name': function(name)
 	{
 		console.log(name)
 	},
