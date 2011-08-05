@@ -4,8 +4,10 @@ var beanpole = require('../../lib/node'),
 beanpole.require(['hook.http','hook.core']);
 
 beanpole.on({
-	'pull -public auth -> account': function()
+	'pull -public thru/hook2 -> thru/hook2/again -> account': function()
 	{
+		console.log("fetching account...");
+
 		return "some user account details";
 	},
 	'push -public hook2/ready': function()
@@ -14,7 +16,8 @@ beanpole.on({
 
 		beanpole.pull('account', function(message)
 		{
-			console.log(message)
+			console.ok("Much success! Here's the message:  ");
+			console.success(message);
 		})
 	}
 });
