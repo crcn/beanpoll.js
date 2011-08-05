@@ -5,13 +5,13 @@ exports.plugin = function(mediator)
 {
 	var myName;
 	
-	function pushSayHello(guestName, push)
+	function pushSayHello(guestName)
 	{
 		console.log('hello %s!', guestName);
 
-		if(push)
+		if(this.from)
 		{
-			push.from.push('say/hello/back', myName);
+			this.from.push('say/hello/back', myName);
 		}
 	}
 
