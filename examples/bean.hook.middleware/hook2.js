@@ -9,7 +9,12 @@ beanpole.on({
 	{
 		console.log("Through hook 2");
 
-		this.next();
+
+		setTimeout(function(self)
+		{
+			console.success("done!")
+			self.next();
+		}, 500, this)
 	},
 
 	'push -public hook1/ready': function()
