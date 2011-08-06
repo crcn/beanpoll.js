@@ -1,15 +1,6 @@
 Beanpole - Build modular, realtime, and distributed applications through routing
 ================================================================================
 
-
-What can you do with it?
-------------------------
-
-- Hook other applications together. 
-- Make routes public via http, websockets, or any protocol of your choice (API). 
-- Use it to keep your app modular. 
-
-
 What are some features?
 -----------------------
 	
