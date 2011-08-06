@@ -13,10 +13,6 @@ What are some features?
 - Intercept push / pulls based on data (see examples).
 
 
-Syntactic Sugar Usage
----------------------
-
-TODO
 
 Example
 -------
