@@ -31,7 +31,7 @@ beanpole.on({
 	{
 		for(var i = 3; i--;)
 		{
-			beanpole.pull('say/hi', function (message)
+			this.router.pull('say/hi', function (message)
 			{
 
 				//output:
