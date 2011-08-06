@@ -69,10 +69,3 @@ beanpole.on({
 beanpole.push('init');
 
 ```
-
-
-
-To Do
------
-
-See in issues
