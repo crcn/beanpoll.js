@@ -7,7 +7,7 @@ What are some features?
 - Syntactic sugar (see below). 
 - Messages are streamed, so you can send chunked data back and forth.
 - Data-bind to any channel via push / pull.
-- Distribution built in, helping you create decoupled, scalable applications.
+- Built for distribution. Easily create decoupled, and scalable applications.
 - Use it to augment pre-existing frameworks, such as [express](https://github.com/visionmedia/express).
 - Handle responses asyncronously (via streams), or syncronously. Pick your flavor.
 - Intercept push / pulls based on data (see examples).
@@ -16,8 +16,6 @@ What are some features?
 
 Example
 -------
-
-Lot's of them in are in the [examples directory](https://github.com/spiceapps/beanpole/tree/master/examples), but here's an example that scratches the surface:
 
 ```javascript
 
