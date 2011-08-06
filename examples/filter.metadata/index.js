@@ -49,3 +49,5 @@ beanpole.on({
 	'pull -name=group1 -multi=2 say/hello': groupHello2,
 	'pull -name=group1 -multi=1 say/hello': groupHello1
 });
+
+beanpole.push('init')
