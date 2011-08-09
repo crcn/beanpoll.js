@@ -1,7 +1,7 @@
 {
     "name": "beanpole",
     "description": "Routing on Steroids",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "author": "Craig Condon",
     "repository": {
         "type": "git",
@@ -11,7 +11,8 @@
     "dependencies": {
         "sk":"*",
         "structr":"*",
-        "express":"*"
+        "express":"*",
+        "vows":"*"
     },
     
     "main": "./lib/node/index.js"
