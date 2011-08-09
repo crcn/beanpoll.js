@@ -4,6 +4,7 @@ var beanpole = require('../../lib/node').router();
 
 function sayHi()
 {
+	console.log(this.data)
 	console.log('hi')
 	// this.next();
 	if(!this.next()) return "don't pass " + this.data.name+ " "+this.data.last;
@@ -32,7 +33,7 @@ function sayHi3()
 
 function init()
 {
-	beanpole.pull('hello2', function(result)
+	beanpole.pull('hello2/craig', function(result)
 	{
 		console.log(result)
 	});	
@@ -46,9 +47,9 @@ function test2()
 
 beanpole.on({
 	'push init': init,
-	'pull hellocraigcondon': sayHi,
+	'pull hello/:name': sayHi,
 	'pull hellotest': sayHi2,
-	'pull hellocraigcondon -> hellotest -> hello2': sayHi3
+	'pull hello/:name -> hellotest -> hello2/:name': sayHi3
 });
 
 // console.log(beanpole.routeMiddleware._routers.pull._collection._routes)
