@@ -745,6 +745,9 @@ var Request = sardVar15({
         this._callback(target, data);
     },
     _callback: function(target, data) {
+        if (target.meta.one) {
+            target.dispose();
+        }
         return target.callback.call(this, this);
     }
 });
