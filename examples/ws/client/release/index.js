@@ -742,12 +742,12 @@ var Request = sardVar15({
         }
     },
     _prepare: function(target, data, paths) {
-        this._callback(target, data);
-    },
-    _callback: function(target, data) {
         if (target.meta.one) {
             target.dispose();
         }
+        this._callback(target, data);
+    },
+    _callback: function(target, data) {
         return target.callback.call(this, this);
     }
 });
@@ -2118,7 +2118,7 @@ function pluginExample(router) {
         }
     });
     beanpole.on({
-        "push -public spice.io/ready": function() {
+        "push -public -one spice.io/ready": function() {
             beanpole.push("send/message", {
                 message: "hello " + name + "!",
                 name: name,

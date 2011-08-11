@@ -34,10 +34,8 @@ function pluginExample(router)
 		/**
 		 */
 
-
 		'push send/message': function(data)
 		{
-
 			beanpole.push('call/later', { channel: 'some/random/callback', data: { _id: new Date().getTime(), message: data.message }, sendAt: new Date().getTime() + data.delay})
 		},
 
@@ -52,13 +50,12 @@ function pluginExample(router)
 
 
 	beanpole.on({
-		'push -public spice.io/ready': function()
+		'push -public -one spice.io/ready': function()
 		{
 			beanpole.push('send/message', { message: "hello " + name +"!", name: name, delay: time * 1000});
 		}
 	});	
 }
-
 
 require('../../../../lib/core/beans/hook.core').plugin(beanpole);
 require('../../../../lib/web/beans/hook.socket.io').plugin(beanpole);
