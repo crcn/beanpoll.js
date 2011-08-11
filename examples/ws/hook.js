@@ -21,11 +21,11 @@ beanpole.on({
 	{
 		console.log('calling later');
 
+		var self = this;
 
 		setTimeout(function()
 		{
-			console.log('calling!')
-			beanpole.pull(data.channel, data.data, function(result)
+			self.from.pull(data.channel, data.data, { inner: self.inner }, function(result)
 			{
 				console.log(result)
 			})
