@@ -663,6 +663,7 @@ var sardVar15 = sardModule0, sardVar16 = sardModule6;
 var Request = sardVar15({
     __construct: function(listener, batch) {
         this.data = batch.data;
+        this.inner = batch.inner;
         this.callback = batch.callback;
         this._used = {};
         this._queue = [];
@@ -1006,6 +1007,7 @@ var Router = sardVar4({
             router: this.controller,
             origin: this,
             data: inf.data,
+            inner: ops.inner || {},
             paths: inf.expr.channel.paths,
             meta: expr.meta,
             from: ops.from || this.controller,
@@ -1515,6 +1517,7 @@ var Message = sardVar74({
     __construct: function(name, manager) {
         this._name = name;
         this._manager = manager;
+        this._data = {};
     },
     action: function(value) {
         this._action = value;
@@ -1553,7 +1556,6 @@ var Transaction = Message.extend({
         this._uid = uid;
         this._manager = manager;
         var em = this._em = new EventEmitter, oldDispose = this._em.dispose, self = this;
-        this._data = {};
         this._em.dispose = function() {
             this.disposed = true;
             oldDispose.call(em);
@@ -1668,7 +1670,7 @@ var RemoteInvoker = sardVar74({
         var self = this;
         this._hook._router.on("push -pull hook", {
             data: {
-                all: hook._target.allHooks
+                all: hook._target.bussed
             }
         }, function(hook) {
             self._hook._transaction().send("hook", hook).dispose();
@@ -1699,9 +1701,11 @@ var RemoteInvoker = sardVar74({
         var self = this;
         this._janitor.addDisposable(this._virtualRouter.on("pull -stream " + channel, function(request) {
             this.wrap();
+            if (!this.inner.key) this.inner.key = self.id;
             self._hook._transaction(channel).send("pull", {
                 hasNext: this.hasNext(),
-                data: this.data
+                data: this.data,
+                inner: this.inner
             }).on(this).on({
                 next: this.next
             }).disposeOn("end");
@@ -1710,8 +1714,10 @@ var RemoteInvoker = sardVar74({
     _hookPush: function(channel) {
         var self = this;
         this._janitor.addDisposable(this._virtualRouter.on("push -stream " + channel, function() {
+            if (!this.inner.key) this.inner.key = self.id;
             var trans = self._hook._transaction(channel).send("push", {
-                hasNext: this.hasNext()
+                hasNext: this.hasNext(),
+                inner: this.inner
             }).on({
                 next: this.next
             });
@@ -1739,7 +1745,7 @@ var LocalInvoker = sardVar74({
         if (!ops.meta) ops.meta = {};
         ops.meta.stream = true;
         this._janitor.addDisposable(this._router.on(type + " " + channel, ops, function(localRequest) {
-            if (self._con._hook.ignore(channel)) return;
+            if (self._con._hook.ignore(channel) && (!self._con._target.bussed || !this.inner.key || !self._con._remote.id || self._con._remote.id == this.inner.key)) return;
             var _next = this.hasNext() ? function() {
                 localRequest.next();
             } : null;
@@ -1747,7 +1753,8 @@ var LocalInvoker = sardVar74({
                 meta: {
                     stream: true
                 },
-                _next: _next
+                _next: _next,
+                inner: this.inner
             }, function(remoteRequest) {
                 if (type == "pull") {
                     remoteRequest.pipe(localRequest);
@@ -1766,15 +1773,20 @@ var LocalInvoker = sardVar74({
     push: function(trans) {
         this._router.push(" -stream " + trans._name, {}, {
             from: this._con._remote,
-            _next: this._next(trans)
+            meta: this._meta(trans, "push"),
+            _next: this._next(trans),
+            inner: this._inner(trans)
         }, function(stream) {
             trans.register().on(stream.wrap()).disposeOn("end");
         });
     },
     pull: function(trans) {
+        var id = this._con._remote.id;
         this._router.pull(" -stream " + trans._name, trans._data.data, {
             from: this._con._remote,
-            _next: this._next(trans)
+            meta: this._meta(trans, "pull"),
+            _next: this._next(trans),
+            inner: this._inner(trans)
         }, function() {
             this.pipe({
                 respond: function(response) {
@@ -1791,9 +1803,27 @@ var LocalInvoker = sardVar74({
         });
     },
     _next: function(trans) {
-        return (trans._data || {}).hasNext ? function() {
+        return trans._data.hasNext ? function() {
             trans.send("next");
         } : null;
+    },
+    _inner: function(trans) {
+        if (!trans._data.inner.key) trans._data.inner.key = this._con._remote.id;
+        return trans._data.inner;
+    },
+    _meta: function(trans, type) {
+        var inner = this._inner(trans);
+        if (inner.key != this._con._remote.id && this._router.has(trans._name, {
+            type: type,
+            meta: {
+                target: inner.key
+            }
+        })) {
+            return {
+                target: inner.key
+            };
+        }
+        return null;
     }
 });
 
@@ -1849,10 +1879,10 @@ var Connection = sardVar74({
         }, meta = ops.meta;
         ops.meta.pull = ops.meta.rotate = ops.meta.bussed = undefined;
         ops.meta.stream = ops.meta.hooked = ops.meta.overridable = ops.meta["public"] = 1;
-        if (this._target.allHooks) {
+        if (this._target.bussed) {
             ops.meta.bussed = 1;
         }
-        meta.cluster = this._remote.cluster = hook.cluster;
+        meta.target = this._remote.id = hook.id;
         this.hook("push", channel.path, ops);
         var route = this._router.getRoute("pull " + channel.path, ops);
         if (route && route.route && route.route.meta) {
@@ -1929,7 +1959,7 @@ var sardModule82 = {};
 var sardVar79 = sardModule78, sardVar81 = sardModule80;
 
 sardModule82.plugin = function(mediator, host) {
-    var oldAddChannel = mediator.addChannel, readyBeans = {}, groupId;
+    var oldAddChannel = mediator.addChannel, readyBeans = {}, identifier;
     mediator.addChannel = function(path, expr) {
         oldAddChannel.apply(mediator, arguments);
         lazyPush();
@@ -1962,7 +1992,7 @@ sardModule82.plugin = function(mediator, host) {
             });
         }
         var info = {
-            cluster: groupId,
+            id: identifier,
             channels: channels
         };
         return info;
@@ -1977,12 +2007,8 @@ sardModule82.plugin = function(mediator, host) {
     function onAppId(data) {
         console.log(data);
     }
-    function setAppGroup(data) {
-        groupId = data;
-        pushHook();
-    }
-    function setKey(key) {
-        groupId = key;
+    function setId(value) {
+        identifier = value;
         pushHook();
     }
     function onConnection(data) {
@@ -1996,8 +2022,7 @@ sardModule82.plugin = function(mediator, host) {
         "push init": init,
         "push ready": onBeanReady,
         "pull hook": pullHook,
-        "push set/app/group": setAppGroup,
-        "push key": setKey,
+        "push set/id": setId,
         "push hook/connection": onConnection
     });
 };
@@ -2009,13 +2034,15 @@ sardModule85 = sardVar84({
         this._socket = socket;
         this._id = socket.id;
         var self = this;
-        socket.on("messages", function(messages) {
-            messages.forEach(function(msg) {
+        socket.on("message", function(batch) {
+            batch.forEach(function(msg) {
                 self.onMessage(msg);
             });
         });
-        socket.on("message", this.getMethod("onMessage"));
-        socket.on("disconnect", this.getMethod("onExit"));
+        socket.on("disconnect", function() {
+            console.log("socket disconnect :%d", self._id);
+            self.onExit();
+        });
     },
     send: function(message, callback) {
         if (!this._batch) {
@@ -2025,7 +2052,7 @@ sardModule85 = sardVar84({
         this._batch.push(message);
     },
     _sendBatch: function() {
-        this._socket.emit("messages", this._batch);
+        this._socket.json.send(this._batch);
         this._batch = null;
     },
     onExit: function() {},
@@ -2039,8 +2066,7 @@ sardModule87.plugin = function(router) {
         connect: function(onConnection) {
             var socket = io.connect("http://localhost:6032"), socket;
             socket.on("connect", function() {
-                console.log("CONNECT");
-                router.push("key", socket.socket.sessionid);
+                router.push("set/id", socket.socket.sessionid);
                 onConnection(new sardVar86(socket));
             });
         }
@@ -2060,31 +2086,50 @@ sardModule89.plugin = function(router) {
 var sardModule91 = {}; 
 var beanpole = sardModule72.router();
 
+function pluginExample(router) {
+    var name = prompt("What's your name?", "craig");
+    var time = Number(prompt("When do you want an alert? (in seconds)", 1));
+    function appendBody(message) {
+        var div = document.createElement("div");
+        div.innerHTML = message;
+        document.body.appendChild(div);
+    }
+    router.on({
+        "pull -public some/random/callback": function(request) {
+            appendBody(request.data.message);
+            this.from.push("notify/clients", request.data);
+            request.end();
+        },
+        "push send/message": function(data) {
+            beanpole.push("call/later", {
+                channel: "some/random/callback",
+                data: {
+                    _id: (new Date).getTime(),
+                    message: data.message
+                },
+                sendAt: (new Date).getTime() + data.delay
+            });
+        },
+        "push -public notify/clients": function(data) {
+            appendBody("notified from another client: " + data.message);
+        }
+    });
+    beanpole.on({
+        "push -public spice.io/ready": function() {
+            beanpole.push("send/message", {
+                message: "hello " + name + "!",
+                name: name,
+                delay: time * 1e3
+            });
+        }
+    });
+}
+
 sardModule82.plugin(beanpole);
 
 sardModule89.plugin(beanpole);
 
-beanpole.on({
-    "push -public spice.io/ready": function() {
-        console.log("ready!");
-        console.log(beanpole.channels());
-        for (var i = 10; i--; ) beanpole.push("add/thyme", {
-            channel: "some/random/callback",
-            data: {
-                _id: (new Date).getTime() + 2e3,
-                message: "hello world!!!!!!"
-            }
-        });
-    },
-    "pull -public some/random/callback": function(request) {
-        console.log("CALLBACK");
-        console.log(this.data);
-        request.end();
-    },
-    "pull -public get/name": function() {
-        return "CRAAAAAIIIGGGG!!";
-    }
-});
+pluginExample(beanpole);
 
 beanpole.push("ready", "client");
 
