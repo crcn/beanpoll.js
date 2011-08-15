@@ -7,7 +7,7 @@
         "type": "git",
         "url": "http://github.com/spiceapps/beanpole.git"
     },
-    
+    "directories" :   { "lib" : "./lib" },
     "dependencies": {
         "sk":"*",
 	    "socket.io":"*",
