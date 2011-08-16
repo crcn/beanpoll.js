@@ -12,7 +12,7 @@ function sayHi()
 
 function sayHi2()
 {
-	console.log('pass!')
+	console.log('pass!');
 
 	if(!this.next())
 	{
@@ -47,9 +47,13 @@ function test2()
 
 beanpole.on({
 	'push init': init,
-	'pull hello/:name': sayHi,
+	'pull /*': function()
+	{
+		console.log("PSSS")	;
+		this.next();
+	},
 	'pull hellotest': sayHi2,
-	'pull hello/:name -> hellotest -> hello2/:name': sayHi3
+	'pull hellotest -> hellotest -> hello2/:name': sayHi3
 });
 
 // console.log(beanpole.routeMiddleware._routers.pull._collection._routes)
