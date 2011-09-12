@@ -1,7 +1,7 @@
 var beanpole = require('../../lib/node'),
 	argv = process.argv.concat();
 
-beanpole.require(['hook.http','hook.core']);
+beanpole.require(['hook.http.mesh','hook.core']);
 
 beanpole.on({
 	'pull -public hook2': function()

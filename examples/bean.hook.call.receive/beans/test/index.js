@@ -18,14 +18,14 @@ exports.plugin = function(mediator)
 		pull.end(++received);
 	}
 		
-	function pushHook(data, push)
+	function pushHook(data, err, request)
 	{
 		console.success('starting test.');
-
-		timeout(data, ++capp, push);
+        
+		timeout(data, ++capp, request);
 	}
 
-	function timeout(data, index, push)
+	function timeout(data, index, request)
 	{
 		var margin = 0;
 
@@ -36,9 +36,9 @@ exports.plugin = function(mediator)
 				// console.log('sent %d', ++sent);
 
 				margin++;
+                
 
-
-				push.from.pull('test/send', function(rcv)
+				request.from.pull('test/send', function(rcv)
 				{
 					// console.log('received: %d', rcv);
 
@@ -46,7 +46,7 @@ exports.plugin = function(mediator)
 					if(!(--margin))
 					{
 						console.log('#%d: done pulling %d requests from app #%d', ++pulls, ops.concurrent, index);
-						timeout(data, index, push);
+						timeout(request, index);
 					}
 
 				});	
@@ -67,5 +67,6 @@ exports.plugin = function(mediator)
 		'push init': init,
 		'pull -public test/send': testSend,
 		'push hook/connection': pushHook
-	})
+	});
+    
 }

@@ -1,7 +1,7 @@
 {
     "name": "beanpole",
     "description": "Routing on Steroids",
-    "version": "0.0.8",
+    "version": "0.0.10",
     "author": "Craig Condon",
     "repository": {
         "type": "git",
@@ -10,7 +10,12 @@
     "directories" :   { "lib" : "./lib" },
     "dependencies": {
         "sk":"*",
-	    "socket.io":"*",
+        "vine":"*",
+        "mime":"*",
+        "gumbo":"*",
+        "cashew":"*",
+        "socket.io":"*",
+        "socket.io-client":"*",
         "structr":"*",
         "express":"*",
         "base64":"*",

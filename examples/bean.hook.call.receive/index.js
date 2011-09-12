@@ -14,8 +14,9 @@ cli.next(function(arg)
 	cli.next(function(arg)
 	{
 		ops.speed = Number(arg) || 200;
+        
 
-		beanpole.require(['hook.core','hook.http']).
+		beanpole.require(['hook.core','hook.http.mesh']).
 		require(__dirname + '/beans').push('init', ops);
 	})
 })

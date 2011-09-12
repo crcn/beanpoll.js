@@ -58,7 +58,7 @@ function pluginExample(router)
 }
 
 require('../../../../lib/core/beans/hook.core').plugin(beanpole);
-require('../../../../lib/web/beans/hook.socket.io').plugin(beanpole);
+require('../../../../lib/web/beans/hook.socket.io.client').plugin(beanpole);
 pluginExample(beanpole);
 
 beanpole.push('ready','client');

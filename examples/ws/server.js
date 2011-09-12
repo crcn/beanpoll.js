@@ -1,7 +1,7 @@
 var beanpole = require('../../lib/node').router();
 
 
-beanpole.require(['hook.core','hook.socket.io','hook.http']);
+beanpole.require(['hook.core','hook.socket.io.server','hook.http.mesh']);
 
 beanpole.on({
 	

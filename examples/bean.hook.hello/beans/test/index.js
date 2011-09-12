@@ -15,12 +15,12 @@ exports.plugin = function(mediator)
 		}
 	}
 
-	function pushSayHelloBack(guestName, push)
+	function pushSayHelloBack(guestName, err, push)
 	{
 		console.log('%s said hello back!', guestName);
 	}
 		
-	function pushHook(data, push)
+	function pushHook(data, err, push)
 	{
 		console.success('A person decided to join the partayyy.');
 		push.from.push('say/hello', myName)

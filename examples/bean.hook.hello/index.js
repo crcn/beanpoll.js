@@ -7,7 +7,7 @@ var name = argv[0];
 
 function onName(name)
 {
-	beanpole.require(['hook.core','hook.http']).
+	beanpole.require(['hook.core','hook.http.mesh']).
 	require(__dirname + '/beans').push('init', name.toString().replace('\n',''));
 	
 	process.stdin.removeListener('data', onName);
