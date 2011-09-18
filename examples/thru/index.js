@@ -28,7 +28,44 @@ router.on({
     /**
      */
      
-    'pull /hello/:param/*': function()
+    'pull -two /hello/*': function()
+    {
+        console.log("THRU hoo");
+        
+        this.next();
+    },
+    
+    /**
+     */
+     
+    'pull /hello/param/*': function()
+    {
+        console.log("THRU AGAIN");
+        this.next();
+    },
+     
+    /**
+     */
+     
+    'pull -t /hello/param/*': function()
+    {
+        console.log("THRU AGAIN");
+        this.next();
+    },
+    
+     /**
+     */
+     
+    'pull -t2 /hello/param/*': function()
+    {
+        console.log("THRU AGAIN");
+        this.next();
+    },
+    
+     /**
+     */
+     
+    'pull -t3 /hello/param/*': function()
     {
         console.log("THRU AGAIN");
         this.next();
@@ -38,13 +75,13 @@ router.on({
     /**
      */
      
-    'pull hello/:param/craig': function()
+    'pull hello/param': function()
     {
         console.log("HELLO!");
     }
 });
 
 
-router.pull('hello/digg/craig', function()
+router.pull('hello/param', function()
 {
 });
