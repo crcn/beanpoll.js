@@ -1,8 +1,7 @@
 Beanpole - Build modular, realtime, and distributed applications through routing
 ================================================================================
 
-What are some features?
------------------------
+### What are some features?
 	
 - Syntactic sugar (see below). 
 - Messages are streamed, so you can send chunked data back and forth.
@@ -13,9 +12,15 @@ What are some features?
 - Intercept push / pulls based on data (see examples).
 
 
+### Projects using Beanpole
 
-Example
--------
+- [celeri](https://github.com/spiceapps/celeri) - CLI library for node.js
+- [bonsai](https://github.com/spiceapps/bonsai) - application server for node.js
+- [leche](https://github.com/spiceapps/leche) - Framework to build frontend / backend applications with the same code.
+
+
+
+### Example
 
 ```javascript
 
