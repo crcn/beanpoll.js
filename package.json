@@ -18,7 +18,6 @@
         "socket.io-client":"*",
         "structr":"*",
         "express":"*",
-        "base64":"*",
         "vows":"*"
     },
     
