@@ -11,7 +11,7 @@ This is still very much a work in progress, but personally, I try to stick to a 
 	- If the app serves multiple platforms, then place the beans in:
 		- `app/node/beans` for node.js specific beans.
 		- `app/web/beans` for web-specific beans.
-		- `app/shared/beans` for beans usable across all platforms.
+		- `app/shared/beans` for beans usable across all platforms.       
                     
 
 ### Naming Conventions   
@@ -46,10 +46,16 @@ For example:
 Where all the **parts** make up `stream.core`. Remember that parts shouldn't do **anything**. They make-up core plugins. If you have a plugin that serves several plugins, split it up like so:
 
 - posting.part.facebook
-- friends.part.facebook        
+- friends.part.facebook    
+
+You could also do something like:
+
+- stream.core
+- group.core
+- group.part.stream.core `part of stream.core`    
 
 
-Try and follow a RESTful naming convention. There will be instances where you have a plugin that serves as a collection, and then another plugin that serves as a collection to the previous collection. Ughhh, kinda like:
+Try and follow a RESTful naming convention. For example:
 
                   
 - stream.core
@@ -57,7 +63,8 @@ Try and follow a RESTful naming convention. There will be instances where you ha
 - stream.part.subscription.email `subscription listening to stream, and sending a newsletter`      
 - stream.part.subscription.facebook `subscription listening to a stream, and posting out to facebook`  
 
-Note that `part` was dropped after `subscription`. I find it reduntant to use it after the first instance. We already know that `stream.part.subscription.core` is nothing without `stream.core`, so anything *after* that is also useless without the root plugin.
+Note that `part` was dropped after `subscription`. I find it reduntant to use it after the first instance. We already know that `stream.part.subscription.core` is nothing without `stream.core`, so anything *after* that is also useless without the root plugin.             
+                          
 
 
 
