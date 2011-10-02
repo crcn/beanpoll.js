@@ -14,7 +14,7 @@ This is still very much a work in progress, but personally, I try to stick to a 
 		- `app/shared/beans` for beans usable across all platforms.       
  
 - Bean names should reflect any RESTful API used in the bean.
-- Beans in NPM have `bean` prepended to the name.
+- Beans in NPM have `bean` prepended to the name e.g: `bean.database.mongo`.
 
                   
 
