@@ -57,7 +57,7 @@ Try and follow a RESTful naming convention. There will be instances where you ha
 - stream.part.subscription.email `subscription listening to stream, and sending a newsletter`      
 - stream.part.subscription.facebook `subscription listening to a stream, and posting out to facebook`  
 
-Note that `part` was dropped after `subscription`. I find it reduntant to use it after the first instance. We already know that `stream.part.subscription.core` is nothing without `stream.core`, so anything *after* that is also useless without the root core plugin.
+Note that `part` was dropped after `subscription`. I find it reduntant to use it after the first instance. We already know that `stream.part.subscription.core` is nothing without `stream.core`, so anything *after* that is also useless without the root plugin.
 
 
 
