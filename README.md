@@ -17,6 +17,7 @@ Beanpole - Build modular, realtime, and distributed applications through routing
 - [celeri](https://github.com/spiceapps/celeri) - CLI library for node.js
 - [bonsai](https://github.com/spiceapps/bonsai) - application server for node.js
 - [leche](https://github.com/spiceapps/leche) - Framework to build frontend / backend applications with the same code.
+- [daisy](https://github.com/spiceapps/daisy) - Beanpole + rabbitmq.
 
 
 
