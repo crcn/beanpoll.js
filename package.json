@@ -14,11 +14,7 @@
         "mime":"*",
         "gumbo":"*",
         "cashew":"*",
-        "socket.io":"*",
-        "socket.io-client":"*",
-        "structr":"*",
-        "express":"*",
-        "vows":"*"
+        "structr":"*"
     },
     
     "main": "./lib/node/index.js"
