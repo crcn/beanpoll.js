@@ -298,7 +298,65 @@ router.on({
 
 ````                                                                         
                                                                                                 
-Providing a wildcard `*` tells the router that **anything** after the route must go through it.  
+Providing a wildcard `*` tells the router that **anything** after the route must go through it.     
+
+
+### Methods            
+
+### router.on(type[,listener])
+
+Listens to the given routes
+
+- `type` - string or object. String would contain the route. Object would contain multiple routes / listeners
+- `listener` - function listening to the route given.                                                                                  
+
+
+### router.push(route[, data][, options])
+
+- `type` - the channel broadcast a message to.
+- `data` - the data to push to the given route
+- `options` - options for the given route
+	- `meta` - tags to use to filter out listeners
+	
+### router.pull(route[, data][, options][, callback])
+
+same as push, but expects a response
+
+### router.channels()
+
+returns all registered channels
+
+### router.getRoute(route)
+                      
+returns route expression
+
+#### request.write(chunk)
+             
+Initializes a streamed response. Great for sending files
+
+#### request.end([chunk]) 
+                        
+Ends a response 
+
+#### request.hasNext()
+                                                     
+Returns TRUE if there's a listener after the current one.
+
+#### request.next()
+
+Moves onto the next route.
+
+#### request.forward(channel, callback)
+
+Forwards the current request to the given channel
+
+#### request.thru(channel[ ,options])
+       
+Treats the given channel as middleware   
+
+#### request.data
+
+Data is added here  
 
 
 ### One last goodie
