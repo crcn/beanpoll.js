@@ -51,35 +51,37 @@ Using both push, and pull allow you to **bind** to a particular route. For examp
 
 ````javascript
 	    
-	var _numUsers = 0; 
+var _numUsers = 0; 
+        
+
+//numUser getter / setter function
+function numUsers(value)
+{
+	if(!arguments.length) return _numUsers;
 	
-	function numUsers(value)
-	{
-		if(!arguments.length) return _numUsers;
-		
-		_numUsers = value;
-		                     
-		router.push('users/online', value);
-	}
-	
-	
-	router.on('pull users/online', function(request)
-	{
-		request.end(numUsers());
-	});                                                    
-	          
-	//pull num users initially, then listen for when num users changes
-	router.on('push -pull users/online', function(request)
-	{         
-		//handle change here..
-		console.log(request.data); //0, 3, 10...
-	});                                        
-	                               
-	           
-	
-	//triggers above listener
-	numUsers(3);
-	numUsers(10);
+	_numUsers = value;
+	                     
+	router.push('users/online', value);
+}
+
+
+router.on('pull users/online', function(request)
+{
+	request.end(numUsers());
+});                                                    
+          
+//pull num users initially, then listen for when num users changes
+router.on('push -pull users/online', function(request)
+{         
+	//handle change here..
+	console.log(request.data); //0, 3, 10...
+});                                        
+                               
+           
+
+//triggers above listener
+numUsers(3);
+numUsers(10);
 
 ````
                                                                                                               
