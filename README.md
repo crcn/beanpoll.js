@@ -20,7 +20,7 @@
 
 ```javascript
 
-var router = require('../../lib/node').router();
+var router = require('beanpole').router();
 	
 
 router.on({
@@ -40,7 +40,7 @@ router.on({
 	/**
 	 */
 
-	'pull cache/:key/:ms': function(request)
+	'pull cache/:ms': function(request)
 	{                                
 		//check if some/heaby/query is cached 
 		if(isCached(request.channel))             
