@@ -16,7 +16,8 @@
 - [daisy](https://github.com/spiceapps/daisy) - Expose beanpole to: http, websockets, amqp (rabbitmq), etc.    
                 
 
-### Syntax      
+### Syntax           
+                
 
 The basic route consists of a few parts: the `type` of route, and the `channel`. Here are some examples:
 
@@ -86,47 +87,62 @@ numUsers(10);
 
 ````        
 
-Okay, so you might have noticed I added something funky here: `-pull` - that's metadata. Metadata is structured like so:
+Okay, so you might have noticed I added something funky here: `-pull` - that's a tag. Tags are structured like so:
 
-   	router.on('pull -metadataName hello/:route', ...);
+   	router.on('pull -tagName hello/:route', ...);
 
 or, you can add a value to it:
 
 	router.on('pull -method=GET hello/:route', ...);
 	
-As mentioned above, you can only have one listener per `pull` request. HOWEVER, you can listen to the same route *if* you provide different metadata. For example:
+As mentioned above, you can only have one listener per `pull` request. HOWEVER, you can listen to the same route *if* you provide different tag value. For example:
 
 ````javascript
 
-	router.on({
+router.on({
+
+	/**      
+	 * returns the given user
+	 */
 	
-		/**      
-		 * returns the given user
-		 */
-		
-		'pull -method=GET users/:userId': function()
-		{                             
-		},
-		
-		/**   
-		 * updates a user   
-		 */
-		
-		'pull -method=UPDATE users/:userId': function()
-		{
-			
-		},
-		
-		/** 
-		 * deletes a user
-		 */
-		
-		'pull -method=DELETE users/:userId': function()
-		{
-			
-		}                         
-		
-	});
-````
+	'pull -method=GET users/:userId': function(request)
+	{                           
+		//get the specific user  
+	},
+	
+	/**   
+	 * updates a user   
+	 */
+	
+	'pull -method=UPDATE users/:userId': function(request)
+	{
+		//update user here
+	},
+	
+	/** 
+	 * deletes a user
+	 */
+	
+	'pull -method=DELETE users/:userId': function(request)
+	{
+		//delete user 
+	}                         
+	
+}); 
+````       
+
+The above chunk of code is well suited for a REST-ful api without explicilty saying it's *for* http. It can be used for any protocol. For example - say I wanted to *delete* a user using the code above:
+
+````javascript
+
+router.pull('users/' + someUserId, { meta: { method: 'DELETE'} }, function()
+{
+	//delete user response
+});  
+
+````                      
+
+You might have guessed - tags can be used to filter routes. Okay, onto something a little more advanced: **middleware**.  
+
                                                                                                               
 
