@@ -18,7 +18,7 @@
 
 ### Syntax      
 
-The basic route consists of a few parts. The `type` of route, and the `channel`. Here are some examples:
+The basic route consists of a few parts: the `type` of route, and the `channel`. Here are some examples:
 
 	router.on('pull hello/:name', ...);
 	
@@ -28,12 +28,61 @@ and
 	
 	
 #### Some differences between push, and pull:
+         
 
-##### Push:
-  
+##### Push:  
+
+- Used to broadcast a message, or change (1 to many).
+- Doesn't expect a response.    
+- Multiple listeners per route.         
+
+##### Pull:
+
+- Used to request data from a particular route (1 to 1).
+- Expects a response
+- One listener per route.  
+- examples:
+	- request to http-exposed route       
 	
-        
-`push` is used to define routes which you *push* data to, whereas `pull` is used where you are *requesting* data. A good use-case for pull might be a http request to a particular route. Whereas a `push` might be used for broadcasting a message. Using *both* push, & pull allow you to **bind** to a particular route. For example:
+	
+	                                                   
+Using both push, and pull allow you to **bind** to a particular route. For example:
+
+
+````javascript
+	    
+	var _numUsers = 0; 
+	
+	function numUsers(value)
+	{
+		if(!arguments.length) return _numUsers;
+		
+		_numUsers = value;
+		                     
+		router.push('users/online', value);
+	}
+	
+	
+	router.on('pull users/online', function(request)
+	{
+		request.end(numUsers());
+	});                                                    
+	          
+	//pull num users initially, then listen for when num users changes
+	router.on('push -pull users/online', function(request)
+	{         
+		//handle change here..
+		console.log(request.data); //0, 3, 10...
+	});                                        
+	                               
+	           
+	
+	//triggers above listener
+	numUsers(3);
+	numUsers(10);
+
+````
+                                                                                                              
 
 	
 
