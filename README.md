@@ -209,7 +209,24 @@ router.on({
 	'pull -method=POST post/body -> session -> upload/video': function()
 	{
 		//passed through 2 routes before getting here.
-	}                                                             
+	},
+	
+	/**
+	 */
+	
+	'pull cache/:ttl': function(request)
+	{                                           
+		//used to check if the *next* route is cached. If it is, then return the value vs continuing 
+	},
+	
+	/**
+	 */
+	
+	'pull cache/10000 -> some/heavy/request': function(request)
+	{
+		//do some heavy stuff here, but go through the cache route so it's not called on each request
+	}                                                                                                
+	
 	
 })
 
@@ -221,19 +238,28 @@ Middleware is especially useful for a REST-ful interface:
 
 router.on({
 	
-	/**
+	/**  
+	 * returns the given user
+	 * @example /users/665468459
 	 */
 	
 	'pull users/:userId': function(request)
 	{
 		getUser(request.data.postId, funciton(user)
 		{
-			request.user = user;
-			request.next();
+			request.user = user; 
+			                                            
+			//route being used as middleware?
+			if(request.hasNext()) return request.next();     
+			                  
+			//return the user
+			request.end(user);
 		})
 	},
 	
-	/**
+	/** 
+	 * Returns a post made by a particular user
+	 * @example /users/665468459/posts/54353499534
 	 */
 	
 	'pull users/:userId -> users/:userId/posts/:postId': function(request)
