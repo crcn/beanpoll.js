@@ -14,7 +14,7 @@
 - [bonsai](https://github.com/spiceapps/bonsai) - application server
 - [leche](https://github.com/spiceapps/leche) - Framework to build frontend / backend applications with the same code.
 - [daisy](https://github.com/spiceapps/daisy) - Expose beanpole to: http, websockets, amqp (rabbitmq), etc.    
-                
+- [beandocs](https://github.com/spiceapps/beandocs) - Generate documentation from your beanpole route comments.               
 
 ### Syntax          
 
