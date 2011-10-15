@@ -17,6 +17,9 @@
         "structr":"*",
         "coffee-script":"*"
     },
+    "devDependencies": {
+        "ebnf-diagram":"*"
+    },
     
     "main": "./lib/node/index.js"
 }

@@ -1,0 +1,535 @@
+info it worked if it ends with ok
+verbose cli [ 'node',
+verbose cli   '/usr/local/bin/npm',
+verbose cli   'install',
+verbose cli   'ebnf-diagram' ]
+info using npm@1.0.97
+info using node@v0.4.12
+verbose config file /Users/craigcondon/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose config file /usr/local/lib/node_modules/npm/npmrc
+silly testEngine { name: 'beanpole',
+silly testEngine   description: 'Routing on Steroids',
+silly testEngine   version: '0.1.15',
+silly testEngine   author: { name: 'Craig Condon' },
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/spiceapps/beanpole.git' },
+silly testEngine   directories: { lib: './lib' },
+silly testEngine   dependencies: 
+silly testEngine    { sk: '*',
+silly testEngine      vine: '*',
+silly testEngine      mime: '*',
+silly testEngine      gumbo: '*',
+silly testEngine      cashew: '*',
+silly testEngine      structr: '*',
+silly testEngine      'coffee-script': '*' },
+silly testEngine   devDependencies: { 'ebnf-diagram': '*' },
+silly testEngine   main: './lib/node/index.js',
+silly testEngine   _npmUser: 
+silly testEngine    { name: 'architectd',
+silly testEngine      email: 'craig.j.condon@gmail.com' },
+silly testEngine   _id: 'beanpole@0.1.15',
+silly testEngine   engines: { node: '*' },
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.97',
+silly testEngine   _nodeVersion: 'v0.4.12',
+silly testEngine   _defaultsLoaded: true }
+verbose caching /Users/craigcondon/Developer/Public/beanpole/package.json
+verbose loadDefaults beanpole@0.1.15
+verbose from cache /Users/craigcondon/Developer/Public/beanpole/package.json
+verbose into /Users/craigcondon/Developer/Public/beanpole [ 'ebnf-diagram' ]
+verbose cache add ebnf-diagram
+verbose cache add [ 'ebnf-diagram', null ]
+silly cache add: name, spec, args [ undefined, 'ebnf-diagram', [ 'ebnf-diagram', null ] ]
+verbose parsed url { pathname: 'ebnf-diagram', href: 'ebnf-diagram' }
+info addNamed [ 'ebnf-diagram', '' ]
+verbose addNamed [ null, '' ]
+verbose GET ebnf-diagram
+verbose raw, before any munging ebnf-diagram
+verbose url resolving [ 'https://registry.npmjs.org/', './ebnf-diagram' ]
+verbose url resolved https://registry.npmjs.org/ebnf-diagram
+verbose etag "4FSKY3EOALX54AV96T1OCWYQR"
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.1.0 (Erlang OTP/R14B03)',
+silly get cb     etag: '"4FSKY3EOALX54AV96T1OCWYQR"',
+silly get cb     date: 'Sat, 15 Oct 2011 19:47:10 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag ebnf-diagram from cache
+verbose GET ebnf-diagram/0.1.0
+verbose raw, before any munging ebnf-diagram/0.1.0
+verbose url resolving [ 'https://registry.npmjs.org/',
+verbose url resolving   './ebnf-diagram/0.1.0' ]
+verbose url resolved https://registry.npmjs.org/ebnf-diagram/0.1.0
+verbose etag "4FSKY3EOALX54AV96T1OCWYQR"
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.1.0 (Erlang OTP/R14B03)',
+silly get cb     etag: '"4FSKY3EOALX54AV96T1OCWYQR"',
+silly get cb     date: 'Sat, 15 Oct 2011 19:47:10 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag ebnf-diagram/0.1.0 from cache
+verbose bin dist [ '0.4-ares1.7.4-ev4.4-openssl1.0.0d-v83.1.8.26-darwin-10.7.0',
+verbose bin dist   { shasum: '2de9bc138b979266a911d379c7ca6b42644a8985',
+verbose bin dist     tarball: 'http://registry.npmjs.org/ebnf-diagram/-/ebnf-diagram-0.1.0.tgz' } ]
+silly testEngine { name: 'ebnf-diagram',
+silly testEngine   description: 'Generates png diagrams from Extended Backus–Naur Form (EBNF) grammars',
+silly testEngine   version: '0.1.0',
+silly testEngine   main: './src/ebnf-diagram',
+silly testEngine   homepage: 'https://github.com/featurist/node-ebnf-diagram',
+silly testEngine   dependencies: { canvas: '>= 0.7.2' },
+silly testEngine   _npmUser: 
+silly testEngine    { name: 'architectd',
+silly testEngine      email: 'craig.j.condon@gmail.com' },
+silly testEngine   _id: 'ebnf-diagram@0.1.0',
+silly testEngine   devDependencies: {},
+silly testEngine   engines: { node: '*' },
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.97',
+silly testEngine   _nodeVersion: 'v0.4.12',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   scripts: {} }
+verbose caching /Users/craigcondon/.npm/ebnf-diagram/0.1.0/package/package.json
+verbose loadDefaults ebnf-diagram@0.1.0
+silly resolved [ { name: 'ebnf-diagram',
+silly resolved     description: 'Generates png diagrams from Extended Backus–Naur Form (EBNF) grammars',
+silly resolved     version: '0.1.0',
+silly resolved     main: './src/ebnf-diagram',
+silly resolved     homepage: 'https://github.com/featurist/node-ebnf-diagram',
+silly resolved     dependencies: { canvas: '>= 0.7.2' },
+silly resolved     _npmUser: 
+silly resolved      { name: 'architectd',
+silly resolved        email: 'craig.j.condon@gmail.com' },
+silly resolved     _id: 'ebnf-diagram@0.1.0',
+silly resolved     devDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.0.97',
+silly resolved     _nodeVersion: 'v0.4.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     scripts: {} } ]
+info into /Users/craigcondon/Developer/Public/beanpole ebnf-diagram@0.1.0
+info installOne ebnf-diagram@0.1.0
+info unbuild /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram
+verbose from cache /Users/craigcondon/.npm/ebnf-diagram/0.1.0/package/package.json
+verbose mkdir (expected) error ENOENT, No such file or directory '/Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm'
+verbose mkdir done: /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm 755
+verbose unpack_ uid, gid [ 501, 20 ]
+verbose unpackTarget /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram
+silly gunzTarPerm modes [ '755', '644' ]
+silly spawning [ 'tar',
+silly spawning   [ '-zmvxpf',
+silly spawning     '/Users/craigcondon/.npm/ebnf-diagram/0.1.0/package.tgz',
+silly spawning     '-o' ],
+silly spawning   '/Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm' ]
+silly tar err x package/.gitignore
+silly tar err x package/CREDITS
+silly tar err x package/LICENCE
+silly tar err x package/package.json
+silly tar err x package/README.md
+silly tar err x package/test/ebnf.png
+silly tar err x package/test/ebnfclient.coffee
+silly tar err x package/test/gherkin.ebnf
+silly tar err x package/test/gherkin.png
+silly tar err x package/src/ebnf-diagram.js
+silly tar err x package/src/outerthought/ebnf.js
+silly tar err x package/src/outerthought/ebnfdiagram.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/.gitignore
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/CREDITS
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/LICENCE
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/package.json
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/README.md
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/test
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/test/ebnf.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/test/ebnfclient.coffee
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/test/gherkin.ebnf
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/test/gherkin.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/src
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/src/ebnf-diagram.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/src/outerthought
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/src/outerthought/ebnf.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package/src/outerthought/ebnfdiagram.js
+verbose gunzed /Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package
+verbose rm'ed /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram
+verbose renamed [ '/Users/craigcondon/Developer/Public/beanpole/node_modules/___ebnf-diagram.npm/package',
+verbose renamed   '/Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram' ]
+silly testEngine { name: 'ebnf-diagram',
+silly testEngine   description: 'Generates png diagrams from Extended Backus–Naur Form (EBNF) grammars',
+silly testEngine   version: '0.1.0',
+silly testEngine   main: './src/ebnf-diagram',
+silly testEngine   homepage: 'https://github.com/featurist/node-ebnf-diagram',
+silly testEngine   dependencies: { canvas: '>= 0.7.2' },
+silly testEngine   _npmUser: 
+silly testEngine    { name: 'architectd',
+silly testEngine      email: 'craig.j.condon@gmail.com' },
+silly testEngine   _id: 'ebnf-diagram@0.1.0',
+silly testEngine   devDependencies: {},
+silly testEngine   engines: { node: '*' },
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.97',
+silly testEngine   _nodeVersion: 'v0.4.12',
+silly testEngine   _defaultsLoaded: true,
+silly testEngine   scripts: {} }
+verbose caching /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/package.json
+verbose loadDefaults ebnf-diagram@0.1.0
+info preinstall ebnf-diagram@0.1.0
+verbose from cache /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/package.json
+verbose into /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram [ 'canvas@>= 0.7.2' ]
+verbose cache add canvas@>= 0.7.2
+verbose cache add [ 'canvas@>= 0.7.2', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'canvas@>= 0.7.2',
+silly cache add: name, spec, args   [ 'canvas@>= 0.7.2', null ] ]
+verbose parsed url { pathname: 'canvas@', href: 'canvas@' }
+silly cache add: name, spec, args [ 'canvas', '>= 0.7.2', [ 'canvas', '>= 0.7.2' ] ]
+verbose parsed url { pathname: '=', href: '=' }
+info addNamed [ 'canvas', '>= 0.7.2' ]
+verbose addNamed [ null, '>=0.7.2' ]
+verbose GET canvas
+verbose raw, before any munging canvas
+verbose url resolving [ 'https://registry.npmjs.org/', './canvas' ]
+verbose url resolved https://registry.npmjs.org/canvas
+verbose etag "4D2Q0QGNT9HAH3WVG7KJ1PD7V"
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.1.0 (Erlang OTP/R14B03)',
+silly get cb     etag: '"4D2Q0QGNT9HAH3WVG7KJ1PD7V"',
+silly get cb     date: 'Sat, 15 Oct 2011 19:47:11 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag canvas from cache
+verbose GET canvas/0.7.3
+verbose raw, before any munging canvas/0.7.3
+verbose url resolving [ 'https://registry.npmjs.org/', './canvas/0.7.3' ]
+verbose url resolved https://registry.npmjs.org/canvas/0.7.3
+verbose etag "4D2Q0QGNT9HAH3WVG7KJ1PD7V"
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.1.0 (Erlang OTP/R14B03)',
+silly get cb     etag: '"4D2Q0QGNT9HAH3WVG7KJ1PD7V"',
+silly get cb     date: 'Sat, 15 Oct 2011 19:47:12 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag canvas/0.7.3 from cache
+verbose bin dist [ '0.4-ares1.7.4-ev4.4-openssl1.0.0d-v83.1.8.26-darwin-10.7.0',
+verbose bin dist   { shasum: '638e3c5596d2fb90bbfb891674a1bc898a376ff1',
+verbose bin dist     tarball: 'http://registry.npmjs.org/canvas/-/canvas-0.7.3.tgz' } ]
+verbose has wscript [ undefined,
+verbose has wscript   { file: '/Users/craigcondon/.npm/canvas/0.7.3/package/package.json',
+verbose has wscript     contributors: false,
+verbose has wscript     serverjs: false,
+verbose has wscript     wscript: true } ]
+silly testEngine { name: 'canvas',
+silly testEngine   description: 'Canvas graphics API backed by Cairo',
+silly testEngine   version: '0.7.3',
+silly testEngine   author: { name: 'TJ Holowaychuk', email: 'tj@learnboost.com' },
+silly testEngine   keywords: [ 'canvas', 'graphic', 'graphics', 'pixman', 'cairo' ],
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/learnboost/node-canvas.git' },
+silly testEngine   scripts: { preinstall: 'node-waf configure build' },
+silly testEngine   devDependencies: { express: '2.3.7', expresso: '0.7.6', jade: '0.11.0' },
+silly testEngine   engines: { node: '>= 0.4.0 && < 0.6.0' },
+silly testEngine   main: './lib/canvas.js',
+silly testEngine   _npmUser: 
+silly testEngine    { name: 'architectd',
+silly testEngine      email: 'craig.j.condon@gmail.com' },
+silly testEngine   _id: 'canvas@0.7.3',
+silly testEngine   dependencies: {},
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.97',
+silly testEngine   _nodeVersion: 'v0.4.12',
+silly testEngine   _defaultsLoaded: true }
+verbose caching /Users/craigcondon/.npm/canvas/0.7.3/package/package.json
+verbose loadDefaults canvas@0.7.3
+silly resolved [ { name: 'canvas',
+silly resolved     description: 'Canvas graphics API backed by Cairo',
+silly resolved     version: '0.7.3',
+silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@learnboost.com' },
+silly resolved     keywords: [ 'canvas', 'graphic', 'graphics', 'pixman', 'cairo' ],
+silly resolved     repository: 
+silly resolved      { type: 'git',
+silly resolved        url: 'git://github.com/learnboost/node-canvas.git' },
+silly resolved     scripts: { preinstall: 'node-waf configure build' },
+silly resolved     devDependencies: { express: '2.3.7', expresso: '0.7.6', jade: '0.11.0' },
+silly resolved     engines: { node: '>= 0.4.0 && < 0.6.0' },
+silly resolved     main: './lib/canvas.js',
+silly resolved     _npmUser: 
+silly resolved      { name: 'architectd',
+silly resolved        email: 'craig.j.condon@gmail.com' },
+silly resolved     _id: 'canvas@0.7.3',
+silly resolved     dependencies: {},
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.0.97',
+silly resolved     _nodeVersion: 'v0.4.12',
+silly resolved     _defaultsLoaded: true } ]
+info into /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram canvas@0.7.3
+info installOne canvas@0.7.3
+info unbuild /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/canvas
+verbose from cache /Users/craigcondon/.npm/canvas/0.7.3/package/package.json
+verbose mkdir (expected) error ENOENT, No such file or directory '/Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules'
+verbose mkdir (expected) error ENOENT, No such file or directory '/Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm'
+verbose mkdir done: /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm 755
+verbose unpack_ uid, gid [ 501, 20 ]
+verbose unpackTarget /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/canvas
+silly gunzTarPerm modes [ '755', '644' ]
+silly spawning [ 'tar',
+silly spawning   [ '-zmvxpf',
+silly spawning     '/Users/craigcondon/.npm/canvas/0.7.3/package.tgz',
+silly spawning     '-o' ],
+silly spawning   '/Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm' ]
+silly tar err x package/.gitignore
+silly tar err x package/.gitmodules
+silly tar err x package/.npmignore
+silly tar err x package/History.md
+silly tar err x package/index.js
+silly tar err x package/install
+silly tar err x package/Makefile
+silly tar err x package/package.json
+silly tar err x package/Readme.md
+silly tar err x package/test.png
+silly tar err x package/wscript
+silly tar err x package/benchmarks/run.js
+silly tar err x package/lib/canvas.js
+silly tar err x package/lib/context2d.js
+silly tar err x package/lib/image.js
+silly tar err x package/lib/pixelarray.js
+silly tar err x package/lib/pngstream.js
+silly tar err x package/src/Canvas.cc
+silly tar err x package/src/Canvas.h
+silly tar err x package/src/CanvasGradient.cc
+silly tar err x package/src/CanvasGradient.h
+silly tar err x package/src/CanvasRenderingContext2d.cc
+silly tar err x package/src/CanvasRenderingContext2d.h
+silly tar err x package/src/closure.h
+silly tar err x package/src/color.cc
+silly tar err x package/src/color.h
+silly tar err x package/src/Image.cc
+silly tar err x package/src/Image.h
+silly tar err x package/src/ImageData.cc
+silly tar err x package/src/ImageData.h
+silly tar err x package/src/init.cc
+silly tar err x package/src/PixelArray.cc
+silly tar err x package/src/PixelArray.h
+silly tar err x package/src/Point.h
+silly tar err x package/examples/clock.js
+silly tar err x package/examples/clock.png
+silly tar err x package/examples/globalAlpha.js
+silly tar err x package/examples/gradients.js
+silly tar err x package/examples/image-src.js
+silly tar err x package/examples/image-src.png
+silly tar err x package/examples/kraken.js
+silly tar err x package/examples/kraken.png
+silly tar err x package/examples/live-clock.js
+silly tar err x package/examples/ray.js
+silly tar err x package/examples/resize.js
+silly tar err x package/examples/rhill-voronoi-core-min.js
+silly tar err x package/examples/spark.js
+silly tar err x package/examples/state.js
+silly tar err x package/examples/text.js
+silly tar err x package/examples/text.png
+silly tar err x package/examples/voronoi.js
+silly tar err x package/examples/images/squid.png
+silly tar err x package/test/canvas.test.js
+silly tar err x package/test/image.test.js
+silly tar err x package/test/server.js
+silly tar err x package/test/fixtures/clock.png
+silly tar err x package/test/public/app.js
+silly tar err x package/test/public/face.jpeg
+silly tar err x package/test/public/state.png
+silly tar err x package/test/public/style.css
+silly tar err x package/test/public/tests.js
+silly tar err x package/test/views/layout.jade
+silly tar err x package/test/views/tests.jade
+silly tar err x package/testing/__template__.js
+silly tar err x package/testing/index.html
+silly tar err x package/testing/playback.js
+silly tar err x package/testing/server.js
+silly tar err x package/testing/test.js
+silly tar err x package/testing/test.png
+silly tar err x package/testing/video.webm
+silly tar err x package/testing/images/drupal.gif
+silly tar err x package/testing/textures/black-marble.png
+silly tar err x package/testing/textures/dark-green-marble.png
+silly tar err x package/testing/textures/gif
+silly tar err x package/testing/textures/happy.png
+silly tar err x package/testing/textures/jpeg
+silly tar err x package/testing/textures/onix-pina.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/.gitignore
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/.gitmodules
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/.npmignore
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/History.md
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/index.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/install
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/Makefile
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/package.json
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/Readme.md
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/wscript
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/benchmarks
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/benchmarks/run.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/lib
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/lib/canvas.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/lib/context2d.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/lib/image.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/lib/pixelarray.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/lib/pngstream.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/Canvas.cc
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/Canvas.h
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/CanvasGradient.cc
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/CanvasGradient.h
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/CanvasRenderingContext2d.cc
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/CanvasRenderingContext2d.h
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/closure.h
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/color.cc
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/color.h
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/Image.cc
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/Image.h
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/ImageData.cc
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/ImageData.h
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/init.cc
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/PixelArray.cc
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/PixelArray.h
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/src/Point.h
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/clock.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/clock.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/globalAlpha.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/gradients.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/image-src.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/image-src.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/kraken.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/kraken.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/live-clock.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/ray.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/resize.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/rhill-voronoi-core-min.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/spark.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/state.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/text.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/text.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/voronoi.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/images
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/examples/images/squid.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/canvas.test.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/image.test.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/server.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/fixtures
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/fixtures/clock.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/public
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/public/app.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/public/face.jpeg
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/public/state.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/public/style.css
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/public/tests.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/views
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/views/layout.jade
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/test/views/tests.jade
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/__template__.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/index.html
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/playback.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/server.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/test.js
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/test.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/video.webm
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/images
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/images/drupal.gif
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/textures
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/textures/black-marble.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/textures/dark-green-marble.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/textures/gif
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/textures/happy.png
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/textures/jpeg
+silly asyncMap in gTP /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package/testing/textures/onix-pina.png
+verbose gunzed /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package
+verbose rm'ed /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/canvas
+verbose renamed [ '/Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/___canvas.npm/package',
+verbose renamed   '/Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/canvas' ]
+verbose has wscript [ undefined,
+verbose has wscript   { file: '/Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/canvas/package.json',
+verbose has wscript     contributors: false,
+verbose has wscript     serverjs: false,
+verbose has wscript     wscript: true } ]
+silly testEngine { name: 'canvas',
+silly testEngine   description: 'Canvas graphics API backed by Cairo',
+silly testEngine   version: '0.7.3',
+silly testEngine   author: { name: 'TJ Holowaychuk', email: 'tj@learnboost.com' },
+silly testEngine   keywords: [ 'canvas', 'graphic', 'graphics', 'pixman', 'cairo' ],
+silly testEngine   repository: 
+silly testEngine    { type: 'git',
+silly testEngine      url: 'git://github.com/learnboost/node-canvas.git' },
+silly testEngine   scripts: { preinstall: 'node-waf configure build' },
+silly testEngine   devDependencies: { express: '2.3.7', expresso: '0.7.6', jade: '0.11.0' },
+silly testEngine   engines: { node: '>= 0.4.0 && < 0.6.0' },
+silly testEngine   main: './lib/canvas.js',
+silly testEngine   _npmUser: 
+silly testEngine    { name: 'architectd',
+silly testEngine      email: 'craig.j.condon@gmail.com' },
+silly testEngine   _id: 'canvas@0.7.3',
+silly testEngine   dependencies: {},
+silly testEngine   _engineSupported: true,
+silly testEngine   _npmVersion: '1.0.97',
+silly testEngine   _nodeVersion: 'v0.4.12',
+silly testEngine   _defaultsLoaded: true }
+verbose caching /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/canvas/package.json
+verbose loadDefaults canvas@0.7.3
+info preinstall canvas@0.7.3
+verbose unsafe-perm in lifecycle false
+verbose Setting uid from 0 501
+verbose stack at uid setting Error
+verbose stack at uid setting     at exec (/usr/local/lib/node_modules/npm/lib/utils/exec.js:35:17)
+verbose stack at uid setting     at Array.0 (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:127:5)
+verbose stack at uid setting     at EventEmitter._tickCallback (node.js:126:26)
+silly exec sh "-c" "node-waf configure build"
+silly spawning [ 'sh',
+silly spawning   [ '-c', 'node-waf configure build' ],
+silly spawning   '/Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/canvas' ]
+info canvas@0.7.3 Failed to exec preinstall script
+ERR! error installing canvas@0.7.3 Error: canvas@0.7.3 preinstall: `node-waf configure build`
+ERR! error installing canvas@0.7.3 `sh "-c" "node-waf configure build"` failed with 1
+ERR! error installing canvas@0.7.3     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/exec.js:49:20)
+ERR! error installing canvas@0.7.3     at ChildProcess.emit (events.js:67:17)
+ERR! error installing canvas@0.7.3     at ChildProcess.onexit (child_process.js:192:12)
+info unbuild /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/canvas
+verbose from cache /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules/canvas/package.json
+info preuninstall canvas@0.7.3
+info uninstall canvas@0.7.3
+verbose unbuild canvas@0.7.3 [ false,
+verbose unbuild canvas@0.7.3   '/usr/local/lib/node_modules',
+verbose unbuild canvas@0.7.3   '/Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/node_modules' ]
+info postuninstall canvas@0.7.3
+verbose installOne cb canvas@0.7.3
+verbose about to build /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram
+ERR! error installing ebnf-diagram@0.1.0 Error: canvas@0.7.3 preinstall: `node-waf configure build`
+ERR! error installing ebnf-diagram@0.1.0 `sh "-c" "node-waf configure build"` failed with 1
+ERR! error installing ebnf-diagram@0.1.0     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/exec.js:49:20)
+ERR! error installing ebnf-diagram@0.1.0     at ChildProcess.emit (events.js:67:17)
+ERR! error installing ebnf-diagram@0.1.0     at ChildProcess.onexit (child_process.js:192:12)
+info unbuild /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram
+verbose from cache /Users/craigcondon/Developer/Public/beanpole/node_modules/ebnf-diagram/package.json
+info preuninstall ebnf-diagram@0.1.0
+info uninstall ebnf-diagram@0.1.0
+verbose unbuild ebnf-diagram@0.1.0 [ false,
+verbose unbuild ebnf-diagram@0.1.0   '/usr/local/lib/node_modules',
+verbose unbuild ebnf-diagram@0.1.0   '/Users/craigcondon/Developer/Public/beanpole/node_modules' ]
+info postuninstall ebnf-diagram@0.1.0
+verbose installOne cb ebnf-diagram@0.1.0
+ERR! canvas@0.7.3 preinstall: `node-waf configure build`
+ERR! `sh "-c" "node-waf configure build"` failed with 1
+ERR! 
+ERR! Failed at the canvas@0.7.3 preinstall script.
+ERR! This is most likely a problem with the canvas package,
+ERR! not with npm itself.
+ERR! Tell the author that this fails on your system:
+ERR!     node-waf configure build
+ERR! You can get their info via:
+ERR!     npm owner ls canvas
+ERR! There is likely additional logging output above.
+ERR! 
+ERR! System Darwin 10.7.0
+ERR! command "node" "/usr/local/bin/npm" "install" "ebnf-diagram"
+ERR! cwd /Users/craigcondon/Developer/Public/beanpole
+ERR! node -v v0.4.12
+ERR! npm -v 1.0.97
+ERR! code ELIFECYCLE
+verbose exit [ 1, true ]

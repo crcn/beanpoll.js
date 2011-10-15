@@ -16,7 +16,9 @@
 - [daisy](https://github.com/spiceapps/daisy) - Expose beanpole to: http, websockets, amqp (rabbitmq), etc.    
                 
 
-### Syntax           
+### Syntax          
+
+DIAGRAM HERE 
                 
 
 The basic route consists of a few parts: the `type` of route, and the `channel`. Here are some examples:
@@ -142,7 +144,112 @@ router.pull('users/' + someUserId, { meta: { method: 'DELETE'} }, function()
 
 ````                      
 
-You might have guessed - tags can be used to filter routes. Okay, onto something a little more advanced: **middleware**.  
+You might have guessed - tags can be used to filter routes. Okay, onto something a little more advanced: **middleware**. Here's an example:
+
+````javascript
+
+
+router.on({
+	
+	/**
+	 */
+	
+	'pull authorize': function(request)
+	{
+		if(request.data.secret != 'superSecret')
+		{
+			request.end('You shall not pass!');
+		}                                      
+		else
+		{             
+			
+			//onto the next route
+			request.next();
+		}
+	},
+	
+	/**
+	 */
+	
+	'pull -method=GET authorize -> my/profile': function(request)
+	{
+		request.end('Super secret stuff!');
+	}                      
+	
+}); 
+
+
+````
+                                          
+The token `->` denotes `my/profile` must go *through* the `authorize` route. Here are a few more use-cases: 
+
+````javascript
+    
+router.on({
+	
+	/**                
+	 */
+	
+	'pull post/body': function(request)
+	{
+		//post http request body here. This is implemented in daisy
+	},             
+	
+	/**
+	 */
+	
+	'pull session': function(request)
+	{
+		//initialize cookies for the user. Again, implemented in daisy
+	},
+	
+	/**
+	 */
+	
+	'pull -method=POST post/body -> session -> upload/video': function()
+	{
+		//passed through 2 routes before getting here.
+	}                                                             
+	
+})
+
+````      
+
+Middleware is especially useful for a REST-ful interface:
+
+````javascript
+
+router.on({
+	
+	/**
+	 */
+	
+	'pull users/:userId': function(request)
+	{
+		getUser(request.data.postId, funciton(user)
+		{
+			request.user = user;
+			request.next();
+		})
+	},
+	
+	/**
+	 */
+	
+	'pull users/:userId -> users/:userId/posts/:postId': function(request)
+	{
+		getPosts(request.user, request.data.postId, function(posts)
+		{
+			request.end(posts);
+		})
+	}
+});
+       
+```` 
+
+
+
+
 
                                                                                                               
 
