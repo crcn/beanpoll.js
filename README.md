@@ -300,6 +300,22 @@ router.on({
 Providing a wildcard `*` tells the router that **anything** after the route must go through it.  
 
 
+### One last goodie
+
+Beanpole works well with coffeescript:
+
+
+````coffeescript
+
+router.on                        
+                   
+	#
+	'pull -method=GET say/hello': ->
+		"hello world!"           
+
+````
+
+
 
 
 
