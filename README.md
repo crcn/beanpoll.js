@@ -303,7 +303,7 @@ Providing a wildcard `*` tells the router that **anything** after the route must
 
 ### Methods            
 
-### router.on(type[,listener])
+#### router.on(type[,listener])
 
 Listens to the given routes
 
@@ -311,22 +311,22 @@ Listens to the given routes
 - `listener` - function listening to the route given.                                                                                  
 
 
-### router.push(route[, data][, options])
+#### router.push(route[, data][, options])
 
 - `type` - the channel broadcast a message to.
 - `data` - the data to push to the given route
 - `options` - options for the given route
 	- `meta` - tags to use to filter out listeners
 	
-### router.pull(route[, data][, options][, callback])
+#### router.pull(route[, data][, options][, callback])
 
 same as push, but expects a response
 
-### router.channels()
+#### router.channels()
 
 returns all registered channels
 
-### router.getRoute(route)
+#### router.getRoute(route)
                       
 returns route expression
 
