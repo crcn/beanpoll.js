@@ -269,7 +269,37 @@ router.on({
 	}
 });
        
-```` 
+````      
+           
+Middleware can also be specified without using the token: `->`.An example:
+
+
+````javascript
+    
+router.on({               
+	
+	/**
+	 */
+	
+	'pull my/*': function()
+	{
+		//authorize user
+	},  
+	
+	/**
+	 */
+	
+	'pull my/profile': function()
+	{                 
+		//goes through authorization first 
+	}
+});
+
+````                                                                         
+                                                                                                
+Providing a wildcard `*` tells the router that **anything** after the route must go through it. 
+
+
 
 
 
