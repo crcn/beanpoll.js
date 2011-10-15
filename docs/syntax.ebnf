@@ -1,6 +1,6 @@
 "Beanpole" {
-syntax     = type { tags }  channel { '->' channel }.  
+syntax     = type { tag }  channel { '->' channel }.  
 type	   = 'push' | 'pull'.
-tags 	   = '-' name [ '=' value ]. 
-route	   = '/' { [':'] name '/' }.
+tag 	   = '-' name [ '=' value ]. 
+channel	   = '/' { [':'] name '/' } ['*'].
 }
