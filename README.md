@@ -131,7 +131,7 @@ router.on({
 }); 
 ````       
 
-The above chunk of code is well suited for a REST-ful api without explicilty saying it's *for* http. It can be used for any protocol. For example - say I wanted to *delete* a user using the code above:
+The above chunk of code is well suited for a REST-ful api without explicilty writing it *for* an http server. It can be used for any protocol. For example - say I wanted to *delete* a user using the code above:
 
 ````javascript
 
