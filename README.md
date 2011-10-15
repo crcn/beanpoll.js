@@ -297,7 +297,8 @@ router.on({
 
 ````                                                                         
                                                                                                 
-Providing a wildcard `*` tells the router that **anything** after the route must go through it. 
+Providing a wildcard `*` tells the router that **anything** after the route must go through it.  
+
 
 
 
