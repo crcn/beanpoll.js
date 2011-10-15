@@ -65,6 +65,7 @@ function numUsers(value)
 }
 
 
+//the request handler. This could be called in-app. It's also just as easily exposable as an API to http, websockets, etc.
 router.on('pull users/online', function(request)
 {
 	request.end(numUsers());
@@ -86,56 +87,3 @@ numUsers(10);
 ````
                                                                                                               
 
-	
-
-
-### Pseudocode Example
-
-```javascript
-
-var router = require('beanpole').router();
-	
-
-router.on({
-
-	/**
-	 */
-
-	'push init': function()
-	{               
-		//GET the query
-		router.pull('some/heavy/query', { meta: { GET: 1 } }, function(response)
-		{
-			
-		});     
-	},
-
-	/**
-	 */
-
-	'pull cache/:ms': function(request)
-	{                                
-		//check if some/heaby/query is cached 
-		if(isCached(request.channel))             
-		{
-			request.end(getCache(request.channel));
-		}                                           
-		else
-		{       
-			request.next();
-		}
-	},                        
-
-	/**
-	 */
-
-	'pull -method=GET cache/5000 -> some/heavy/query': function(request)
-	{                   
-		request.end("Hello " + request.data.name + "!");
-	}
-});
-
-
-router.push('init');
-
-```
