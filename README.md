@@ -30,17 +30,14 @@ and
 
 	router.on('push hello/:name', ...);           
 	
-	
-#### Some differences between push, and pull:
-         
 
-##### Push:  
+#### Push Routes:  
 
 - Used to broadcast a message, or change (1 to many).
 - Doesn't expect a response.    
 - Multiple listeners per route.         
 
-##### Pull:
+#### Pull Routes:
 
 - Used to request data from a particular route (1 to 1).
 - Expects a response
