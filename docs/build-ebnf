@@ -2,4 +2,4 @@
 
 var ebnf = require('ebnf-diagram');
 
-ebnf.fromFile(__dirname + '/syntax.ebnf', __dirname + '/diagram.png',3000, 3000);
+ebnf.fromFile(__dirname + '/syntax.ebnf', __dirname + '/diagram.png',3000, 1654);
