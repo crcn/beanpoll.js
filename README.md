@@ -5,7 +5,8 @@
 	
 - Syntactic sugar (see below).                                         
 - Works with many protocols: amqp, http, websockets, etc.                      
-- Hooking with other applications is a breeze with [daisy](https://github.com/spiceapps/daisy).    
+- Hooking with other applications is a breeze with [daisy](https://github.com/spiceapps/daisy).   
+- Works well with coffeescript 
 
 
 ### Projects using Beanpole
