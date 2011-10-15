@@ -1,4 +1,4 @@
-"Beanpole" {
+"Beanpole Routes" {
 syntax     = type { tag }  channel { '->' channel }.  
 type	   = 'push' | 'pull'.
 tag 	   = '-' name [ '=' value ]. 
