@@ -10,8 +10,8 @@
 
 ### Projects using Beanpole
 
-- [celeri](https://github.com/spiceapps/celeri) - CLI library for node.js
-- [bonsai](https://github.com/spiceapps/bonsai) - application server for node.js
+- [celeri](https://github.com/spiceapps/celeri) - CLI library
+- [bonsai](https://github.com/spiceapps/bonsai) - application server
 - [leche](https://github.com/spiceapps/leche) - Framework to build frontend / backend applications with the same code.
 - [daisy](https://github.com/spiceapps/daisy) - Expose beanpole to: http, websockets, amqp (rabbitmq), etc.    
                 
@@ -71,7 +71,7 @@ router.on('pull users/online', function(request)
 	request.end(numUsers());
 });                                                    
           
-//pull num users initially, then listen for when num users changes
+//pull num users initially, then listen for when num users changes.
 router.on('push -pull users/online', function(response)
 {         
 	//handle change here..
@@ -84,6 +84,8 @@ router.on('push -pull users/online', function(response)
 numUsers(3);
 numUsers(10);
 
-````
+````        
+
+Okay, so you noticed I added something funky here: `-pull`. That's metadata. Metadata 
                                                                                                               
 
