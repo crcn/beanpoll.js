@@ -47,7 +47,7 @@ and
 	
 	
 	                                                   
-Using both `push`, and `pull` allow you to **bind** to a particular route. For example:
+Using both `push`, and `pull` allows you to **bind** to a particular route. For example:
 
 
 ````javascript
