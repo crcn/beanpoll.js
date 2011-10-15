@@ -20,48 +20,49 @@
 
 ```javascript
 
-var beanpole = require('../../lib/node').router();
+var router = require('../../lib/node').router();
 	
 
-beanpole.on({
+router.on({
 
 	/**
 	 */
 
 	'push init': function()
-	{
-		router.pull('some/heavy/query/to/cache', function(response)
+	{               
+		//GET the query
+		router.pull('some/heavy/query', { meta: { GET: 1 } }, function(response)
 		{
 			
-		});	
+		});     
 	},
 
 	/**
 	 */
 
-	'pull cache/:ms': function(request)
+	'pull cache/:key/:ms': function(request)
 	{                                
-		//check if some/heaby/query/to/cache is cached 
+		//check if some/heaby/query is cached 
 		if(isCached(request.channel))             
 		{
 			request.end(getCache(request.channel));
 		}                                           
 		else
-		{
+		{       
 			request.next();
 		}
-	},
+	},                        
 
 	/**
 	 */
 
-	'pull -method=GET cache/5000 -> some/heavy/query/to/cache': function(request)
+	'pull -method=GET cache/5000 -> some/heavy/query': function(request)
 	{                   
 		request.end("Hello " + request.data.name + "!");
 	}
 });
 
 
-beanpole.push('init');
+router.push('init');
 
 ```
