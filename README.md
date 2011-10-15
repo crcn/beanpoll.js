@@ -13,10 +13,10 @@
 - [celeri](https://github.com/spiceapps/celeri) - CLI library for node.js
 - [bonsai](https://github.com/spiceapps/bonsai) - application server for node.js
 - [leche](https://github.com/spiceapps/leche) - Framework to build frontend / backend applications with the same code.
-- [daisy](https://github.com/spiceapps/daisy) - Expose beanpole to http, websockets, 
+- [daisy](https://github.com/spiceapps/daisy) - Expose beanpole to: http, websockets, amqp (rabbitmq), etc.
 
 
-### Example
+### Pseudocode Example
 
 ```javascript
 
@@ -30,21 +30,32 @@ beanpole.on({
 
 	'push init': function()
 	{
-		router.pull('say/hi/craig');	
+		router.pull('some/heavy/query/to/cache', function(response)
+		{
+			
+		});	
 	},
 
 	/**
 	 */
 
-	'pull delay/:seconds': function()
-	{
-		setTimeout(function (self){ self.next(); }, this.data.seconds * 1000, this);
+	'pull cache/:ms': function(request)
+	{                                
+		//check if some/heaby/query/to/cache is cached 
+		if(isCached(request.channel))             
+		{
+			request.end(getCache(request.channel));
+		}                                           
+		else
+		{
+			request.next();
+		}
 	},
 
 	/**
 	 */
 
-	'pull -method=GET delay/1 -> say/hi/:name': function(request)
+	'pull -method=GET cache/5000 -> some/heavy/query/to/cache': function(request)
 	{                   
 		request.end("Hello " + request.data.name + "!");
 	}
