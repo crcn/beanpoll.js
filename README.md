@@ -20,7 +20,8 @@
 
 ### Syntax          
 
-DIAGRAM HERE 
+
+![Alt ebnf diagram](http://i.imgur.com/TFJTq.png)
                 
 
 The basic route consists of a few parts: the `type` of route, and the `channel`. Here are some examples:
