@@ -40,8 +40,8 @@ and
 #### Pull Routes:
 
 - Used to request data from a particular route (1 to 1).
-- Expects a response
-- One listener per route.  
+- Expects a response.
+- One listener per route. 
 - examples:
 	- request to http-exposed route       
 	
