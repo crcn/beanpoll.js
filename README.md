@@ -95,7 +95,7 @@ or, you can add a value to it:
 
 	router.on('pull -method=GET hello/:route', ...);
 	
-As mentioned above, you can only have *one* listener per `pull` request. HOWEVER, you can have multiple listeners per pull route *if* you provide different tag values. For example:
+As mentioned above, you can only have *one* listener per `pull` route. HOWEVER, you can have multiple listeners per `pull` route *if* you provide different tag values. For example:
 
 ````javascript
 
