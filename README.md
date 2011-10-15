@@ -86,6 +86,47 @@ numUsers(10);
 
 ````        
 
-Okay, so you noticed I added something funky here: `-pull`. That's metadata. Metadata 
+Okay, so you might have noticed I added something funky here: `-pull` - that's metadata. Metadata is structured like so:
+
+   	router.on('pull -metadataName hello/:route', ...);
+
+or, you can add a value to it:
+
+	router.on('pull -method=GET hello/:route', ...);
+	
+As mentioned above, you can only have one listener per `pull` request. HOWEVER, you can listen to the same route *if* you provide different metadata. For example:
+
+````javascript
+
+	router.on({
+	
+		/**      
+		 * returns the given user
+		 */
+		
+		'pull -method=GET users/:userId': function()
+		{                             
+		},
+		
+		/**   
+		 * updates a user   
+		 */
+		
+		'pull -method=UPDATE users/:userId': function()
+		{
+			
+		},
+		
+		/** 
+		 * deletes a user
+		 */
+		
+		'pull -method=DELETE users/:userId': function()
+		{
+			
+		}                         
+		
+	});
+````
                                                                                                               
 
