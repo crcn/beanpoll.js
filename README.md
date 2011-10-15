@@ -72,10 +72,10 @@ router.on('pull users/online', function(request)
 });                                                    
           
 //pull num users initially, then listen for when num users changes
-router.on('push -pull users/online', function(request)
+router.on('push -pull users/online', function(response)
 {         
 	//handle change here..
-	console.log(request.data); //0, 3, 10...
+	console.log(response); //0, 3, 10...
 });                                        
                                
            
