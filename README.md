@@ -21,7 +21,7 @@
 ### Syntax          
 
 
-![Alt ebnf diagram](http://i.imgur.com/ouGL8.png)
+![Alt ebnf diagram](http://i.imgur.com/v1wdO.png)
                 
 
 The basic route consists of a few parts: the `type` of route, and the `channel`. Here are some examples:
