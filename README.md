@@ -18,7 +18,7 @@
 - [beandocs](https://github.com/spiceapps/beandocs) - Generate documentation from your beanpole route comments.
 - [beanprep](https://github.com/spiceapps/beanprep) - scans beans in a given directory, and installs their dependencies.               
 
-### Syntax          
+### Overview          
 
 
 ![Alt ebnf diagram](http://i.imgur.com/v1wdO.png)
