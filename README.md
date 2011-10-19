@@ -137,7 +137,7 @@ The above chunk of code is well suited for a REST-ful api without explicilty wri
 
 ````javascript
 
-router.pull('users/' + someUserId, { meta: { method: 'DELETE'} }, function()
+router.pull('users/' + someUserId, { tag: { method: 'DELETE'} }, function()
 {
 	//delete user response
 });  
