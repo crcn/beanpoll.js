@@ -3,5 +3,5 @@ name = beanpole.js
 [commands]
 publish = npm publish --force, git add ., git commit -m "$@", git push origin master
 rm = git rm -r $@
-ignore = echo $@ >> .gitignore
+ignore = echo $@\n >> .gitignore
  = true
