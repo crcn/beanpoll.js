@@ -4,4 +4,4 @@ name = beanpole.js
 publish = npm publish --force, git add ., git commit -m "$@", git push origin master
 rm = git rm -r $@
 ignore = echo $@\n >> .gitignore
- = true
+proj = open beanpole.tmproj

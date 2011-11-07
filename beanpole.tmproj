@@ -95,64 +95,6 @@
 				<integer>34</integer>
 			</dict>
 		</dict>
-		<key>lib/core/beans/hook.core/hook.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>34</integer>
-				<key>line</key>
-				<integer>733</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>710</integer>
-		</dict>
-		<key>lib/core/beans/hook.core/index.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>152</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>128</integer>
-		</dict>
-		<key>lib/core/beans/hook.socket.io/connection.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>14</integer>
-				<key>line</key>
-				<integer>24</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>24</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>14</integer>
-				<key>line</key>
-				<integer>24</integer>
-			</dict>
-		</dict>
 		<key>lib/core/concrete/collection.js</key>
 		<dict>
 			<key>caret</key>
@@ -214,30 +156,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>14</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>10</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>10</integer>
-			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -245,13 +171,10 @@
 		<string>lib/core/controller.js</string>
 		<string>examples/bean.hello/beans/hello.core/index.js</string>
 		<string>examples/bean.hook.hello/beans/test/index.js</string>
-		<string>lib/core/beans/hook.core/index.js</string>
-		<string>lib/core/beans/hook.socket.io/connection.js</string>
 		<string>lib/core/concrete/collection.js</string>
 		<string>lib/core/concrete/router.js</string>
 		<string>lib/core/middleware/meta/rotate.js</string>
 		<string>lib/core/middleware/route/pushPull/pull/request.js</string>
-		<string>lib/core/beans/hook.core/hook.js</string>
 		<string>examples/ws/server.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
