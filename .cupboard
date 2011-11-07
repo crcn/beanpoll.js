@@ -5,3 +5,4 @@ publish = npm publish --force, git add ., git commit -m "$@", git push origin ma
 rm = git rm -r $@
 ignore = echo $@\n >> .gitignore
 proj = open beanpole.tmproj
+github=https://github.com/spiceapps/beanpole
