@@ -1,8 +1,2 @@
-[project]
-name = beanpole.js
 [commands]
-publish = npm publish --force, git add ., git commit -m "$@", git push origin master
-rm = git rm -r $@
-ignore = echo $@\n >> .gitignore
-proj = open beanpole.tmproj
-github=https://github.com/spiceapps/beanpole
+proj = open project.tmproj
