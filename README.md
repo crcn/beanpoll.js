@@ -16,7 +16,8 @@
 - [leche](https://github.com/spiceapps/leche) - Framework to build frontend / backend applications with the same code.
 - [daisy](https://github.com/spiceapps/daisy) - Expose beanpole to: http, websockets, amqp (rabbitmq), etc.    
 - [beandocs](https://github.com/spiceapps/beandocs) - Generate documentation from your beanpole route comments.
-- [beanprep](https://github.com/spiceapps/beanprep) - scans beans in a given directory, and installs their dependencies.        
+- [beanprep](https://github.com/spiceapps/beanprep) - Scans beans in a given directory, and installs their dependencies. 
+- [cupboard](https://github.com/spiceapps/beanprep) - Reverse package manager.       
 
 ### Beanpole ports
 
