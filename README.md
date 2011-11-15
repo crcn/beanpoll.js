@@ -21,7 +21,8 @@
 
 ### Beanpole ports
 
-- [Actionscript](https://github.com/spiceapps/beanpole.as)       
+- [Actionscript](https://github.com/spiceapps/beanpole.as)  
+- [C++](https://github.com/spiceapps/beanpoll)     
 
 ### Overview          
 
