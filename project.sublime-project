@@ -2,7 +2,22 @@
 	"folders":
 	[
 		{
-			"path": "/Users/craig/.cupboard/projects/beanpole"
+			"path": "."
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name":"cbd make",
+			"cmd":["cbd","make","beanpole"]
+		},
+		{
+			"name":"cbd start",
+			"cmd":["cbd","start","beanpole"]
+		},
+		{
+			"name":"cbd make+start",
+			"cmd":["cbd","make+start","beanpole"]
 		}
 	]
 }
