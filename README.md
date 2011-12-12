@@ -307,6 +307,32 @@ router.on({
                                                                                                 
 Providing a wildcard `*` tells the router that **anything** after the route must go through it.     
 
+### Managing very long routes
+
+You may run into a route which looks like this:
+
+```javascript
+router.on({
+	'pull -public -method=POST remove/cache/subscribers -> profile/validate/SAVE_ARTICLE -> groups/:group/subscribers OR groups/:group/subscribers/add': function() {
+	
+});
+```
+
+To fix the ugliness, breakup the route and escape any linebreaks:
+
+```javascript
+router.on({
+	'pull \
+	-public -method=POST \
+	remove/cache/subscribers -> \
+	profile/validate/SAVE_ARTICLE -> \
+	groups/:group/subscribers OR \
+	groups/:group/subscribers/add': function() {
+		
+	}
+})
+```
+
 
 ### Methods            
 
