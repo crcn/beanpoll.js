@@ -1,3 +1,9 @@
-var beanpole = require('../../lib/node');
+var router = require('../../lib/node').router(),
+haba = require('haba')();
 
-beanpole.require(__dirname + '/beans').push('init');
+
+haba.options(router, true).
+require(__dirname + '/beans').
+init(function() {
+	router.push('init');
+});
