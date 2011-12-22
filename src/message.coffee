@@ -19,7 +19,7 @@ class Message extends Reader
 	
 	
 	
-exports.Writer = class extends Writer
+exports.Writer = class MessageWriter extends Writer
 
 	###
 	###
@@ -111,9 +111,15 @@ exports.Writer = class extends Writer
 	###
 	###
 
-	end: (data, encoding) ->
-		super data, encoding
-		
+	# end: (data, encoding) ->
+	#	super data, encoding
+	#	MessageWriter.pool.push @
+
+	###
+	###
+
+	# clean: () ->
+	#	@_events = {};
 
 	###
 	###
@@ -124,3 +130,8 @@ exports.Writer = class extends Writer
 			@_ops.query,
 			@_ops.headers,
 			@_ops.callback
+
+
+
+# require('./pool').poolable exports.Writer
+

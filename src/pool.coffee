@@ -1,17 +1,19 @@
 
-module.exports = class 
+module.exports = class Pool
 
 	###
 	###
 
-	constructor: (@clazz, maxSize = 10) ->
+	constructor: (@clazz, @maxSize = 10) ->
 		@pool = []
 
 	###
 	###
 
 	push: (obj) ->
-		@pool.push obj
+		if @pool.length < @maxSize
+			@pool.push obj 
+			obj.clean()
 
 	
 	###
@@ -25,3 +27,10 @@ module.exports = class
 
 	empty: () ->
 		!@pool.length
+
+
+Pool.poolable = (clazz) ->
+
+	pool = clazz.pool = new Pool clazz
+
+	clazz.create = () => pool.pop()

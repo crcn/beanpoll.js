@@ -39,11 +39,11 @@ class Router
 	 Initializes a new request
 	###
 
-	request: (channelOrMessage, query, headers) ->
+	request: (channel, query, headers) ->
+
+		# writer = MessageWriter.create().prepare 
 		
-		
-		writer = if channelOrMessage instanceof MessageWriter then channelOrMessage else new MessageWriter crema.parseChannel(channelOrMessage), @
-		
+		writer =  new MessageWriter crema.parseChannel(channel), @
 		writer.options
 			query: query
 			headers: headers
@@ -54,7 +54,7 @@ class Router
 	 Pulls a request (1-to-1) - expects a return
 	###
 	
-	pull: (channelOrMessage, query, headers, callback) ->
+	pull: (channel, query, headers, callback) ->
 		
 		if typeof query == 'function'
 			callback = query
@@ -66,14 +66,14 @@ class Router
 			headers  = null
 
 				
-		@request(channelOrMessage, query, headers).pull callback
+		@request(channel, query, headers).pull callback
 
 	###
 	 Pushes a request (1-to-many) - NO return
 	###
 	
-	push: (channelOrMessage, data, query, headers) ->
+	push: (channel, data, query, headers) ->
 		
-		@request(channelOrMessage, query, headers).push data
+		@request(channel, query, headers).push data
 		
 module.exports = Router;
