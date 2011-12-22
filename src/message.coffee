@@ -111,6 +111,13 @@ exports.Writer = class extends Writer
 	###
 	###
 
+	end: (data, encoding) ->
+		super data, encoding
+		
+
+	###
+	###
+
 	_newReader: () ->
 		new Message @, 
 			@channel, 
