@@ -1,4 +1,4 @@
 Router = require "./router"
 
-module.exports = () ->
+exports.router = () ->
 	new Router()

@@ -1,4 +1,10 @@
 ## Beanpole - Routing framework      
+
+
+### Changes
+
+- 5x performance boost
+- Refactored from the ground up
                
 
 ### What are some features?

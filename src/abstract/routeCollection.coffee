@@ -12,8 +12,8 @@ class RouteTree
 	
 	getChild: (path, create = false) ->
 		
-		if path not of @_children
-			@_children[path] = new Collection path
+		if path not of @_children and create
+			@_children[path] = new RouteTree path
 		else
 			@_children[path]
 			
@@ -51,13 +51,15 @@ module.exports = class Collection
 	_getTree: (channel, find = false) ->
 		
 		currentTree = @_tree
+
 		
 		for path in channel.paths
 			pathName = if path.param then "_param" else path.value
 			newTree  = currentTree.getChild pathName, !find
-			
+
 			# DO find a tree
-			if !newTree then current.getChild "_param", false
+			if !newTree then newTree = currentTree.getChild "_param", false
+
 			
 			currentTree = newTree
 		

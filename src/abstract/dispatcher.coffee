@@ -1,5 +1,5 @@
 RouteCollection   = require "./routeCollection"
-RequestMiddleware = require "./request/middleware"
+RequestMiddleware = require "./middleware"
 crema = require "crema"
 
 
@@ -20,22 +20,22 @@ module.exports = class AbstractDispatcher
 		
 		# find the listeners based on the channel given
 		listeners = @_collection.getRouteListeners message.channel
-		
 
+		
 		# in pull bases, there will only be one listener. For push, there maybe multiple
 		for listener in listeners
 
 			# since requests can modify the messages - need to copy
-			messageClone = message.clone();
+			messageClone = message # message.clone();
 
 			# fetch the middleware for the given listener 
-			middleware   = RequestMiddleware::expand messageClone.channel, listener, @
+			middleware   = RequestMiddleware.expand messageClone.channel, listener, @
 
 			# pass through the factory class which creates a new request, OR uses a recycled request 
-			request	     = @_newMessanger messageClone, middleware
+			messanger	     = @_newMessanger messageClone, middleware
 
 			# initialize!
-			request.next()
+			messanger.next()
 		@
 		
 	###

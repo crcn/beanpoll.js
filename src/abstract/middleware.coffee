@@ -1,4 +1,4 @@
-LinkedList = require "../../collections/linkedList"
+LinkedList = require "../collections/linkedList"
 
 module.exports = class Middleware extends LinkedList
 	
@@ -11,9 +11,9 @@ module.exports = class Middleware extends LinkedList
 
 Middleware.expand = (channel, listener, dispatcher) ->
 	
-	currentMiddleware = listener.getRoute().thru
-	last = current    = new RequestMiddleware channel, listener
-	
+	currentMiddleware = listener.route.thru
+	last = current    = new Middleware channel, listener
+
 	while !!currentMiddleware
 		
 		middleware = dispatcher._collection.getRouteListener currentMiddleware.channel

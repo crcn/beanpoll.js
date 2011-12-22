@@ -3,6 +3,8 @@ EventEmitter = require('events').EventEmitter
 
 module.exports = class LinkedQueue extends EventEmitter
 	
+	_hasNext: true
+	
 	###
 	 moves into the next
 	###
@@ -57,7 +59,7 @@ module.exports = class LinkedQueue extends EventEmitter
 	_setNext: ->
 		@current = if !!@current then @current.getNextSibling() else @first
 		@_hasNext = !!@current.getNextSibling()
-		
+
 		if !@_hasNext then @emit "queueComplete"
 		
 	###

@@ -1,4 +1,4 @@
-LinkedQueue = require "../../collections/linkedQueue"
+LinkedQueue = require "../collections/linkedQueue"
 
 module.exports = class extends LinkedQueue
 	
@@ -9,12 +9,14 @@ module.exports = class extends LinkedQueue
 	constructor: (@message, @first, @dispatcher) ->
 		super first
 		@router = dispatcher.router 
+		@headers  = message.headers
+		@query    = message.query
 	
 	###
 	###
 	
-	_onNext: (listener) ->
-		listener @
+	_onNext: (middleware) ->
+		middleware.listener @
 	
 		
 		

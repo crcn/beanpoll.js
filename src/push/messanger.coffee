@@ -5,6 +5,7 @@ module.exports = class extends AbstractMessanger
 	###
 	###
 
-	_onNext: (listener) ->
+	_onNext: (middleware) ->
 		@messanger.cache @_hasNext
-		@messanger.dump listener, listener.route.tags
+		@messanger.dump middleware.listener, listener.route.tags
+

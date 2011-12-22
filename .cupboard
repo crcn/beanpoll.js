@@ -1,2 +1,3 @@
 [commands]
 proj = subl --project project.sublime-project
+make = make clean make

@@ -1,4 +1,4 @@
-Message = require "./message"
+MessageWriter = require("./message").Writer
 crema = require "crema"
 PullDispatcher = require "./pull/dispatcher"
 PushDispatcher = require "./push/dispatcher"
@@ -8,7 +8,7 @@ class Router
 	###
 	###
 	
-	constructor () ->
+	constructor: () ->
 		@_pushDispatcher = new PushDispatcher
 		@_pullDispatcher = new PullDispatcher
 		
@@ -23,8 +23,7 @@ class Router
 		if typeof routeOrListeners == "object"
 			for type of routeOrListeners
 				@.on type, routeOrListeners[type]
-			@
-			
+			return @
 			
 		for route in crema routeOrListeners
 			
@@ -42,13 +41,14 @@ class Router
 
 	request: (channelOrMessage, query, headers) ->
 		
-		message = if messageOrChannel instanceof Message then messageOrChannel else new Message channelOrMessage, @
 		
-		message.options
+		writer = if channelOrMessage instanceof MessageWriter then channelOrMessage else new MessageWriter crema.parseChannel(channelOrMessage), @
+		
+		writer.options
 			query: query
 			headers: headers
 		
-		message
+		writer
 		
 	###
 	 Pulls a request (1-to-1) - expects a return
@@ -64,7 +64,7 @@ class Router
 		if typeof headers == 'function'
 			callback = headers
 			headers  = null
-		
+
 				
 		@request(channelOrMessage, query, headers).pull callback
 

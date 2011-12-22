@@ -1,62 +1,118 @@
-Reader = require "./reader"
+Reader = require "./io/reader"
+Writer = require "./io/writer"
 
-module.exports = new class extends Reader
+
+
+
+
+class Message extends Reader
 	
 	###
 	 constructor
 	###
 	
-	constructor: (@channel, @router, @options) ->
-		
-		if _options 
-			
-			#header data which explains stuff about the route
-			@headers = _options.headers
-			
-			#query data 
-			@query = _options.query
-			
-			#source of the message
-			@source = _options.source
-			
-			#destination of the message - callback
-			@destination = _options.destination
-			
-		
+	constructor: (writer, @channel, @query = {}, @headers = {}, @callback) ->
+		super writer
+
+
+
+	
+	
+	
+exports.Writer = class extends Writer
+
+	###
+	###
+
+	constructor: (@channel, @router, @_ops) ->
 		super()
-			
+
+	###
+	###
+
+	prepare: (@channel, @router, @_ops) ->
+		@
+
+
 	###
 	 options which control how the request
 	 is handled
 	###
 
 	options: (value) ->
-		if !!arguments.length
-			@_options = value || {}
-			return @
-		@_options
-		
+		return @_ops if !arguments.length
+		@_ops = value || {}
+		@
+
+	### 
 	###
-	 pulls the given request (1-to-1)
+
+	query: (value) ->
+		return @_ops.query if !arguments.length
+		@_ops.query = value || {}
+		@
+
+
 	###
-	
-	pull: (data, callback) -> 
+	###
+
+	headers: (value) ->
+		return @_ops.headers if !arguments.length
+		@_ops.headers = value || {}
 		@
 		
+
 	###
-	 pushes a response out (1-to-many)
+	 response handler for pull requests
 	###
 
-	push: (data) ->
+	response: (callback) ->
+		return @_ops.callback if !arguments.length
+		@_ops.callback = callback
 		@
-		
-		
-	
-		
-module.exports::readable =		
-module.exports::writable =
-true
-	
 
 
-	
+	###
+	###
+
+	pull: (query, callback) ->
+		
+		if typeof query == 'function'
+			callback = query
+			query    = null
+
+		@query(query) if !!query
+		@response(callback) if !!callback
+
+		# start piping data to the new reader
+		msg = @_newReader()
+
+		# pull the request now
+		@router._pullDispatcher.dispatch msg
+
+		# return self so we can start piping stuff
+		@
+
+	###
+	###
+
+	push: (query) ->
+		@query(query) if !!query
+
+		msg = @_newReader()
+
+		# push the request now
+		@router._pushDispatcher.dispatch msg
+
+		# return self so we can start piping stuff
+		@
+
+	###
+	###
+
+	_newReader: () ->
+		new Message @, 
+			@channel, 
+			@_ops.query,
+			@_ops.headers,
+			@_ops.callback
