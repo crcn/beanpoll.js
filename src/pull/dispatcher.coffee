@@ -1,4 +1,4 @@
-AbstractDispatcher = require "../abstract/dispatcher"
+AbstractDispatcher = require "../concrete/dispatcher"
 Messanger = require "./messanger"
 Response  = require "./response"
 

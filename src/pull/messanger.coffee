@@ -1,4 +1,4 @@
-AbstractMessanger = require "../abstract/messanger"
+AbstractMessanger = require "../concrete/messanger"
 Response = require "./response"
 
 module.exports = class extends AbstractMessanger

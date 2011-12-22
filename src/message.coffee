@@ -96,13 +96,14 @@ exports.Writer = class extends Writer
 	###
 	###
 
-	push: (query) ->
-		@query(query) if !!query
-
+	push: (data) ->
+		
 		msg = @_newReader()
 
 		# push the request now
 		@router._pushDispatcher.dispatch msg
+
+		@end data if !!data
 
 		# return self so we can start piping stuff
 		@

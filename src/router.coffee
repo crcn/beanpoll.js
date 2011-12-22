@@ -72,8 +72,8 @@ class Router
 	 Pushes a request (1-to-many) - NO return
 	###
 	
-	push: (channelOrMessage, query, headers) ->
+	push: (channelOrMessage, data, query, headers) ->
 		
-		@request(channelOrMessage, query, headers).push()
+		@request(channelOrMessage, query, headers).push data
 		
 module.exports = Router;

@@ -1,4 +1,4 @@
-AbstractMessanger = require "../abstract/messanger"
+AbstractMessanger = require "../concrete/messanger"
 
 module.exports = class extends AbstractMessanger
 
@@ -6,6 +6,6 @@ module.exports = class extends AbstractMessanger
 	###
 
 	_onNext: (middleware) ->
-		@messanger.cache @_hasNext
-		@messanger.dump middleware.listener, listener.route.tags
+		@message.cache @_hasNext
+		@message.dump middleware.listener, middleware.listener.route.tags
 
