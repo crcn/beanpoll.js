@@ -1,4 +1,5 @@
-Stream = require("stream").Stream;
+Stream = require("stream").Stream
+outcome = require "outcome"
 
 
 
@@ -11,17 +12,24 @@ module.exports = class Reader extends Stream
 		super()
 
 		if source
-			source.on "data", (data) =>
-				@emit "data", data
-			
-			source.on "end", (data) =>
-				@emit "end"
-				@ended = true
+			source.on "data", (data) => @emit "data", data
+			source.on "end", (data) => @emit "end"
+				
 
 
 		if ops and ops.cache
 			@cache true
 			@dump()
+
+		@_buffer = []
+
+	
+		@on "data", (data) =>
+			return if not @_cache
+			@_buffer.push data
+
+		@on "end", () => @ended = true
+
 	
 	###
 	###
@@ -57,7 +65,9 @@ module.exports = class Reader extends Stream
 	###
 
 	cache: (value) ->
-		@_cache = value if arguments.length
+
+		# data already being cached? too late then.
+		@_cache = value or !!@_buffer.length if arguments.length
 		@_cache 
 
 	###
@@ -66,18 +76,23 @@ module.exports = class Reader extends Stream
 
 	dump: (callback, ops) ->
 
+
 		ops = {} if not ops
+
 		
-		# ability to dump data without providing a callback. Useful for caching
 		if typeof callback == 'object'
-			ops = callback
-			callback = () ->
+			ops.stream = true
+			listeners = callback
+			callback = (stream) ->
+				outcome.chain(stream).on listeners
+					
 
 		# streaming the data? needs to be piped then since we're emitting buffered data
-		pipedStream = if ops.stream then new Reader else @
+		pipedStream = if ops.stream then new Reader @ else @
 
-		# stream data? don't continue then...
-		return callback.call @, @stream if ops.stream and not ops.cache
+		if ops.stream
+			callback.call @, pipedStream
+			return if not @_cache
 
 		buffer =  []
 
@@ -92,30 +107,29 @@ module.exports = class Reader extends Stream
 			# no data returned? 
 			return callback() if not buffer.length
 
-			for chunk in buffer
-				callback.call @, err, chunk
+			if ops.each
+				for chunk in buffer
+					callback.call @, err, chunk
+			else
+				callback.call @, err, if buffer.length > 1 then buffer else buffer[0]
+		
 
-
-		@on "data", (chunk) => 
-			buffer.push chunk
-
-			# final call to cache data - maybe used at the last sec. See push messanger
-			@_buffer = buffer if not @_buffer and @cache
-
+		@on "data", (chunk) =>  buffer.push chunk
 		@on "end", onEnd
 		@on "error", onEnd
 
 		
-		if @_buffer
+		if @_buffer 
 			for chunk in @_buffer 
 
 				# raw stream passed - then pipe the data
 				if ops.stream then pipedStream.emit "data", chunk
 				buffer.push chunk
-
+			
+				
 		if @ended
 			if ops.stream
-				pipedStream.emit "end", chunk
+				pipedStream.emit "end"
 			else
 				onEnd false
 		

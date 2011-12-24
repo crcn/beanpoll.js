@@ -3,7 +3,6 @@ Response = require "./response"
 
 module.exports = class extends AbstractMessanger
 
-
 	###
 	 constructor
 	###
@@ -13,13 +12,13 @@ module.exports = class extends AbstractMessanger
 
 		# response which is returned back to the caller
 		@response = new Response @
-		
 
 	###
 	###
 
 	_onNext: (middleware) ->
-		
+	
+		@message.cache @_hasNext
 		middleware.listener @, @response
 
 	

@@ -13,6 +13,22 @@ module.exports = class extends LinkedQueue
 		@query    = message.query
 	
 	###
+	 proxy to message
+	###
+
+	on: (type, fn) -> @message.on type, fn
+
+	###
+	###
+
+	dump: (callback) -> @message.dump callback
+
+	###
+	###
+
+	start:() -> @next()
+
+	###
 	###
 	
 	_onNext: (middleware) ->

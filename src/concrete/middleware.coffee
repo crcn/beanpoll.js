@@ -16,10 +16,10 @@ Middleware.expand = (channel, listener, dispatcher) ->
 
 	while !!currentMiddleware
 		
-		middleware = dispatcher._collection.getRouteListener currentMiddleware.channel
+		middleware = dispatcher._collection.getRouteListeners currentMiddleware.channel
 		
 		for mw in middleware
-			current = Middleware::expand currentMiddleware.channel, mw, dispatcher
+			current = Middleware.expand currentMiddleware.channel, mw, dispatcher
 			last.addPrevSibling current.getLastSibling()
 			last = current.getFirstSibling()
 		

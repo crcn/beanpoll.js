@@ -35,7 +35,7 @@ module.exports = class AbstractDispatcher
 			messanger	     = @_newMessanger messageClone, middleware
 
 			# initialize!
-			messanger.next()
+			messanger.start()
 		@
 		
 	###
@@ -43,7 +43,7 @@ module.exports = class AbstractDispatcher
 	###
 	
 	addRouteListener: (route, listener) ->
-		route = @_prepareRoute(route)
+		route = @_prepareRoute route
 		listener.route = route
 		@_collection.addRouteListener listener
 		

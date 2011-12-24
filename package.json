@@ -9,7 +9,8 @@
     },
     "directories" :   { "lib" : "./lib" },
     "dependencies": {
-        "crema":"<=0.1.0",
+        "crema":"<0.2.0",
+        "outcome":"<0.2.0",
         "underscore":"*"
 
     },

@@ -7,30 +7,49 @@ router.on({
 	/**
 	 */
 	
-	'pull hello/world': function(req, res) {
-		
-		res.end("cheese!");
+	'pull timeout -> hello/world': function(req, res) {
+
+		req.dump({
+			
+			data: function(data) {
+				console.log(data);
+			},
+
+			end: function(data) {
+				console.log('END');
+			}
+		})
 	},
 
 	/**
 	 */
 
-	'push hello/world': function(msg) {
-		// console.log("msg")
+	'pull timeout': function(req) {
+		console.log("TIMEOUT")
+		
+		setTimeout(function() {
+			console.log("NEXT");
+			req.next();
+		}, 100)
+	},
+
+	/**
+	 */
+
+	'push hello/world': function(err, msg) {
+		console.log(msg)
 	}
 });
 
 
-var start = Date.now();
 
 
-for(var i = 5000; i--;)
+var msg = router.pull('hello/world', function() {
+	console.log("RESPONSE")
+});
 
-/*router.pull("hello/world", null,  function(err, response) {
-	
-});*/
+msg.write('data');
+msg.end('flag')
 
-router.push("hello/world", "google");
-
-console.log(Date.now()-start)
+console.log("PULL")
 
