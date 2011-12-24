@@ -24,7 +24,15 @@ router.on({
 	/**
 	 */
 
-	'pull timeout': function(req) {
+	'pull timout': function(req) {
+		console.log("TIMOUT")
+		req.next();
+	}
+
+	/**
+	 */
+
+	'pull timout -> timeout': function(req) {
 		console.log("TIMEOUT")
 		
 		setTimeout(function() {
