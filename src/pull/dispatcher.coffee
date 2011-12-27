@@ -2,6 +2,8 @@ AbstractDispatcher = require "../concrete/dispatcher"
 Messanger = require "./messanger"
 Response  = require "./response"
 
+# 1 -> 1 request
+
 module.exports = class extends AbstractDispatcher
 	
 
@@ -20,7 +22,7 @@ module.exports = class extends AbstractDispatcher
 	###
 	###
 
-	_findListeners: (route) ->
+	_prepareRequest: (route) ->
 		listeners = super route
 
 		if !!listeners.length then [listeners[0]] else []
@@ -29,7 +31,7 @@ module.exports = class extends AbstractDispatcher
 	###
 
 	_prepareRoute: (route) ->
-		filtered = @_findListeners route
+		filtered = @_findListeners route, false
 
 		throw new Error "Route \"#{route.channel.value}\" already exists" if !!filtered.length
 

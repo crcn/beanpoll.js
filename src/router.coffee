@@ -2,6 +2,7 @@ MessageWriter = require("./message").Writer
 crema = require "crema"
 PullDispatcher = require "./pull/dispatcher"
 PushDispatcher = require "./push/dispatcher"
+CollectDispatcher = require "./collect/dispatcher"
 
 class Router
 	
@@ -9,8 +10,11 @@ class Router
 	###
 	
 	constructor: () ->
-		@_pushDispatcher = new PushDispatcher
-		@_pullDispatcher = new PullDispatcher
+
+		@_dispatchers = 
+			pull: new PullDispatcher 
+			push: new PushDispatcher 
+			collect: new CollectDispatcher
 		
 	###
 	 listens for a request
@@ -27,11 +31,12 @@ class Router
 
 			
 		for route in crema routeOrListeners
+			do (route) =>
+				@_dispatchers[route.type].addRouteListener route, callback
 
-				# dispatcher is either push, or pull
-				dispatcher = if route.type == "pull" then @._pullDispatcher else @._pushDispatcher
-
-				dispatcher.addRouteListener route, callback
+				if route.tags.collect or route.tags.pull
+					@request(route.channel)[if route.tags.collect then 'collect' else 'pull'] (err, response) ->
+						callback(response)
 					
 		
 		# finally return self
@@ -45,7 +50,7 @@ class Router
 
 		# writer = MessageWriter.create().prepare 
 		
-		writer =  new MessageWriter crema.parseChannel(channel), @
+		writer =  new MessageWriter (if typeof channel is "string" then crema.parseChannel(channel) else channel), @
 		writer.options
 			query: query
 			headers: headers
@@ -63,7 +68,28 @@ class Router
 	 Pulls a request (1-to-1) - expects a return
 	###
 	
-	pull: (channel, query, headers, callback) ->
+
+	pull: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, "pull"
+	
+
+	###
+	###
+
+	collect: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, "collect"
+
+	###
+	 Pushes a request (1-to-many) - NO return
+	###
+	
+	push: (channel, data, query, headers) ->
+		
+		@request(channel, query, headers).push data
+
+
+	###
+	###
+
+	_pull: (channel, query, headers, callback, type) ->
 		
 		if typeof query == 'function'
 			callback = query
@@ -75,14 +101,7 @@ class Router
 			headers  = null
 
 				
-		@request(channel, query, headers).pull callback
+		@request(channel, query, headers)[type] callback
 
-	###
-	 Pushes a request (1-to-many) - NO return
-	###
-	
-	push: (channel, data, query, headers) ->
-		
-		@request(channel, query, headers).push data
 		
 module.exports = Router;

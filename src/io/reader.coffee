@@ -14,6 +14,7 @@ module.exports = class Reader extends Stream
 		if source
 			source.on "data", (data) => @emit "data", data
 			source.on "end", (data) => @emit "end"
+			source.on "error", (err) => @emit "error", err
 				
 
 
@@ -29,7 +30,7 @@ module.exports = class Reader extends Stream
 			@_buffer.push data
 
 		@on "end", () => @ended = true
-
+		@on "pipe", (source) => @source = source
 	
 	###
 	###

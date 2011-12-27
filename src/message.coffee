@@ -52,7 +52,7 @@ exports.Writer = class MessageWriter extends Writer
 		return @_ops.tags if !arguments.length
 		@_ops.tags = value || {}
 		@
-		
+
 	### 
 	###
 
@@ -84,7 +84,34 @@ exports.Writer = class MessageWriter extends Writer
 	###
 	###
 
-	pull: (query, callback) ->
+	pull: (query, callback) -> @_pull query, callback, @router._dispatchers.pull
+
+	###
+	###
+
+	collect: (query, callback) -> @_pull query, callback, @router._dispatchers.collect
+
+
+	###
+	###
+
+	push: (data) ->
+		
+		msg = @_newReader()
+
+		# push the request now
+		@router._dispatchers.push.dispatch msg
+
+		@end data if data != undefined
+
+		# return self so we can start piping stuff
+		@
+
+
+	###
+	###
+
+	_pull: (query, callback, dispatcher) ->
 		
 		if typeof query == 'function'
 			callback = query
@@ -97,22 +124,7 @@ exports.Writer = class MessageWriter extends Writer
 		msg = @_newReader()
 
 		# pull the request now
-		@router._pullDispatcher.dispatch msg
-
-		# return self so we can start piping stuff
-		@
-
-	###
-	###
-
-	push: (data) ->
-		
-		msg = @_newReader()
-
-		# push the request now
-		@router._pushDispatcher.dispatch msg
-
-		@end data if !!data
+		dispatcher.dispatch msg
 
 		# return self so we can start piping stuff
 		@

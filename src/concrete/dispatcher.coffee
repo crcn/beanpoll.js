@@ -19,7 +19,7 @@ module.exports = class AbstractDispatcher
 	dispatch: (message) ->
 		
 		# find the listeners based on the channel given
-		listeners = @_findListeners message
+		listeners = @_prepareRequest message
 
 		
 		# in pull bases, there will only be one listener. For push, there maybe multiple
@@ -66,11 +66,15 @@ module.exports = class AbstractDispatcher
 	###
 	###
 
-	_findListeners: (route) ->
+	_findListeners: (route, param) ->
 
 		# find the listeners based on the channel given
-		@_filterListeners @_collection.getRouteListeners(route.channel), route.tags
-			
+		@_filterListeners @_collection.getRouteListeners(route.channel, param), route.tags
+		
+	###
+	###
+	
+	_prepareRequest: (message) -> @_findListeners message	
 
 	###
 	###

@@ -3,6 +3,11 @@ Reader = require "./reader"
 
 module.exports = class Writer extends Stream
 	
+	
+	###
+	###
+	error: (err) ->
+		@emit "error", err
 			
 	###
 	###

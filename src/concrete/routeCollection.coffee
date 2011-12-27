@@ -36,8 +36,8 @@ module.exports = class Collection
 	###
 	###
 	
-	getRouteListeners: (channel) ->
-		tree = @_getTree(channel, true)
+	getRouteListeners: (channel, find) ->
+		tree = @_getTree(channel, if find is undefined then true else find)
 		if tree then tree.listeners else []
 		
 	###
