@@ -24,17 +24,19 @@ class Router
 			for type of routeOrListeners
 				@.on type, routeOrListeners[type]
 			return @
+
 			
 		for route in crema routeOrListeners
-			
-			# dispatcher is either push, or pull
-			dispatcher = if route.type == "pull" then @._pullDispatcher else @._pushDispatcher
 
-			dispatcher.addRouteListener route, callback
+				# dispatcher is either push, or pull
+				dispatcher = if route.type == "pull" then @._pullDispatcher else @._pushDispatcher
+
+				dispatcher.addRouteListener route, callback
+					
 		
 		# finally return self
 		@
-	
+
 	###
 	 Initializes a new request
 	###
@@ -49,6 +51,13 @@ class Router
 			headers: headers
 		
 		writer
+
+	
+	###
+	 abreviated
+	###
+
+	req: () -> @request.apply this, arguments
 		
 	###
 	 Pulls a request (1-to-1) - expects a return

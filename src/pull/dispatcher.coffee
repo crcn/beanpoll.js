@@ -16,3 +16,22 @@ module.exports = class extends AbstractDispatcher
 		# message.callback msgr.response.reader
 
 		msgr
+
+	###
+	###
+
+	_findListeners: (route) ->
+		listeners = super route
+
+		if !!listeners.length then [listeners[0]] else []
+
+	###
+	###
+
+	_prepareRoute: (route) ->
+		filtered = @_findListeners route
+
+		throw new Error "Route \"#{route.channel.value}\" already exists" if !!filtered.length
+
+		route
+		

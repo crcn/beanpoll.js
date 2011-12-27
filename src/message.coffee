@@ -11,7 +11,7 @@ class Message extends Reader
 	 constructor
 	###
 	
-	constructor: (writer, @channel, @query = {}, @headers = {}, @callback) ->
+	constructor: (writer, @channel, @query = {}, @headers = {}, @tags = {}, @callback) ->
 		super writer
 
 
@@ -44,6 +44,15 @@ exports.Writer = class MessageWriter extends Writer
 		@_ops = value || {}
 		@
 
+	###
+	 filterable tags
+	###
+	
+	tags: (value) ->
+		return @_ops.tags if !arguments.length
+		@_ops.tags = value || {}
+		@
+		
 	### 
 	###
 
@@ -125,10 +134,12 @@ exports.Writer = class MessageWriter extends Writer
 	###
 
 	_newReader: () ->
+
 		new Message @, 
 			@channel, 
 			@_ops.query,
 			@_ops.headers,
+			@_ops.tags,
 			@_ops.callback
 
 

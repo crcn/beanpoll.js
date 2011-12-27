@@ -32,7 +32,7 @@ module.exports = class extends LinkedQueue
 	###
 	
 	_onNext: (middleware) ->
-		middleware.listener @
+		middleware.listener.callback @
 	
 		
 		

@@ -19,7 +19,7 @@ module.exports = class AbstractDispatcher
 	dispatch: (message) ->
 		
 		# find the listeners based on the channel given
-		listeners = @_collection.getRouteListeners message.channel
+		listeners = @_findListeners message
 
 		
 		# in pull bases, there will only be one listener. For push, there maybe multiple
@@ -42,10 +42,9 @@ module.exports = class AbstractDispatcher
 	 adds a route listener to the collection tree
 	###
 	
-	addRouteListener: (route, listener) ->
+	addRouteListener: (route, callback) ->
 		route = @_prepareRoute route
-		listener.route = route
-		@_collection.addRouteListener listener
+		@_collection.addRouteListener callback: callback, route: route
 		
 	###
 	 returns a new request
@@ -60,5 +59,43 @@ module.exports = class AbstractDispatcher
 	###
 
 	_prepareRoute: (route) ->
+
 		# override me
 		route
+
+	###
+	###
+
+	_findListeners: (route) ->
+
+		# find the listeners based on the channel given
+		@_filterListeners @_collection.getRouteListeners(route.channel), route.tags
+			
+
+	###
+	###
+
+	_filterListeners: (listeners, tags) ->
+
+		filtered = listeners.concat()
+
+		# filter based on tag names
+		for tagName of tags
+			
+			value = tags[tagName]
+
+			continue if value is 1
+
+			for listener, i in filtered
+
+
+				break if listener.route.tags.unfilterable
+
+				tagV = listener.route.tags[tagName]
+
+				if (tagV isnt value) and (tagV isnt "*") 
+					filtered.splice i--, 1
+					_len--;
+
+
+		return filtered

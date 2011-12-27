@@ -37,7 +37,8 @@ module.exports = class Collection
 	###
 	
 	getRouteListeners: (channel) ->
-		@_getTree(channel, true).listeners
+		tree = @_getTree(channel, true)
+		if tree then tree.listeners else []
 		
 	###
 	###
@@ -58,8 +59,8 @@ module.exports = class Collection
 			newTree  = currentTree.getChild pathName, !find
 
 			# DO find a tree
-			if !newTree then newTree = currentTree.getChild "_param", false
-
+			if not newTree then newTree = currentTree.getChild "_param", false
+			return null if not newTree
 			
 			currentTree = newTree
 		
