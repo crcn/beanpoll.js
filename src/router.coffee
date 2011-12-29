@@ -34,6 +34,7 @@ class Router
 			do (route) =>
 				@_dispatchers[route.type].addRouteListener route, callback
 
+				# bindings
 				if route.tags.collect or route.tags.pull
 					@request(route.channel)[if route.tags.collect then 'collect' else 'pull'] (err, response) ->
 						callback(response)

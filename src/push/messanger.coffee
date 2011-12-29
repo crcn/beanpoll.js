@@ -5,7 +5,7 @@ module.exports = class extends AbstractMessanger
 	###
 	###
 
-	_onNext: (middleware) ->
+	_next: (middleware) ->
 		@message.cache @_hasNext
 		@message.dump (err, result) ->
 			middleware.listener.callback(result)

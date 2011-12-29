@@ -8,9 +8,10 @@ module.exports = class extends LinkedQueue
 	
 	constructor: (@message, @first, @dispatcher) ->
 		super first
-		@router = dispatcher.router 
+		@router   = dispatcher.router 
 		@headers  = message.headers
 		@query    = message.query
+		# @params   = {}
 	
 	###
 	 proxy to message
@@ -29,9 +30,21 @@ module.exports = class extends LinkedQueue
 	start:() -> @next()
 
 	###
+	### 
+	_onNext: (middleware) ->
+
+		for path, i in middleware.listener.route.channel.paths
+
+			@query[path.value] = middleware.channel.paths[i].value if path.param
+			
+		
+
+		@_next middleware
+
+	###
 	###
 	
-	_onNext: (middleware) ->
+	_next: (middleware) ->
 		middleware.listener.callback @
 	
 		
