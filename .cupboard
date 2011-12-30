@@ -1,4 +1,4 @@
 [commands]
 proj = subl --project project.sublime-project
-make = make clean make
+make = make clean all
 publish = npm publish --force, git add -A, git commit -m "$@", git push origin 0.2.x

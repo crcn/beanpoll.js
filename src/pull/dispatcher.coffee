@@ -33,7 +33,7 @@ module.exports = class extends AbstractDispatcher
 	_prepareRoute: (route) ->
 		filtered = @_findListeners route, false
 
-		throw new Error "Route \"#{route.channel.value}\" already exists" if !!filtered.length
+		throw new Error "Route \"#{route.channel.value}\" already exists" if !!filtered.length and not (route.tags.before or route.tags.after) 
 
 		route
 		

@@ -24,13 +24,19 @@ class Router
 		
 		# easier setting up listeners if it's an object vs
 		# calling .on each time
-		if typeof routeOrListeners == "object"
+		if typeof routeOrListeners == "object" and not callback
 			for type of routeOrListeners
 				@.on type, routeOrListeners[type]
 			return @
 
-			
-		for route in crema routeOrListeners
+		if typeof routeOrListeners == "string" 
+			routes = crema routeOrListeners
+		else if routeOrListeners instanceof Array
+			routes = routeOrListeners
+		else
+			routes = [routeOrListeners]
+						
+		for route in routes
 			do (route) =>
 				@_dispatchers[route.type].addRouteListener route, callback
 

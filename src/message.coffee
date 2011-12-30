@@ -45,6 +45,12 @@ exports.Writer = class MessageWriter extends Writer
 		@
 
 	###
+	 returns number of listeners based on type and passed channel
+	###
+
+	numListeners: (type) -> @router._dispatchers[type].numListeners(@channel)
+
+	###
 	 filterable tags
 	###
 	

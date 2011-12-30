@@ -11,6 +11,12 @@ module.exports = class AbstractDispatcher
 	
 	constructor: (@router) ->
 		@_collection = new RouteCollection();
+
+	###
+	 returns number of listeners based on channel given
+	###
+
+	numListeners: (channel, ops) -> @_filterListeners(@_collection.getRouteListeners(channel), ops).length
 	
 	###
 	 dispatches a request
