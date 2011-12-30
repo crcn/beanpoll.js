@@ -54,9 +54,16 @@ exports.Writer = class MessageWriter extends Writer
 	 filterable tags
 	###
 	
-	tags: (value) ->
+	tag: (key, value) ->
 		return @_ops.tags if !arguments.length
-		@_ops.tags = value || {}
+
+		if typeof key == 'string' 
+			if arguments.length == 1 then return @_ops.tags[key]
+
+			@_ops.tags[key] = value
+		else
+			@_ops.tags = key || {}
+
 		@
 
 	### 
