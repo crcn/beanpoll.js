@@ -79,6 +79,7 @@ exports.Writer = class MessageWriter extends Writer
 
 	###
 	 response handler for pull requests
+	 deprecated
 	###
 
 	response: (callback) ->
@@ -86,6 +87,11 @@ exports.Writer = class MessageWriter extends Writer
 		@_ops.callback = callback
 		@
 
+	###
+	 acknowledge callback
+	###
+
+	ack: (callback) -> @response callback
 
 	###
 	###
@@ -124,7 +130,7 @@ exports.Writer = class MessageWriter extends Writer
 			query    = null
 
 		@query(query) if !!query
-		@response(callback) if !!callback
+		@ack(callback) if !!callback
 
 		# start piping data to the new reader
 		msg = @_newReader()

@@ -7,6 +7,7 @@ module.exports = class Middleware extends LinkedList
 	###
 	
 	constructor: (@channel, @listener) ->
+		@route = listener.route
 	
 
 Middleware.expand = (channel, listener, dispatcher) ->
