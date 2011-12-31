@@ -12,7 +12,6 @@
     },
     "dependencies": {
         "crema": "<0.2.0",
-        "outcome": "<0.2.0",
         "underscore": "*"
     },
     "devDependencies": {

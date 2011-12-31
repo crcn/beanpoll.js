@@ -1,5 +1,4 @@
 Stream = require("stream").Stream
-outcome = require "outcome"
 
 
 
@@ -85,7 +84,8 @@ module.exports = class Reader extends Stream
 			ops.stream = true
 			listeners = callback
 			callback = (stream) ->
-				outcome.chain(stream).on listeners
+				for type of listeners 
+					stream.on type, listeners[type]
 					
 
 		# streaming the data? needs to be piped then since we're emitting buffered data
