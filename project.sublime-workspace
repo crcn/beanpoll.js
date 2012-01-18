@@ -46,6 +46,65 @@
 				"buffer_size": 9424,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "/tmp/subl stdin 0Ba5MF.txt",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "`var Structr = require('structr'),\nrouteMiddleware = require('./middleware/route'),\nmetaMiddleware = require('./middleware/meta'),\nParser = require('./concrete/parser'),\nJanitor = require('sk/core/garbage').Janitor,\nutils = require('./concrete/utils');\n\nvar AbstractController = Structr({\n	\n	/**\n	 */\n\n\n	'__construct': function(target)\n	{\n		this.metaMiddleware = metaMiddleware(this);\n		this.routeMiddleware = routeMiddleware(this);\n\n		this.metaMiddleware.init();\n		this.routeMiddleware.init();\n\n		this._channels = {};\n	},\n\n	/**\n	 */\n\n	'has': function(type, ops)\n	{\n		var expr = this._parse(type, ops);\n		return this._router(expr).hasRoutes(expr);\n	},\n\n	/**\n	 */\n\n	'getRoute': function(type, ops)\n	{\n		var expr = this._parse(type, ops);\n		return this._router(expr).getRoute(utils.channel(expr, 0));\n	},\n\n	/**\n	 */\n\n	'on': function(target)\n	{\n		var ja = new Janitor();\n\n		for(var type in target)\n		{\n			ja.addDisposable(this.on(type, {}, target[type]));\n		}\n\n		return ja;\n	},\n\n	/**\n	 */\n\n	'second on': function(type, callback)\n	{\n		return this.on(type, {}, callback);\n	},\n\n	/**\n	 */\n\n	'third on': function(type, ops, callback)\n	{\n		var expr = this._parse(type, ops),\n		router = this.routeMiddleware.router(expr);\n\n		for(var i = expr.channels.length; i--;)\n		{\n			var pathStr = utils.pathToString(expr.channels[i].paths);\n\n			if(!this._channels[pathStr])\n			{\n				this.addChannel(pathStr, Structr.copy(utils.channel(expr, i)));\n			}\n		}\n		\n		return router.on(expr, ops, callback);\n	},\n\n	/**\n	 */\n\n	'channels': function()\n	{\n		return this._channels;\n	},\n\n	/**\n	 */\n\n	'addChannel': function(path, singleChannel)\n	{\n		for(var prop in singleChannel.meta)\n		{\n			singleChannel.meta[prop] = '*';\n		}\n\n		this._channels[path] = singleChannel;\n	},\n\n	/**\n	 * flavor picker for operations. In the string, or in the ops ;)\n	 */\n\n	'_parse': function(type, ops)\n	{\n		var expr = typeof type != 'object' ? Parser.parse(type) : Structr.copy(type);\n		\n		if(ops)\n		{\n			if(ops.meta) Structr.copy(ops.meta, expr.meta);\n			if(ops.type) expr.type = ops.type;\n		}\n\n		return expr;\n	},\n\n	/**\n	 */\n\n	'_router': function(expr)\n	{\n		return this.routeMiddleware.router(expr);\n	},\n\n	/**\n	 */\n\n	'_createTypeMethod': function(method)\n	{\n		var self = this;\n\n		var func = this[ method ] = function(channel, data, ops, callback)\n		{\n			if(!ops) ops = {};\n			ops.type = method;\n\n			var expr = this._parse(channel, ops);\n\n			return self._router(expr).dispatch(expr, data, ops, callback);\n		}\n\n\n		var router = self._router( { type: method });\n\n\n		Structr.copy(router, func, true);\n\n	}\n});\n\n\nvar ConcreteController = AbstractController.extend({\n	\n	/**\n	 */\n\n	'override __construct': function()\n	{\n		this._super();\n\n		var self = this;\n		\n		//make channels data-bindable\n		this.on({\n			\n			/**\n			 */\n\n			'pull channels': function()\n			{\n				return self.channels();\n			}\n		});\n	},\n\n	/**\n	 */\n\n	'override addChannel': function(path, singleChannel)\n	{\n		this._super(path, singleChannel);\n\n		//keep the same format as the channels so the end-point is handled exactly the same\n		var toPush = {};\n\n		toPush[path] = singleChannel;\n\n		this.push('channels', toPush, { ignoreWarning: true });\n	}\n})\n\nmodule.exports = ConcreteController;",
+			"file": "lib/core/controller.js",
+			"file_size": 3183,
+			"file_write_time": 1324953875000000,
+			"settings":
+			{
+				"buffer_size": 3184,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/core/concrete/request.js",
+			"settings":
+			{
+				"buffer_size": 5391,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/core/concrete/router.js",
+			"settings":
+			{
+				"buffer_size": 6458,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/tmp/subl stdin C3ZE66.txt",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "examples/wrap-around/index.js",
+			"settings":
+			{
+				"buffer_size": 210,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/core/concrete/collection.js",
+			"settings":
+			{
+				"buffer_size": 6968,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -89,6 +148,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"_add",
+			"_add'",
+			"add'",
+			"middleware",
+			"listeners",
+			"meta",
+			"getRoute",
+			"_filter",
+			".route",
+			"_route",
+			"_routes",
+			"getRoute",
+			"isMidd",
+			"middleware",
+			"isMiddle",
+			"console.l",
+			"_routes",
+			"_middleware",
+			"isMiddleware",
+			"_inje",
+			"meta",
+			"middleware",
+			"*",
+			"indexOf",
+			"*",
+			"_callListeners",
+			"new ",
+			"_add",
 			"_require2",
 			"unableToLoad",
 			"Unable to load b",
@@ -111,7 +198,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -245,6 +332,192 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/tmp/subl stdin 0Ba5MF.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "lib/core/controller.js",
+					"settings":
+					{
+						"buffer_size": 3184,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								537,
+								540
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "lib/core/concrete/request.js",
+					"settings":
+					{
+						"buffer_size": 5391,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3807,
+								3807
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2761.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "lib/core/concrete/router.js",
+					"settings":
+					{
+						"buffer_size": 6458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								212,
+								212
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1395.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/tmp/subl stdin C3ZE66.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "examples/wrap-around/index.js",
+					"settings":
+					{
+						"buffer_size": 210,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								84,
+								84
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "lib/core/concrete/collection.js",
+					"settings":
+					{
+						"buffer_size": 6968,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1670,
+								1670
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1531.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -255,7 +528,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 28.0
 	},
 	"layout":
 	{
