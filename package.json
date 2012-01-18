@@ -1,25 +1,26 @@
 {
     "name": "beanpoll",
     "description": "Routing on Steroids",
-    "version": "0.1.16",
+    "version": "0.1.17",
     "author": "Craig Condon",
     "repository": {
         "type": "git",
         "url": "http://github.com/crcn/beanpole.git"
     },
-    "directories" :   { "lib" : "./lib" },
+    "directories": {
+        "lib": "./lib"
+    },
     "dependencies": {
-        "sk":"*",
-        "vine":"*",
-        "mime":"*",
-        "gumbo":"*",
-        "cashew":"*",
-        "structr":"*",
-        "coffee-script":"*"
+        "sk": "*",
+        "vine": "*",
+        "mime": "*",
+        "gumbo": "*",
+        "cashew": "*",
+        "structr": "*",
+        "coffee-script": "*"
     },
     "devDependencies": {
-        "ebnf-diagram":"*"
+        "ebnf-diagram": "*"
     },
-    
     "main": "./lib/node/index.js"
 }
