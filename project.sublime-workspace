@@ -67,10 +67,18 @@
 			}
 		},
 		{
+			"file": "/tmp/subl stdin zRIehr.txt",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "lib/core/concrete/request.js",
 			"settings":
 			{
-				"buffer_size": 5391,
+				"buffer_size": 5938,
 				"line_ending": "Unix"
 			}
 		},
@@ -103,6 +111,22 @@
 			"settings":
 			{
 				"buffer_size": 6968,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 561,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/tmp/subl stdin jm41GN.txt",
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		}
@@ -148,6 +172,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"'param'",
+			"param",
+			".param",
+			"param",
+			"next",
+			"next =",
+			"this.data",
+			"Structr.copy",
 			"_add",
 			"_add'",
 			"add'",
@@ -371,8 +403,61 @@
 						"selection":
 						[
 							[
-								537,
-								540
+								295,
+								295
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2204.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/tmp/subl stdin zRIehr.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "lib/core/concrete/request.js",
+					"settings":
+					{
+						"buffer_size": 5938,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								130,
+								130
 							]
 						],
 						"settings":
@@ -387,34 +472,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "lib/core/concrete/request.js",
-					"settings":
-					{
-						"buffer_size": 5391,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3807,
-								3807
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2761.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "lib/core/concrete/router.js",
 					"settings":
 					{
@@ -425,8 +483,8 @@
 						"selection":
 						[
 							[
-								212,
-								212
+								231,
+								231
 							]
 						],
 						"settings":
@@ -435,13 +493,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1395.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "/tmp/subl stdin C3ZE66.txt",
 					"settings":
 					{
@@ -467,7 +525,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "examples/wrap-around/index.js",
 					"settings":
 					{
@@ -493,7 +551,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "lib/core/concrete/collection.js",
 					"settings":
 					{
@@ -504,8 +562,8 @@
 						"selection":
 						[
 							[
-								1670,
-								1670
+								4424,
+								4424
 							]
 						],
 						"settings":
@@ -514,7 +572,61 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1531.0,
+						"translation.y": 3031.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "package.json",
+					"settings":
+					{
+						"buffer_size": 561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								428,
+								428
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/tmp/subl stdin jm41GN.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
