@@ -56,10 +56,7 @@
 			}
 		},
 		{
-			"contents": "`var Structr = require('structr'),\nrouteMiddleware = require('./middleware/route'),\nmetaMiddleware = require('./middleware/meta'),\nParser = require('./concrete/parser'),\nJanitor = require('sk/core/garbage').Janitor,\nutils = require('./concrete/utils');\n\nvar AbstractController = Structr({\n	\n	/**\n	 */\n\n\n	'__construct': function(target)\n	{\n		this.metaMiddleware = metaMiddleware(this);\n		this.routeMiddleware = routeMiddleware(this);\n\n		this.metaMiddleware.init();\n		this.routeMiddleware.init();\n\n		this._channels = {};\n	},\n\n	/**\n	 */\n\n	'has': function(type, ops)\n	{\n		var expr = this._parse(type, ops);\n		return this._router(expr).hasRoutes(expr);\n	},\n\n	/**\n	 */\n\n	'getRoute': function(type, ops)\n	{\n		var expr = this._parse(type, ops);\n		return this._router(expr).getRoute(utils.channel(expr, 0));\n	},\n\n	/**\n	 */\n\n	'on': function(target)\n	{\n		var ja = new Janitor();\n\n		for(var type in target)\n		{\n			ja.addDisposable(this.on(type, {}, target[type]));\n		}\n\n		return ja;\n	},\n\n	/**\n	 */\n\n	'second on': function(type, callback)\n	{\n		return this.on(type, {}, callback);\n	},\n\n	/**\n	 */\n\n	'third on': function(type, ops, callback)\n	{\n		var expr = this._parse(type, ops),\n		router = this.routeMiddleware.router(expr);\n\n		for(var i = expr.channels.length; i--;)\n		{\n			var pathStr = utils.pathToString(expr.channels[i].paths);\n\n			if(!this._channels[pathStr])\n			{\n				this.addChannel(pathStr, Structr.copy(utils.channel(expr, i)));\n			}\n		}\n		\n		return router.on(expr, ops, callback);\n	},\n\n	/**\n	 */\n\n	'channels': function()\n	{\n		return this._channels;\n	},\n\n	/**\n	 */\n\n	'addChannel': function(path, singleChannel)\n	{\n		for(var prop in singleChannel.meta)\n		{\n			singleChannel.meta[prop] = '*';\n		}\n\n		this._channels[path] = singleChannel;\n	},\n\n	/**\n	 * flavor picker for operations. In the string, or in the ops ;)\n	 */\n\n	'_parse': function(type, ops)\n	{\n		var expr = typeof type != 'object' ? Parser.parse(type) : Structr.copy(type);\n		\n		if(ops)\n		{\n			if(ops.meta) Structr.copy(ops.meta, expr.meta);\n			if(ops.type) expr.type = ops.type;\n		}\n\n		return expr;\n	},\n\n	/**\n	 */\n\n	'_router': function(expr)\n	{\n		return this.routeMiddleware.router(expr);\n	},\n\n	/**\n	 */\n\n	'_createTypeMethod': function(method)\n	{\n		var self = this;\n\n		var func = this[ method ] = function(channel, data, ops, callback)\n		{\n			if(!ops) ops = {};\n			ops.type = method;\n\n			var expr = this._parse(channel, ops);\n\n			return self._router(expr).dispatch(expr, data, ops, callback);\n		}\n\n\n		var router = self._router( { type: method });\n\n\n		Structr.copy(router, func, true);\n\n	}\n});\n\n\nvar ConcreteController = AbstractController.extend({\n	\n	/**\n	 */\n\n	'override __construct': function()\n	{\n		this._super();\n\n		var self = this;\n		\n		//make channels data-bindable\n		this.on({\n			\n			/**\n			 */\n\n			'pull channels': function()\n			{\n				return self.channels();\n			}\n		});\n	},\n\n	/**\n	 */\n\n	'override addChannel': function(path, singleChannel)\n	{\n		this._super(path, singleChannel);\n\n		//keep the same format as the channels so the end-point is handled exactly the same\n		var toPush = {};\n\n		toPush[path] = singleChannel;\n\n		this.push('channels', toPush, { ignoreWarning: true });\n	}\n})\n\nmodule.exports = ConcreteController;",
 			"file": "lib/core/controller.js",
-			"file_size": 3183,
-			"file_write_time": 1324953875000000,
 			"settings":
 			{
 				"buffer_size": 3184,
@@ -126,7 +123,7 @@
 			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 561,
+				"buffer_size": 582,
 				"line_ending": "Unix"
 			}
 		},
@@ -143,6 +140,30 @@
 			"settings":
 			{
 				"buffer_size": 3549,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/tmp/subl stdin 7Ee6cu.txt",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/core/concrete/parser.js",
+			"settings":
+			{
+				"buffer_size": 9876,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/tmp/subl stdin reL1XM.txt",
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		}
@@ -188,6 +209,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"parse",
+			"OR",
 			"redirect",
 			"'param'",
 			"param",
@@ -247,7 +270,7 @@
 	"groups":
 	[
 		{
-			"selected": 16,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -367,8 +390,8 @@
 						"selection":
 						[
 							[
-								7728,
-								7728
+								724,
+								726
 							]
 						],
 						"settings":
@@ -377,7 +400,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4506.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -420,8 +443,8 @@
 						"selection":
 						[
 							[
-								295,
-								295
+								2038,
+								2038
 							]
 						],
 						"settings":
@@ -430,7 +453,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 1230.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -625,15 +648,15 @@
 					"file": "package.json",
 					"settings":
 					{
-						"buffer_size": 561,
+						"buffer_size": 582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								428,
-								428
+								0,
+								0
 							]
 						],
 						"settings":
@@ -697,6 +720,85 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 1020.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "/tmp/subl stdin 7Ee6cu.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "lib/core/concrete/parser.js",
+					"settings":
+					{
+						"buffer_size": 9876,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								323,
+								323
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "/tmp/subl stdin reL1XM.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
