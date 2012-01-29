@@ -17,7 +17,7 @@ module.exports = class
 	 constructor
 	###
 	
-	constructor: (@router) ->
+	constructor: (@name, @router) ->
 		@_collection = dolce.collection()
 
 	###
@@ -76,6 +76,19 @@ module.exports = class
 	###
 	
 	hasListeners: (route) -> @getListeners(route).length
+
+	###
+	###
+
+	channels: (ops) ->
+		
+		channels = []
+
+		for listener in @_collection.find ops
+			(tags: listener.tags,
+			type: @name,
+			path: listener.path)
+
 
 
 	###

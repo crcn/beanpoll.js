@@ -2,9 +2,9 @@ Director = require "./director"
 
 module.exports = (router) -> 
 	
-	director = new Director(router)
+	director = new Director("push", router)
 
-	name: "push"
+	name: director.name
 
 	director: director
 		
@@ -16,9 +16,8 @@ module.exports = (router) ->
 
 		push: (data) ->
 
-			writer = @dispatch "push"
+			writer = @dispatch director.name
 
-			
 
 			# if data exists, then we're done.
 			writer.end data if !!arguments.length

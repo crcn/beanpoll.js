@@ -5,14 +5,14 @@ outcome = require "outcome"
 
 module.exports = (router) ->
 	
-	director = new Director(router)
+	director = new Director("collect", router)
 
-	name: "collect"
+	name: director.name
 
 	director: director
 
 	router: 
-		collect: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, "collect"
+		collect: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, director.name
 
 	newListener: (listener) ->
 
@@ -22,4 +22,4 @@ module.exports = (router) ->
 		
 	
 	message: 
-		collect: (query, callback) -> @_pull query, callback, 'collect'
+		collect: (query, callback) -> @_pull query, callback, director.name

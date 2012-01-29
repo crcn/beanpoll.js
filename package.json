@@ -1,7 +1,7 @@
 {
     "name": "beanpoll",
     "description": "Routing on Steroids",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "author": "Craig Condon",
     "repository": {
         "type": "git",
@@ -13,14 +13,14 @@
     "dependencies": {
         "crema": "<0.2.0",
         "underscore": "*",
-        "dolce":"<0.2.0"
+        "dolce": "<0.2.0"
     },
     "devDependencies": {
         "ebnf-diagram": "*",
         "vows": "<0.7.0",
         "haba": "<0.1.0",
         "outcome": "<0.2.0",
-        "disposable":"0.0.1"
+        "disposable": "0.0.1"
     },
     "main": "./lib/index.js"
 }

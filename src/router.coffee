@@ -75,6 +75,18 @@ class Router
 		# finally return self
 		listenerDisposables
 
+	###
+	###
+
+	channels: (ops) -> 
+
+		channels = []
+
+		for name of @directors
+			director = @directors[name]
+			channels = channels.concat director.channels ops
+
+		return channels
 	
 	###
 	 abreviated

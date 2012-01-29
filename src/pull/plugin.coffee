@@ -3,9 +3,9 @@ outcome = require "outcome"
 
 module.exports = (router) -> 
 	
-	director = new Director(router)
+	director = new Director("pull", router)
 
-	name: "pull"
+	name: director.name
 
 
 	###
@@ -27,7 +27,7 @@ module.exports = (router) ->
 	###
 
 	router: 
-		pull: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, 'pull'
+		pull: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, director.name
 		_pull: (channel, query, headers, callback, type) ->
 		
 			if typeof query == 'function'
@@ -46,7 +46,7 @@ module.exports = (router) ->
 	###
 
 	message: 
-		pull: (query, callback) -> @_pull query, callback, 'pull'
+		pull: (query, callback) -> @_pull query, callback, director.name
 		_pull: (query, callback, type) ->
 		
 			if typeof query == 'function'
