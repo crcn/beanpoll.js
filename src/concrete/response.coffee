@@ -32,8 +32,8 @@ module.exports = class Response extends Writer
 	###
 
 	sendHeaders: () ->
-		if @_headersSent then return @
-		@_headersSent = true
+		if @sentHeaders then return @
+		@sentHeaders = true
 		@emit "headers", headers
 		@
 

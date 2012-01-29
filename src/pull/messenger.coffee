@@ -7,8 +7,6 @@ module.exports = class extends Messenger
 	###
 
 	start: () ->
-		@response = new Response @
-		@response.reader().dump (() => @message.callback.apply @message, arguments), @message.headers
 		super()
 
 	###

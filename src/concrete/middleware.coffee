@@ -17,13 +17,16 @@ module.exports = class Middleware extends LinkedList
  Wraps the chained callbacks in middleware 
 ###
 
-Middleware.wrap = (chain, director) ->
+Middleware.wrap = (chain, next, director) ->
 
 	for item in chain
 		current = new Middleware item, director
 		current.addPrevSibling prev, true if prev
 		prev = current
 
+
+	if typeof next == 'function'
+		current.addNextSibling new Middleware value: next, params: {}, tags: {}, channel: paths: []
 
 		
 	current.getFirstSibling()

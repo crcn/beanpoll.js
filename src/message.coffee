@@ -22,9 +22,11 @@ class MessageWriter extends Writer
 	###
 
 	constructor: (@_ops) -> 
-		@channel = _ops.channel
-		@tags    = _ops.tags
+		@channel  = _ops.channel
+		@tags     = _ops.tags
 		@callback = _ops.callback
+		@next	  = _ops.next
+
 		super()
 
 
@@ -73,6 +75,8 @@ exports.Builder = class
 	tag: (key, value) ->
 		return @_ops.tags if !arguments.length
 
+		@_ops.tags = {} if not @_ops.tags
+
 		if typeof key == 'string' 
 			if arguments.length == 1 then return @_ops.tags[key]
 
@@ -85,8 +89,12 @@ exports.Builder = class
 	###
 	###
 
-	hasListeners: () -> 
-		@director.hasListeners(channel: @_ops.channel, tags: @_ops.tags)
+	hasListeners: (search) -> 
+		search = search ? { tags: @_ops.tags }
+		!!@director.getListeners(channel: @_ops.channel, search).length
+
+	###
+	###
 
 	type: (value) ->
 		return @_ops.type if !arguments.length
@@ -102,40 +110,33 @@ exports.Builder = class
 	###
 	###
 
-	channel: (value) ->
-		return @_ops.channel if !arguments.length
-		@_ops.channel = value || {}
-		@
+	channel: (value) -> @_param 'channel', arguments
 
 	### 
 	 Query would be something like ?name=craig&last=condon
 	###
 
-	query: (value) ->
-		return @_ops.query if !arguments.length
-		@_ops.query = value || {}
-		@
+	query: (value) -> @_param 'query', arguments
 
 
 	###
 	 The header data explaining the message, such as tags, content type, etc.
 	###
 
-	headers: (value) ->
-		return @_ops.headers if !arguments.length
-		@_ops.headers = value || {}
-		@
+	headers: (value) -> @_param 'headers', arguments
 		
-
 	###
 	 response handler, or ack
 	 deprecated
 	###
 
-	response: (callback) ->
-		return @_ops.callback if !arguments.length
-		@_ops.callback = callback
-		@
+	response: (callback) -> @_param 'callback', arguments 
+
+	###
+	 append middleware to the end 
+	###
+
+	next: (middleware) -> @_param 'next', arguments
 
 	###
 	###
@@ -145,4 +146,12 @@ exports.Builder = class
 		writer = new MessageWriter @_ops
 		@director.dispatch writer
 		writer
+
+	###
+	###
+
+	_param: (name, args) ->
+		return @_ops[name] if !arguments.length
+		@_ops[name] = args[0]
+		@
 

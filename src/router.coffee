@@ -1,11 +1,11 @@
 crema 		   = require "crema"
 MessageBuilder = require("./message").Builder
-pushPlugin     = require("./push/plugin")
-pullPlugin     = require("./pull/plugin")
-collectPlugin  = require("./collect/plugin")
+pushPlugin     = require "./push/plugin"
+pullPlugin     = require "./pull/plugin"
+collectPlugin  = require "./collect/plugin"
 plugins        = require "./plugins"
 disposable	   = require "disposable"
-
+_              = require "underscore"
 
 
 class Router
@@ -44,7 +44,12 @@ class Router
 	 listens for a request
 	###
 	
-	on: (routeOrListeners, callback) ->
+	on: (routeOrListeners, ops, callback) ->
+		
+		if typeof ops == 'function' 
+			callback = ops
+			ops = {}
+			
 
 		listenerDisposables = disposable.create()
 		
@@ -65,8 +70,12 @@ class Router
 						
 		for route in routes
 			do (route) =>	
-				listenerDisposables.add @directors[route.type].addListener(route, callback)
 
+				route.type = ops.type if ops.type
+				_.extend route.tags, ops.tags if ops.tags
+				
+
+				listenerDisposables.add @directors[route.type].addListener(route, callback)
 
 				## notify the plugins of a new listener
 				@_plugins.newListener route: route, callback: callback
@@ -74,6 +83,18 @@ class Router
 		
 		# finally return self
 		listenerDisposables
+
+	###
+	###
+
+	routeExists: (ops) -> 
+		ops.channel = crema.parseChannel ops.channel if typeof ops.channel == 'string'
+
+		if not ops.type
+			for type of @directors
+				return true if @directors[type].routeExists ops
+
+		return @directors[ops.type].routeExists(ops);
 
 	###
 	###

@@ -1,4 +1,5 @@
 LinkedQueue = require "../collections/linkedQueue"
+Response = require "./response"
 
 module.exports = class extends LinkedQueue
 	
@@ -9,6 +10,10 @@ module.exports = class extends LinkedQueue
 	constructor: (@message, @first, @director) ->
 		@router   = director.router 
 		super first
+			
+		# ack callback
+		@response = new Response @
+		@response.reader().dump (() => @message.callback.apply @message, arguments), @message.headers
 	
 
 	###

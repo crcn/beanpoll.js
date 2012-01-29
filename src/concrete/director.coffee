@@ -55,7 +55,7 @@ module.exports = class
 			messageReader = messageWriter.reader()
 
 			# wrap the middleware  
-			middleware   = RequestMiddleware.wrap chain, @
+			middleware   = RequestMiddleware.wrap chain, messageWriter.next, @
 
 			# pass through the factory class which creates a new request, OR uses a recycled request 
 			messanger	     = @_newMessenger messageReader, middleware
@@ -71,11 +71,6 @@ module.exports = class
 	addListener: (route, callback) ->
 		@_collection.add route, callback
 
-	###
-	 adds a route listener to the collection tree
-	###
-	
-	hasListeners: (route) -> @getListeners(route).length
 
 	###
 	###
@@ -90,12 +85,33 @@ module.exports = class
 			path: listener.path)
 
 
+	###
+	###
+
+	listenerQuery: (ops) ->
+
+		tags = []
+		tag = {}
+
+		for tagName of ops.tags
+			ops.tags[tagName] = $exists: true if ops.tags[tagName] is true
+			tag = {}
+			tag[tagName] = ops.tags[tagName]
+			tags.push(tags)
+
+		search = $or: [ { $and: tags }, { unfilterable: $exists: true } ]
 
 	###
 	###
 	
-	getListeners: (route) -> @_collection.get(route.channel, tags: route.tags).chains
+	getListeners: (route) -> @_collection.get(route.channel, siftTags: @listenerQuery(route) ).chains
 		
+	###
+	###
+
+	routeExists: (route) -> @_collection.contains(route.channel, siftTags: @listenerQuery(route) )
+
+
 	###
 	 returns a new request
 	###

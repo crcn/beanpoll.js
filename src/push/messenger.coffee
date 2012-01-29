@@ -9,7 +9,7 @@ module.exports = class extends Messenger
 	start: () ->
 
 		# immediate ack
-		@message.callback()
+		@response.end()
 
 
 		super()
