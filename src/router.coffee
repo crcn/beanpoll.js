@@ -1,8 +1,12 @@
-MessageWriter = require("./message").Writer
-crema = require "crema"
-PullDispatcher = require "./pull/dispatcher"
-PushDispatcher = require "./push/dispatcher"
-CollectDispatcher = require "./collect/dispatcher"
+crema 		   = require "crema"
+MessageBuilder = require("./message").Builder
+pushPlugin     = require("./push/plugin")
+pullPlugin     = require("./pull/plugin")
+collectPlugin  = require("./collect/plugin")
+plugins        = require "./plugins"
+disposable	   = require "disposable"
+
+
 
 class Router
 	
@@ -10,24 +14,47 @@ class Router
 	###
 	
 	constructor: () ->
+		
+		# gets plugged into by the plugin handler
+		@directors = {}
 
-		@_dispatchers = 
-			pull: new PullDispatcher 
-			push: new PushDispatcher 
-			collect: new CollectDispatcher
+		@_messageBuilder = new MessageBuilder @
+
+		# registers the plugins to the router, and message writer
+		@_plugins = new plugins @
+
+		# register the default plugins
+		# 1-many notification
+		@use pushPlugin
+
+		# 1-1 request
+		@use pullPlugin
+
+		# 1-many request
+		@use collectPlugin
+
+	###
+	 uses a dispatcher
+	###
+
+	use: (plugin) -> @_plugins.add plugin
+		
 		
 	###
 	 listens for a request
 	###
 	
 	on: (routeOrListeners, callback) ->
+
+		listenerDisposables = disposable.create()
 		
 		# easier setting up listeners if it's an object vs
 		# calling .on each time
 		if typeof routeOrListeners == "object" and not callback
 			for type of routeOrListeners
-				@.on type, routeOrListeners[type]
-			return @
+				listenerDisposables.add @.on(type, routeOrListeners[type])
+			return listenerDisposables
+
 
 		if typeof routeOrListeners == "string" 
 			routes = crema routeOrListeners
@@ -37,32 +64,16 @@ class Router
 			routes = [routeOrListeners]
 						
 		for route in routes
-			do (route) =>
-				@_dispatchers[route.type].addRouteListener route, callback
+			do (route) =>	
+				listenerDisposables.add @directors[route.type].addListener(route, callback)
 
-				# bindings
-				if route.tags.collect or route.tags.pull
-					@request(route.channel)[if route.tags.collect then 'collect' else 'pull'] (err, response) ->
-						callback(response)
+
+				## notify the plugins of a new listener
+				@_plugins.newListener route: route, callback: callback
 					
 		
 		# finally return self
-		@
-
-	###
-	 Initializes a new request
-	###
-
-	request: (channel, query, headers) ->
-
-		# writer = MessageWriter.create().prepare 
-		
-		writer =  new MessageWriter (if typeof channel is "string" then crema.parseChannel(channel) else channel), @
-		writer.options
-			query: query
-			headers: headers
-		
-		writer
+		listenerDisposables
 
 	
 	###
@@ -70,45 +81,20 @@ class Router
 	###
 
 	req: () -> @request.apply this, arguments
-		
-	###
-	 Pulls a request (1-to-1) - expects a return
-	###
-	
-
-	pull: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, "pull"
-	
 
 	###
+	 Initializes a new request
 	###
 
-	collect: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, "collect"
-
-	###
-	 Pushes a request (1-to-many) - NO return
-	###
-	
-	push: (channel, data, query, headers) ->
-		
-		@request(channel, query, headers).push data
-
-
-	###
-	###
-
-	_pull: (channel, query, headers, callback, type) ->
-		
-		if typeof query == 'function'
-			callback = query
-			headers  = null
-			query    = null
+	request: (channel, query, headers) ->
 			
-		if typeof headers == 'function'
-			callback = headers
-			headers  = null
-
-				
-		@request(channel, query, headers)[type] callback
+		@_messageBuilder.
+		clean().
+		channel(if typeof channel is "string" then crema.parseChannel(channel) else channel).
+		query(query).
+		headers(headers);
 
 		
-module.exports = Router;
+
+
+module.exports = Router

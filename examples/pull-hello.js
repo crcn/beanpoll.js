@@ -7,23 +7,24 @@ router.on({
 	/**
 	 */
 
-	'pull -userid=param auth/:userid': function(req, res) {
-		req.next()
+	'pull -userid=param auth/:userid': function(req, res, mw) {
+		mw.next()
 	},
 	
 	/**
 	 */
 	
-	'pull timeout -> timout -> timout -> timeout -> hello/world': function(req, res) {
+	'pull timeout -> timout -> timout -> timeout -> hello/:name': function(req, res) {
 
+		console.log("DUMP")
 		req.dump({
 			
 			data: function(data) {
 				console.log(data);
 			},
 
-			end: function(data) {
-				console.log('END');
+			end: function() {
+				res.end("RESPONSE");
 			}
 		})
 	},
@@ -31,20 +32,20 @@ router.on({
 	/**
 	 */
 
-	'pull timout': function(req) {
+	'pull timout': function(req, res, mw) {
 		console.log("TIMOUT")
-		req.next();
+		mw.next();
 	},
 
 	/**
 	 */
 
-	'pull timout -> timeout': function(req) {
+	'pull timout -> timeout': function(req, res, mw) {
 		console.log("TIMEOUT")
 		
 		setTimeout(function() {
 			console.log("NEXT");
-			req.next();
+			mw.next();
 		}, 100)
 	},
 
@@ -61,16 +62,8 @@ var start = Date.now();
 
 
 
-// for(var i = 5000; i--;)
-// var msg = router.push('hello/world', 'fsdfs');
+router.request('hello/world').pull(function(err, result) {
+	console.log(result);
+}).end('FINISH')
 
-router.request('hello/world').pull(function(err) {
-	
-});
-
-console.log(Date.now() - start);
-// msg.write('data');
-// msg.end('flag')
-
-// console.log("PULL")
 

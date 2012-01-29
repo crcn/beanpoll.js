@@ -24,6 +24,14 @@ router.on({
 	/**
 	 */
 
+	"pull -method=DELETE OR -method=PUT /**": function(req, res, mw) {
+		console.log("GREEDY MIDDLEWARE")
+		mw.next();
+	},
+
+	/**
+	 */
+
 	"pull -method=DELETE hello/world": function(req, res) {
 		res.end("DEL");
 	}
@@ -31,7 +39,19 @@ router.on({
 
 
 router.req("hello/world").
-tags({ method: 'GET' }).
+tag({ method: 'DELETE' }).
+pull(function(err, response) {
+	console.log(response)
+});
+
+router.req("hello/world").
+tag({ method: 'PUT' }).
+pull(function(err, response) {
+	console.log(response)
+});
+
+router.req("hello/world").
+tag({ method: 'POST' }).
 pull(function(err, response) {
 	console.log(response)
 });

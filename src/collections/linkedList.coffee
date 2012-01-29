@@ -7,32 +7,34 @@ module.exports = class LinkedList
 	
 	###
 	###
-	addNextSibling: (sibling) ->
+	addNextSibling: (sibling, replNext) ->
 		@_nexSibling._prevSibling = sibling if !!@_nextSibling; 
 		sibling._prevSibling = @
-		sibilng._nextSibling = @_nextSibling
+		sibling._nextSibling = @_nextSibling if not replNext
 		@_nextSibling 		 = sibling
 		
 	###
 	###
+
 	getPrevSibling: () ->
 		return @_prevSibling
 		
 	###
 	###
-	addPrevSibling: (sibling) ->
+	addPrevSibling: (sibling, replPrev) ->
 		@_prevSibling._nextSibling = sibling if !!@_prevSibling;
 		sibling._nextSibling = @
-		sibling._prevSibling = @_prevSibling
+		sibling._prevSibling = @_prevSibling if not replPrev
 		@_prevSibling = sibling
 		
 	###
 	###
 	getFirstSibling: () ->
 		first = @
+
 		
 		first = first._prevSibling while !!first._prevSibling
-		
+
 		return first
 	
 	###

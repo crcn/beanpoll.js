@@ -89,7 +89,34 @@ and
 - examples:
 	- request to http-exposed route       
 	
+#### Collect Routes:
+
+- Used to request data from many listeners (1 to many, similar to pull).
+- Expects a response.
+
+
+## Custom Routes
+
+You can easily create custom route handlers. For example:
+
+```javascript
+var router = beanpoll.router();
+
+router.use(function() {
 	
+
+	return {
+		
+		/**
+		 */
+
+		message: {
+			
+		}
+	}
+});
+
+```
 
 
 

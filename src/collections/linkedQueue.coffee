@@ -3,7 +3,7 @@ EventEmitter = require('events').EventEmitter
 
 module.exports = class LinkedQueue extends EventEmitter
 	
-	_hasNext: true
+	hasNext: true
 	
 	###
 	 moves into the next
@@ -21,11 +21,11 @@ module.exports = class LinkedQueue extends EventEmitter
 	next: ->
 
 		# no more middleware? return false - flag that we cannot continue
-		return false if !@_hasNext
+		return false if !@hasNext
 
 		@_setNext()
 
-		@_onNext @current
+		@_onNext @current, arguments
 
 		# return true since the next route has been executed successfuly
 		return true
@@ -36,21 +36,14 @@ module.exports = class LinkedQueue extends EventEmitter
 
 	skipNext: (count) ->
 
-		return false if !!@_hasNext
+		return false if !!@hasNext
 
-		while count-- and @_hasNext
+		while count-- and @hasNext
 			@_setNext()
 
 		@_onNext @current
 
 		return true
-
-	###
-	 flag whether we can continue with middleware
-	###
-
-	hasNext: ->
-		@_hasNext
 
 
 	###
@@ -58,9 +51,9 @@ module.exports = class LinkedQueue extends EventEmitter
 	
 	_setNext: ->
 		@current = if !!@current then @current.getNextSibling() else @first
-		@_hasNext = !!@current.getNextSibling()
+		@hasNext = !!@current.getNextSibling()
 
-		if !@_hasNext then @emit "queueComplete"
+		if !@hasNext then @emit "queueComplete"
 		
 	###
 	###

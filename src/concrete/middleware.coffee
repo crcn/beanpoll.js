@@ -6,25 +6,25 @@ module.exports = class Middleware extends LinkedList
 	 constructor 
 	###
 	
-	constructor: (@channel, @listener) ->
-		@route = listener.route
+	constructor: (item, @director) ->
+		@listener = item.value
+		@channel  = paths: item.paths
+		@params   = item.params
+		@tags 	  = item.tags
 	
 
-Middleware.expand = (channel, listener, dispatcher) ->
-	
-	currentMiddleware = listener.route.thru
-	last = current    = new Middleware channel, listener
+###
+ Wraps the chained callbacks in middleware 
+###
 
-	while !!currentMiddleware
+Middleware.wrap = (chain, director) ->
+
+	for item in chain
+		current = new Middleware item, director
+		current.addPrevSibling prev, true if prev
+		prev = current
+
+
 		
-		middleware = dispatcher._collection.getRouteListeners currentMiddleware.channel
-		
-		for mw in middleware
-			current = Middleware.expand currentMiddleware.channel, mw, dispatcher
-			last.addPrevSibling current.getLastSibling()
-			last = current.getFirstSibling()
-		
-		currentMiddleware = currentMiddleware.thru
-		
-	last.getFirstSibling()
+	current.getFirstSibling()
 			

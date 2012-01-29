@@ -8,7 +8,6 @@ module.exports = class Response extends Writer
 
 	constructor: (@_messanger)  ->
 		super()
-		@reader = @_newReader()
 		@_headers = {}
 
 		

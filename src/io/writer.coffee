@@ -3,6 +3,8 @@ Reader = require "./reader"
 
 module.exports = class Writer extends Stream
 	
+	constructor: () ->
+		@setMaxListeners(0)
 	
 	###
 	###
@@ -26,7 +28,7 @@ module.exports = class Writer extends Stream
 	###
 	###
 
-	_newReader: () ->
+	reader: () ->
 		return new Reader @
 	
 Writer::writable = true

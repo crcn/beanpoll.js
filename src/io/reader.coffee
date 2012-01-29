@@ -10,6 +10,9 @@ module.exports = class Reader extends Stream
 	constructor: (@source, ops) ->
 		super()
 
+		@setMaxListeners(0)
+
+
 		if source
 			source.on "data", (data) => @emit "data", data
 			source.on "end", (data) => @emit "end"
@@ -62,6 +65,7 @@ module.exports = class Reader extends Stream
 		@source?.destroySoon?()
 
 	###
+	 flags the reader that data should be cached as it's coming in.
 	###
 
 	cache: (value) ->
@@ -75,7 +79,6 @@ module.exports = class Reader extends Stream
 	###
 
 	dump: (callback, ops) ->
-
 
 		ops = {} if not ops
 
@@ -96,6 +99,7 @@ module.exports = class Reader extends Stream
 			return if not @_cache
 
 		buffer =  []
+
 
 		onEnd = (err) =>
 			

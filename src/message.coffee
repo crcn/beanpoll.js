@@ -5,38 +5,52 @@ Writer = require "./io/writer"
 
 
 
-class Message extends Reader
+class MessageReader extends Reader
 	
 	###
 	 constructor
 	###
 	
-	constructor: (writer, @channel, @query = {}, @headers = {}, @tags = {}, @callback) ->
+	constructor: (@writer, @channel, @query = {}, @headers = {}, @tags = {}, @callback) ->
 		super writer
 
+		
 
-
-	
-	
-	
-exports.Writer = class MessageWriter extends Writer
+class MessageWriter extends Writer
 
 	###
 	###
 
-	constructor: (@channel, @router, @_ops) ->
+	constructor: (@_ops) -> 
+		@channel = _ops.channel
+		@tags    = _ops.tags
+		@callback = _ops.callback
 		super()
 
+
 	###
 	###
 
-	prepare: (@channel, @router, @_ops) ->
-		@
+	reader: (index, numListeners) ->
+		return new MessageReader @, 
+			@channel, 
+			@_ops.query,
+			@_ops.headers,
+			@tags,
+			@callback
 
+	
+	
+exports.Builder = class
+
+	###
+	###
+
+	constructor: (@router) ->
 
 	###
 	 options which control how the request
-	 is handled
+	 is handled. This can fill out the entire request vs using the methods given
 	###
 
 	options: (value) ->
@@ -45,10 +59,12 @@ exports.Writer = class MessageWriter extends Writer
 		@
 
 	###
-	 returns number of listeners based on type and passed channel
 	###
 
-	numListeners: (type) -> @router._dispatchers[type].numListeners(@channel)
+	clean: () ->
+		@_ops = {}
+		@
+
 
 	###
 	 filterable tags
@@ -66,7 +82,33 @@ exports.Writer = class MessageWriter extends Writer
 
 		@
 
+	###
+	###
+
+	hasListeners: () -> 
+		@director.hasListeners(channel: @_ops.channel, tags: @_ops.tags)
+
+	type: (value) ->
+		return @_ops.type if !arguments.length
+		@_ops.type = value || {}
+
+		@director = @router.directors[value]
+
+		throw new Error "type #{value} does not exist" if not @director
+
+		@
+		
+	
+	###
+	###
+
+	channel: (value) ->
+		return @_ops.channel if !arguments.length
+		@_ops.channel = value || {}
+		@
+
 	### 
+	 Query would be something like ?name=craig&last=condon
 	###
 
 	query: (value) ->
@@ -76,6 +118,7 @@ exports.Writer = class MessageWriter extends Writer
 
 
 	###
+	 The header data explaining the message, such as tags, content type, etc.
 	###
 
 	headers: (value) ->
@@ -85,7 +128,7 @@ exports.Writer = class MessageWriter extends Writer
 		
 
 	###
-	 response handler for pull requests
+	 response handler, or ack
 	 deprecated
 	###
 
@@ -95,85 +138,11 @@ exports.Writer = class MessageWriter extends Writer
 		@
 
 	###
-	 acknowledge callback
 	###
 
-	ack: (callback) -> @response callback
-
-	###
-	###
-
-	pull: (query, callback) -> @_pull query, callback, @router._dispatchers.pull
-
-	###
-	###
-
-	collect: (query, callback) -> @_pull query, callback, @router._dispatchers.collect
-
-
-	###
-	###
-
-	push: (data) ->
-		
-		msg = @_newReader()
-
-		# push the request now
-		@router._dispatchers.push.dispatch msg
-
-		@end data if data != undefined
-
-		# return self so we can start piping stuff
-		@
-
-
-	###
-	###
-
-	_pull: (query, callback, dispatcher) ->
-		
-		if typeof query == 'function'
-			callback = query
-			query    = null
-
-		@query(query) if !!query
-		@ack(callback) if !!callback
-
-		# start piping data to the new reader
-		msg = @_newReader()
-
-		# pull the request now
-		dispatcher.dispatch msg
-
-		# return self so we can start piping stuff
-		@
-
-	###
-	###
-
-	# end: (data, encoding) ->
-	#	super data, encoding
-	#	MessageWriter.pool.push @
-
-	###
-	###
-
-	# clean: () ->
-	#	@_events = {};
-
-	###
-	###
-
-	_newReader: () ->
-
-		new Message @, 
-			@channel, 
-			@_ops.query,
-			@_ops.headers,
-			@_ops.tags,
-			@_ops.callback
-
-
-
-# require('./pool').poolable exports.Writer
+	dispatch: (type) ->
+		@type type if type
+		writer = new MessageWriter @_ops
+		@director.dispatch writer
+		writer
 
