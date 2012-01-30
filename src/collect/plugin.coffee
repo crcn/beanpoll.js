@@ -12,7 +12,7 @@ module.exports = (router) ->
 	director: director
 
 	router: 
-		collect: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, director.name
+		collect: (channel, query, headers, callback) ->  @_pull channel, query, headers, callback, director.name
 
 	newListener: (listener) ->
 

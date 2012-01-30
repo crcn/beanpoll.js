@@ -5,6 +5,7 @@ Messenger = require "./messenger"
 
 module.exports = class extends Director
 	
+	passive: false
 
 	###
 	###

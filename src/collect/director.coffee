@@ -4,6 +4,7 @@ Director = require "../pull/director"
 
 module.exports = class extends Director
 	
+	passive: true
 
 	###
 	###

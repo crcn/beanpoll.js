@@ -12,6 +12,8 @@ Director process:
 
 
 module.exports = class
+
+	passive: false
 	
 	###
 	 constructor
@@ -46,6 +48,11 @@ module.exports = class
 		messageWriter.callback = () ->
 			messageWriter.running = !!(--numRunning)
 			oldAck.apply this, Array.prototype.concat.apply([], arguments, [numRunning, numChains]) if oldAck
+
+
+		if not !!chains.length and not @passive
+			messageWriter.callback new Error "Route \"#{crema.stringifyPaths(messageWriter.channel.paths)}\" does not exist" 
+			return @
 			
 		# in pull bases, there will only be one listener. For push, there maybe multiple
 		for chain in chains

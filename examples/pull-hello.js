@@ -64,6 +64,13 @@ var start = Date.now();
 
 router.request('hello/world').pull(function(err, result) {
 	console.log(result);
-}).end('FINISH')
+}).end('FINISH');
+
+
+router.request('does/not/exist').error(function(err) {
+	console.log(err);
+}).
+success(function(result) {
+}).pull().end('Finish')
 
 
