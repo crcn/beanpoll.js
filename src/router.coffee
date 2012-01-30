@@ -98,6 +98,7 @@ class Router
 		if not ops.type
 			for type of @directors
 				return true if @directors[type].routeExists ops
+			return false
 
 		return @directors[ops.type].routeExists(ops);
 

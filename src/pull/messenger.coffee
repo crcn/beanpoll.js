@@ -1,5 +1,4 @@
 Messenger = require "../concrete/messenger"
-Response = require "./response"
 
 module.exports = class extends Messenger
 

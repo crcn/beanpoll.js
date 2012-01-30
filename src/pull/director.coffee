@@ -1,6 +1,5 @@
 Director = require "../concrete/director"
 Messenger = require "./messenger"
-Response  = require "./response"
 
 # 1 -> 1 request
 
