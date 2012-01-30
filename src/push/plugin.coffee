@@ -10,7 +10,7 @@ module.exports = (router) ->
 		
 	router: 
 
-		push: (channel, data, query, headers) -> @request(channel, query, headers).push data
+		push: (channel, query, headers) -> @request(channel, query, headers).push null
 
 	message: 
 
