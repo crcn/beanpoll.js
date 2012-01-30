@@ -38,7 +38,14 @@ module.exports = class extends LinkedQueue
 		@message.params = middleware.params
 			
 
-		@_next middleware, args
+		try
+
+			@_next middleware, args
+
+		catch e
+			
+			@response.error e
+
 
 	###
 	###
