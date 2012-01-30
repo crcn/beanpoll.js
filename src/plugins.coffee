@@ -8,11 +8,21 @@ module.exports = class
 
 	constructor: (@router) ->
 		@_pluginsByName = {}
+		@_using = [];
+
+	using: () -> @_using
 
 	###
 	###
 
 	add: (plugin) -> 
+
+		if plugin instanceof Array
+			for plg in plugin
+				@add plg
+			return
+		
+		@_using.push plugin
 
 		## create the module
 		mod = plugin @router

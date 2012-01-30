@@ -11,7 +11,7 @@ class MessageReader extends Reader
 	 constructor
 	###
 	
-	constructor: (@writer, @channel, @query = {}, @headers = {}, @tags = {}, @callback) ->
+	constructor: (@writer, @from, @channel, @query = {}, @headers = {}, @tags = {}, @callback) ->
 		super writer
 
 		
@@ -27,6 +27,7 @@ class MessageWriter extends Writer
 		@callback = _ops.callback
 		@next	  = _ops.next
 		@type     = _ops.type
+		@from	  = _ops.from
 
 		super()
 
@@ -36,6 +37,7 @@ class MessageWriter extends Writer
 
 	reader: (index, numListeners) ->
 		return new MessageReader @, 
+			@from,
 			@channel, 
 			@_ops.query,
 			@_ops.headers,
@@ -66,7 +68,7 @@ exports.Builder = class
 
 	clean: () ->
 		@_ops = {}
-		@to(@router)
+		@from(@router)
 		@
 
 
@@ -99,6 +101,11 @@ exports.Builder = class
 	###
 
 	type: (value) -> @_param 'type', arguments
+
+	###
+	###
+
+	from: (value) -> @_param 'from', arguments
 		
 	###
 	###
@@ -142,7 +149,7 @@ exports.Builder = class
 	dispatch: (type) ->
 		@type type if type
 		writer = new MessageWriter @_ops
-		@_ops.to.dispatch writer
+		@router.dispatch writer
 		writer
 
 	###

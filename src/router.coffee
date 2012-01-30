@@ -38,6 +38,11 @@ class Router
 	###
 
 	use: (plugin) -> @_plugins.add plugin
+
+	###
+	###
+
+	using: () -> @_plugins.using()
 		
 		
 	###
