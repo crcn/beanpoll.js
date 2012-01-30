@@ -86,7 +86,9 @@ module.exports = class Reader extends Stream
 		if typeof callback == 'object'
 			ops.stream = true
 			listeners = callback
-			callback = (stream) ->
+
+			# replace the callback now
+			callback = (err, stream) ->
 				for type of listeners 
 					stream.on type, listeners[type]
 					
@@ -95,7 +97,7 @@ module.exports = class Reader extends Stream
 		pipedStream = if ops.stream then new Reader @ else @
 
 		if ops.stream
-			callback.call @, pipedStream
+			callback.call @, null, pipedStream
 			return if not @_cache
 
 		buffer =  []

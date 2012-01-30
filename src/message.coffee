@@ -1,5 +1,6 @@
 Reader = require "./io/reader"
 Writer = require "./io/writer"
+outcome = require "outcome"
 
 
 
@@ -137,7 +138,19 @@ exports.Builder = class
 	 deprecated
 	###
 
-	response: (callback) -> @_param 'callback', arguments 
+	response: (callback) -> @_param 'response', arguments 
+
+	###
+	 on error callback
+	###
+
+	error: (callback) -> @_param 'error', arguments
+
+	###
+	 on success callback
+	###
+
+	success: (callback) -> @_param 'success', arguments
 
 	###
 	 append middleware to the end 
@@ -149,6 +162,9 @@ exports.Builder = class
 	###
 
 	dispatch: (type) ->
+		
+		@_ops.callback = outcome error: @error(), success: @success(), callback: @response()
+		
 		@type type if type
 		writer = new MessageWriter @_ops
 		@router.dispatch writer
@@ -158,7 +174,7 @@ exports.Builder = class
 	###
 
 	_param: (name, args) ->
-		return @_ops[name] if !arguments.length
+		return @_ops[name] if !args.length
 		@_ops[name] = args[0]
 		@
 

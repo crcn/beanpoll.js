@@ -15,6 +15,10 @@ module.exports = (router) ->
 	message: 
 
 		push: (data) ->
+			
+			# no error handler? add a blank func
+			if not @error() 
+				@error ->
 
 			writer = @dispatch director.name
 
