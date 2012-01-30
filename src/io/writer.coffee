@@ -9,6 +9,7 @@ module.exports = class Writer extends Stream
 	###
 	###
 	error: (err) ->
+		err = new Error(err) if typeof err == 'string'
 		@emit "error", err
 			
 	###
