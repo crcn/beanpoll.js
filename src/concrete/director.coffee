@@ -12,6 +12,11 @@ Director process:
 
 
 module.exports = class
+	
+	###
+	 some directors are passive, meaning errors aren't returned if a route does not exist. This goes for collectors,
+	 emitters, etc.
+	###
 
 	passive: false
 	
