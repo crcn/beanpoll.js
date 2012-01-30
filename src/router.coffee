@@ -108,6 +108,9 @@ class Router
 			channels = channels.concat director.channels ops
 
 		return channels
+
+
+	dispatch: (messageWriter) -> @directors[messageWriter.type].dispatch(messageWriter)
 	
 	###
 	 abreviated

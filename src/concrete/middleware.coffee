@@ -11,6 +11,7 @@ module.exports = class Middleware extends LinkedList
 		@channel  = paths: item.paths
 		@params   = item.params
 		@tags 	  = item.tags
+		@path     = item.path # path string
 	
 
 ###

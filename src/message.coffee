@@ -26,6 +26,7 @@ class MessageWriter extends Writer
 		@tags     = _ops.tags
 		@callback = _ops.callback
 		@next	  = _ops.next
+		@type     = _ops.type
 
 		super()
 
@@ -48,7 +49,7 @@ exports.Builder = class
 	###
 	###
 
-	constructor: (@router) ->
+	constructor: (@router) -> @clean()
 
 	###
 	 options which control how the request
@@ -65,6 +66,7 @@ exports.Builder = class
 
 	clean: () ->
 		@_ops = {}
+		@to(@router)
 		@
 
 
@@ -96,16 +98,12 @@ exports.Builder = class
 	###
 	###
 
-	type: (value) ->
-		return @_ops.type if !arguments.length
-		@_ops.type = value || {}
-
-		@director = @router.directors[value]
-
-		throw new Error "type #{value} does not exist" if not @director
-
-		@
+	type: (value) -> @_param 'type', arguments
 		
+	###
+	###
+
+	to: (value) -> @_param 'to', arguments
 	
 	###
 	###
@@ -144,7 +142,7 @@ exports.Builder = class
 	dispatch: (type) ->
 		@type type if type
 		writer = new MessageWriter @_ops
-		@director.dispatch writer
+		@_ops.to.dispatch writer
 		writer
 
 	###
