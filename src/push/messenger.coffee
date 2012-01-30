@@ -18,8 +18,13 @@ module.exports = class extends Messenger
 		else
 			
 			##not streamed? load the data, then dump 
-			@message.dump (err, result) => middleware.listener.call this, result, @
-		
+			@message.dump (err, result) => 
+				
+				try
+					middleware.listener.call this, result, @
+				catch e
+					console.error e.stack
+					@response.error e
 
 	###
 	 ack on end

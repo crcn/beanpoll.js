@@ -53,6 +53,7 @@ module.exports = (router) ->
 				callback = query
 				query    = null
 
+
 			@query(query) if !!query
 			@response(callback) if !!callback
 
