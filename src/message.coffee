@@ -22,12 +22,15 @@ class MessageWriter extends Writer
 	###
 
 	constructor: (@_ops) -> 
+
 		@channel  = _ops.channel
 		@tags     = _ops.tags
 		@callback = _ops.callback
 		@next	  = _ops.next
 		@type     = _ops.type
 		@from	  = _ops.from
+		@headers  = _ops.headers
+		@query    = _ops.query
 
 		super()
 
@@ -39,8 +42,8 @@ class MessageWriter extends Writer
 		return new MessageReader @, 
 			@from,
 			@channel, 
-			@_ops.query,
-			@_ops.headers,
+			@query,
+			@headers,
 			@tags,
 			@callback
 
@@ -69,7 +72,6 @@ exports.Builder = class
 	clean: () ->
 		@_ops = {}
 		@from(@router)
-		@
 
 
 	###

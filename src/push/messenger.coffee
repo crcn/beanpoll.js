@@ -6,17 +6,6 @@ module.exports = class extends Messenger
 	###
 	###
 
-	start: () ->
-
-		# immediate ack
-		@response.end()
-
-
-		super()
-
-	###
-	###
-
 	_next: (middleware) ->
 
 		## if we're not at the end, then cache incomming data.
@@ -25,10 +14,15 @@ module.exports = class extends Messenger
 
 		## streamed data? don't dump
 		if middleware.tags.stream
-			middleware.listener.callback @message, @
+			middleware.listener.call this, @message, @
 		else
 			
 			##not streamed? load the data, then dump 
-			@message.dump (err, result) -> middleware.listener result, @
+			@message.dump (err, result) => middleware.listener.call this, result, @
 		
 
+	###
+	 ack on end
+	###
+
+	_onEnd:() -> @response.end()

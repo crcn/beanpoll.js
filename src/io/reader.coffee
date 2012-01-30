@@ -102,15 +102,16 @@ module.exports = class Reader extends Stream
 
 
 		onEnd = (err) =>
+
 			
 			# don't do anything if we're streaming data
-			return null if err or ops.stream
+			return null if ops.stream
 
 			# sending the buffered data as a single response?
 			return callback.call @, err, buffer if ops.batch
 
 			# no data returned? 
-			return callback() if not buffer.length
+			return callback(err) if not buffer.length
 
 			if ops.each
 				for chunk in buffer

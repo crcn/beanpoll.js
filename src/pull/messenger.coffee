@@ -17,7 +17,7 @@ module.exports = class extends Messenger
 		## we're dealing with an async request 
 		@message.cache @hasNext
 
-		middleware.listener @message, @response, @
+		middleware.listener.call this, @message, @response, @
 
 
 	###

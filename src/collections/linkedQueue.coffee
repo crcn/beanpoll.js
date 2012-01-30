@@ -53,12 +53,15 @@ module.exports = class LinkedQueue extends EventEmitter
 		@current = if !!@current then @current.getNextSibling() else @first
 		@hasNext = !!@current.getNextSibling()
 
-		if !@hasNext then @emit "queueComplete"
+		if !@hasNext then @_onEnd
 		
 	###
 	###
 	
-	_onNext: (middleware) ->
-		# abstract	
+	_onNext: (middleware) -> # override me	
+
+	###
+	###
+	_onEnd: () -> # override me
 		
 module.exports = LinkedQueue

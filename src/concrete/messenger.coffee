@@ -9,6 +9,7 @@ module.exports = class extends LinkedQueue
 	
 	constructor: (@message, @first, @director) ->
 		@router   = director.router 
+		@from = message.from
 		super first
 			
 		# ack callback

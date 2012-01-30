@@ -97,7 +97,8 @@ module.exports = class
 			ops.tags[tagName] = $exists: true if ops.tags[tagName] is true
 			tag = {}
 			tag[tagName] = ops.tags[tagName]
-			tags.push(tags)
+			tags.push(tag)
+
 
 		search = $or: [ { $and: tags }, { unfilterable: $exists: true } ]
 

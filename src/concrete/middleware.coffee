@@ -7,11 +7,13 @@ module.exports = class Middleware extends LinkedList
 	###
 	
 	constructor: (item, @director) ->
+
 		@listener = item.value
-		@channel  = paths: item.paths
+		@channel  = paths: item.cmpPath
 		@params   = item.params
 		@tags 	  = item.tags
 		@path     = item.path # path string
+
 	
 
 ###
