@@ -24,7 +24,14 @@ module.exports = class Response extends Writer
 	###
 	
 	write: (chunk, encoding = "utf8") ->
-		@sendHeaders
+		@sendHeaders()
+		super chunk, encoding
+
+	###
+	###
+
+	end: (chunk, encoding = "utf8") ->
+		@sendHeaders()
 		super chunk, encoding
 		
 
@@ -32,9 +39,9 @@ module.exports = class Response extends Writer
 	###
 
 	sendHeaders: () ->
-		if @sentHeaders then return @
+		return @ if @sentHeaders
 		@sentHeaders = true
-		@emit "headers", headers
+		@emit "headers", @headers
 		@
 
 	

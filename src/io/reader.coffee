@@ -101,9 +101,8 @@ module.exports = class Reader extends Stream
 			return if not @_cache
 
 		buffer =  []
-		
-		onEnd = (err) =>
 
+		onEnd = (err) =>
 			
 			# don't do anything if we're streaming data
 			return null if ops.stream

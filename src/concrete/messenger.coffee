@@ -14,7 +14,11 @@ module.exports = class extends LinkedQueue
 			
 		# ack callback
 		@response = new Response @
-		@response.reader().dump (() => @message.callback.apply @message, arguments), @message.headers
+		@response.reader().dump (() => 
+			throw new Error('cannot redump') if @dumped
+			@dumped = true
+			@message.callback.apply @message, arguments
+		), @message.headers
 
 	###
 	###
@@ -43,7 +47,6 @@ module.exports = class extends LinkedQueue
 			@_next middleware, args
 
 		catch e
-			
 			@response.error e
 
 
