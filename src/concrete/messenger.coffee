@@ -1,5 +1,6 @@
 LinkedQueue = require "../collections/linkedQueue"
 Response = require "./response"
+_ = require "underscore"
 
 module.exports = class extends LinkedQueue
 	
@@ -27,8 +28,10 @@ module.exports = class extends LinkedQueue
 	###
 
 	data: (name) -> 
-		
-		if	arguments.length > 1 
+
+		if arguments.length == 0
+			return _.extend {}, params query
+		else if	arguments.length > 1 
 			obj = {}
 			for name in arguments
 				obj[name] = @data[name]
