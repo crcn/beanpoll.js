@@ -26,7 +26,15 @@ module.exports = class extends LinkedQueue
 	###
 	###
 
-	data: (name) -> return @params[name] || @query[name];
+	data: (name) -> 
+		
+		if	arguments.length > 1 
+			obj = {}
+			for name in arguments
+				obj[name] = @data[name]
+			obj
+
+		return @params[name] || @query[name];
 
 	###
 	### 
