@@ -24,6 +24,11 @@ module.exports = class extends LinkedQueue
 	start:() -> @next()
 
 	###
+	###
+
+	data: (name) -> return @params[name] || @query[name];
+
+	###
 	### 
 
 	_onNext: (middleware, args) ->
