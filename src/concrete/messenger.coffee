@@ -15,8 +15,6 @@ module.exports = class extends LinkedQueue
 		# ack callback
 		@response = new Response @
 		@response.reader().dump (() => 
-			throw new Error('cannot redump') if @dumped
-			@dumped = true
 			@message.callback.apply @message, arguments
 		), @message.headers
 
