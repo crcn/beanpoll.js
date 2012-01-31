@@ -53,7 +53,8 @@ module.exports = class LinkedQueue extends EventEmitter
 		@current = if !!@current then @current.getNextSibling() else @first
 		@hasNext = !!@current.getNextSibling()
 
-		if !@hasNext
+		if !@hasNext and not @ended
+			@ended = true
 			@_onEnd()
 		
 	###
