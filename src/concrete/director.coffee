@@ -42,9 +42,9 @@ module.exports = class
 		# find the listeners based on the channel given
 		chains = @getListeners messageWriter
 
-		numChains = chains.length
+		numChains  = chains.length
 		numRunning = numChains
-		oldAck = messageWriter.callback
+		oldAck     = messageWriter.callback
 
 		messageWriter.running = !!numChains
 
@@ -67,7 +67,7 @@ module.exports = class
 			messageReader = messageWriter.reader()
 
 			# wrap the middleware  
-			middleware   = RequestMiddleware.wrap chain, messageWriter.next, @
+			middleware   = RequestMiddleware.wrap chain, messageWriter.pre, messageWriter.next, @
 
 			# pass through the factory class which creates a new request, OR uses a recycled request 
 			messanger	     = @_newMessenger messageReader, middleware
@@ -117,7 +117,7 @@ module.exports = class
 	###
 	###
 	
-	getListeners: (route) -> @_collection.get(route.channel, siftTags: @listenerQuery(route) ).chains
+	getListeners: (route, search) -> @_collection.get(route.channel, siftTags: @listenerQuery(search || route) ).chains
 		
 	###
 	###

@@ -28,6 +28,7 @@ class MessageWriter extends Writer
 		@tags     = _ops.tags
 		@callback = _ops.callback
 		@next	  = _ops.next
+		@pre	  = _ops.pre
 		@type     = _ops.type
 		@from	  = _ops.from
 		@headers  = _ops.headers
@@ -157,6 +158,12 @@ exports.Builder = class
 	###
 
 	next: (middleware) -> @_param 'next', arguments
+
+	###
+	 prepend middleware
+	###
+
+	pre: (middleware) -> @_param 'pre', arguments
 
 	###
 	###
