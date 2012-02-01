@@ -37,12 +37,14 @@ module.exports = class Reader extends Stream
 		if @source
 			for event in @_listenTo()
 				do(event) =>
-					
+						
+					# arg1 = data if present
+					# arg2 = encoding usually
 
-					onEvent = (data) => 
+					onEvent = (arg1, arg2) => 
 						#flag for the reader that data has already been transmitted
 						@_started = true
-						@emit event, data
+						@emit event, arg1, arg2
 
 					# pipe it.
 					@source.on event, onEvent
@@ -50,13 +52,15 @@ module.exports = class Reader extends Stream
 						@source.removeListener event, onEvent
 
 	
-		@on "data", (data) =>
+		@on "data", (data, encoding) =>
+
 
 			# do NOT store cache in the buffer if this flag is FALSE
 			return if not @_cache
 
+
 			# otherwise cache
-			@_buffer.push data
+			@_buffer.push { chunk: data, encoding: encoding }
 
 		# listen for end, then flag as finished
 		@on "end", () => 
@@ -179,7 +183,7 @@ module.exports = class Reader extends Stream
 
 
 			# start listening to piped data
-			reader.on "data", (data) -> buffer.push(data)
+			reader.on "data", (data, encoding) -> buffer.push(data)
 			reader.on "error", onEnd
 			reader.on "end", onEnd
 
@@ -189,7 +193,7 @@ module.exports = class Reader extends Stream
 	_dumpCached: (pipedReader) ->
 
 
-		pipedReader.emit "data", chunk for chunk in @_buffer 
+		pipedReader.emit "data", data.chunk, data.encoding for data in @_buffer 
 		pipedReader.emit "end" if @ended
 		pipedReader.emit "error" if @error
 		
