@@ -30,14 +30,14 @@ module.exports = class extends LinkedQueue
 	data: (name) -> 
 
 		if arguments.length == 0
-			return _.extend {}, @params, @query
+			return _.extend {}, @message.params, @message.query
 		else if	arguments.length > 1 
 			obj = {}
 			for name in arguments
-				obj[name] = @data[name]
+				obj[name] = @data(name)
 			obj
 
-		return @params[name] || @query[name];
+		return @message.params[name] || @message.query[name];
 
 	###
 	### 
