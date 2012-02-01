@@ -6,7 +6,7 @@ outcome = require "outcome"
 
 
 
-class MessageReader extends Reader
+exports.Reader = class MessageReader extends Reader
 	
 	###
 	 constructor
@@ -17,7 +17,7 @@ class MessageReader extends Reader
 
 		
 
-class MessageWriter extends Writer
+exports.Writer = class MessageWriter extends Writer
 
 	###
 	###
