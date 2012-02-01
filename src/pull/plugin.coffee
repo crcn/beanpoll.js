@@ -19,7 +19,7 @@ module.exports = (router) ->
 	newListener: (listener) ->
 
 		if !!listener.route.tags.pull
-			router.pull(listener.route.channel, null, listener.tags, outcome success: listener.callback)
+			router.request(listener.route.channel).tag(listener.tags).success(listener.callback).pull();
 		
 
 	###

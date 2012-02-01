@@ -15,9 +15,9 @@ module.exports = class extends LinkedQueue
 			
 		# ack callback
 		@response = new Response @
-		@response.reader().dump (() => 
+		@response.reader().dump () => 
 			@message.callback.apply @message, arguments
-		), @message.headers
+		, @message.headers
 
 	###
 	###

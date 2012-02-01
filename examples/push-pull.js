@@ -12,4 +12,4 @@ router.on({
 	}
 });
 
-router.push('name','john')
+router.collect('name')

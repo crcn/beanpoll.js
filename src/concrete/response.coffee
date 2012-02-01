@@ -1,12 +1,36 @@
 Writer = require "../io/writer"
+Reader = require "../io/reader"
 _ = require "underscore"
+
+
+class ResponseReader extends Reader
+
+	###
+	###
+
+	_listenTo: () -> super().concat "headers"
+
+	###
+	###
+
+	_listen: () ->
+		super()
+		@on "headers", (headers) => @headers = headers
+
+
+	_dumpCached: (pipedReader) ->
+
+		pipedReader.emit "headers", @headers if @headers
+
+		super pipedReader
+
 
 module.exports = class Response extends Writer
 
 	###
 	###
 
-	constructor: (@_messanger)  ->
+	constructor: ()  ->
 		super()
 		@_headers = {}
 
@@ -41,8 +65,13 @@ module.exports = class Response extends Writer
 	sendHeaders: () ->
 		return @ if @sentHeaders
 		@sentHeaders = true
-		@emit "headers", @headers
+		@emit "headers", @_headers
 		@
+
+	###
+	###
+
+	reader: () -> new ResponseReader @
 
 	
 Writer::writable = true

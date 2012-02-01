@@ -4,6 +4,7 @@ Reader = require "./reader"
 module.exports = class Writer extends Stream
 	
 	constructor: () ->
+		super()
 		@setMaxListeners(0)
 	
 	###
@@ -23,6 +24,8 @@ module.exports = class Writer extends Stream
 	
 	end: (chunk, encoding) ->
 		@write chunk, encoding if chunk
+		throw new Error "Cannot call end twice" if @ended
+		@ended = true
 		@emit "end"
 		@
 

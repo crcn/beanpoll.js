@@ -1,4 +1,5 @@
 Stream = require("stream").Stream
+disposable = require("disposable")
 
 
 
@@ -7,62 +8,88 @@ module.exports = class Reader extends Stream
 	###
 	###
 	
-	constructor: (@source, ops) ->
+	constructor: (@source) ->
 		super()
 
+		# we do not want any warnings from node. Fucking obnoxious, 
+		# useless code.
 		@setMaxListeners(0)
 
+		@_listen()
+		
+	
+	###
+	 needs to be overridable incase there's more stuff to listen to (headers)
+	###
 
-		if source
-			source.on "data", (data) => @emit "data", data
-			source.on "end", (data) => @emit "end"
-			source.on "error", (err) => @emit "error", err
-				
+	_listenTo: () -> ["data","end","error"]
 
+	###
+	###
 
-		if ops and ops.cache
-			@cache true
-			@dump()
+	_listen: () ->
 
 		@_buffer = []
+		listeners = disposable.create()
+
+
+		# source given? need to pipe some stuff
+		if @source
+			for event in @_listenTo()
+				do(event) =>
+					
+
+					onEvent = (data) => 
+						#flag for the reader that data has already been transmitted
+						@_started = true
+						@emit event, data
+
+					# pipe it.
+					@source.on event, onEvent
+					listeners.add () =>
+						@source.removeListener event, onEvent
 
 	
 		@on "data", (data) =>
+
+			# do NOT store cache in the buffer if this flag is FALSE
 			return if not @_cache
+
+			# otherwise cache
 			@_buffer.push data
 
-		@on "end", () => @ended = true
-		@on "pipe", (source) => @source = source
-	
-	###
-	###
-	
-	setEncoding: (encoding) ->
-		@source?.setEncoding(encoding)
-		
-	###
-	###
-	
-	pause: () ->
-		@source?.pause?()
-		
-	###
-	###
-	
-	resume: () ->
-		@source?.resume?()
+		# listen for end, then flag as finished
+		@on "end", () => 
+			throw new Error("Cannot end more than once") if @ended
+			@ended = true
+			# listeners.dispose()
+
+		@on "error", (err) => @error = err
 
 	###
 	###
 	
-	destroy: () ->
-		@source?.destroy?()
+	setEncoding: (encoding) -> @source?.setEncoding(encoding)
+		
+	###
+	###
+	
+	pause: () -> @source?.pause?()
+		
+	###
+	###
+	
+	resume: () -> @source?.resume?()
+
+	###
+	###
+	
+	destroy: () -> @source?.destroy?()
 
 	###
 	###
 		
-	destroySoon: () ->
-		@source?.destroySoon?()
+	destroySoon: () -> @source?.destroySoon?()
 
 	###
 	 flags the reader that data should be cached as it's coming in.
@@ -70,9 +97,10 @@ module.exports = class Reader extends Stream
 
 	cache: (value) ->
 
-		# data already being cached? too late then.
+		# data already being cached? too late!
 		@_cache = value or !!@_buffer.length if arguments.length
 		@_cache 
+
 
 	###
  	 listens on a reader, and pipes it to a callback a few ways
@@ -82,62 +110,88 @@ module.exports = class Reader extends Stream
 
 		ops = {} if not ops
 
-		
+		# wrap the callback
+		wrappedCallback = @_dumpCallback callback, ops
+			
+		# has the stream already started? need to create a NEW reader so any 
+		# OTHER calls on dump() don't emit the same data twice.
+		pipedStream = if @_started then new Reader @ else @
+
+		#send the wrapped stream
+		wrappedCallback.call @, null, pipedStream
+
+		# not started? sweet! we don't have to dump the cached data
+		return if not @_started
+
+		# start dumping the cache into the reader
+		@_dumpCached pipedStream, ops
+
+	###
+	###
+
+	_dumpCallback: (callback, ops) ->
+
+		# if the callback is an object, then it's a listener ~ a piped stream
 		if typeof callback == 'object'
+
+			# turn into a stream
 			ops.stream = true
+
+			#listeners, are given so this is a bit more approriate
 			listeners = callback
 
-			# replace the callback now
+			# need to replace the callback. When the Stream is returned, 
+			# the listeners are attached to the given stream
 			callback = (err, stream) ->
-				for type of listeners 
-					stream.on type, listeners[type]
-					
+				stream.on type, listeners[type] for type of listeners 
 
-		# streaming the data? needs to be piped then since we're emitting buffered data
-		pipedStream = if ops.stream then new Reader @ else @
 
-		if ops.stream
-			callback.call @, null, pipedStream
-			return if not @_cache
+		return callback if ops.stream
 
-		buffer =  []
+		# not streaming? the callback expects ALL the content to come at once,
+		# so we need to return something that catches it, and does shit on end. Depends on the options
+		# given
+		return (err, reader) =>
 
-		onEnd = (err) =>
-			
-			# don't do anything if we're streaming data
-			return null if ops.stream
+			# error to boot? do NOT continue
+			return callback err if err
 
-			# sending the buffered data as a single response?
-			return callback.call @, err, buffer if ops.batch
+			buffer = [];
 
-			# no data returned? 
-			return callback(err) if not buffer.length
+			onEnd = (err) =>
 
-			if ops.each
-				for chunk in buffer
-					callback.call @, err, chunk
-			else
-				callback.call @, err, if buffer.length > 1 then buffer else buffer[0]
-		
-
-		@on "data", (chunk) =>  buffer.push chunk
-		@on "end", onEnd
-		@on "error", onEnd
-
-		
-		if @_buffer 
-			for chunk in @_buffer 
-
-				# raw stream passed - then pipe the data
-				if ops.stream then pipedStream.emit "data", chunk
-				buffer.push chunk
-			
 				
-		if @ended
-			if ops.stream
-				pipedStream.emit "end"
-			else
-				onEnd false
+				# content needs to be sent back as an array?
+				return callback.call @, err, buffer if ops.batch
+
+				# no data to return?
+				return callback.call @, err if not buffer.length
+
+				# treat the callback as a foreach func?
+				if ops.each
+					callback.call @, err, chunk for chunk in buffer
+
+				# otherwise try sending the first chunked data back, or the array if the buff
+				# length is greater than 2. Note this is implemented because it'd be a pain in the ass
+				# to always call response[0]. The ops.batch flag exists BECAUSE of that.
+				else
+					callback.call @, err, if buffer.length > 1 then buffer else buffer[0]
+
+
+			# start listening to piped data
+			reader.on "data", (data) -> buffer.push(data)
+			reader.on "error", onEnd
+			reader.on "end", onEnd
+
+	###
+	###
+
+	_dumpCached: (pipedReader) ->
+
+
+		pipedReader.emit "data", chunk for chunk in @_buffer 
+		pipedReader.emit "end" if @ended
+		pipedReader.emit "error" if @error
 		
 		
 Reader::readable = true
