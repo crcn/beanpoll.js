@@ -113,12 +113,20 @@
 			"file": "src/io/reader.coffee",
 			"settings":
 			{
-				"buffer_size": 4146,
+				"buffer_size": 4292,
 				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "/tmp/subl stdin WRwn6x.txt",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/tmp/subl stdin EbbMYk.txt",
 			"settings":
 			{
 				"buffer_size": 0,
@@ -657,6 +665,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"arg2",
 			"_messang",
 			"_listen",
 			".dump",
@@ -747,7 +756,7 @@
 	"groups":
 	[
 		{
-			"selected": 13,
+			"selected": 12,
 			"sheets":
 			[
 				{
@@ -880,7 +889,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1907.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -976,8 +985,8 @@
 						"selection":
 						[
 							[
-								139,
-								139
+								314,
+								314
 							]
 						],
 						"settings":
@@ -1076,15 +1085,15 @@
 					"file": "src/io/reader.coffee",
 					"settings":
 					{
-						"buffer_size": 4146,
+						"buffer_size": 4292,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								580,
-								580
+								553,
+								553
 							]
 						],
 						"settings":
@@ -1093,7 +1102,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1562.0,
+						"translation.y": 329.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1126,6 +1135,32 @@
 				},
 				{
 					"buffer": 14,
+					"file": "/tmp/subl stdin EbbMYk.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
 					"file": "src/io/stream.js",
 					"settings":
 					{
@@ -1151,7 +1186,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "src/abstract/middleware.coffee",
 					"settings":
 					{
@@ -1178,7 +1213,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"file": "src/abstract/messanger.coffee",
 					"settings":
 					{
@@ -1205,7 +1240,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "src/index.coffee",
 					"settings":
 					{
@@ -1231,7 +1266,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 19,
 					"file": "src/router.coffee",
 					"settings":
 					{
@@ -1258,7 +1293,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 20,
 					"file": "src/collect/plugin.coffee",
 					"settings":
 					{
@@ -1285,7 +1320,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 21,
 					"file": "src/pull/index.coffee",
 					"settings":
 					{
@@ -1311,7 +1346,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 22,
 					"file": "src/concrete/plugin.coffee",
 					"settings":
 					{
@@ -1337,7 +1372,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 23,
 					"file": "src/concrete/index.coffee",
 					"settings":
 					{
@@ -1363,7 +1398,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 24,
 					"file": "src/plugins.coffee",
 					"settings":
 					{
@@ -1390,7 +1425,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 25,
 					"file": "src/push/plugin.coffee",
 					"settings":
 					{
@@ -1417,7 +1452,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 26,
 					"settings":
 					{
 						"buffer_size": 0,
@@ -1443,7 +1478,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 27,
 					"settings":
 					{
 						"buffer_size": 0,
@@ -1468,7 +1503,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 28,
 					"file": "tests/pull-test.js",
 					"settings":
 					{
@@ -1494,7 +1529,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 28,
+					"buffer": 29,
 					"file": "src/abstract/routeCollection.coffee",
 					"settings":
 					{
@@ -1521,7 +1556,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 29,
+					"buffer": 30,
 					"file": "src/io/stream.coffee",
 					"settings":
 					{
@@ -1548,7 +1583,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 30,
+					"buffer": 31,
 					"file": "lib/abstract/routeCollection.js",
 					"settings":
 					{
@@ -1576,7 +1611,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 31,
+					"buffer": 32,
 					"file": "examples/pull-hello.js",
 					"settings":
 					{
@@ -1603,7 +1638,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 32,
+					"buffer": 33,
 					"file": "examples/push-pull.js",
 					"settings":
 					{
@@ -1629,7 +1664,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 33,
+					"buffer": 34,
 					"file": "examples/push.js",
 					"settings":
 					{
@@ -1655,7 +1690,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 34,
+					"buffer": 35,
 					"file": "examples/pull-tags.js",
 					"settings":
 					{
@@ -1682,7 +1717,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 35,
+					"buffer": 36,
 					"file": "src/collections/linkedQueue.coffee",
 					"settings":
 					{
@@ -1709,7 +1744,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 36,
+					"buffer": 37,
 					"file": "src/collect/dispatcher",
 					"settings":
 					{
@@ -1735,7 +1770,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 37,
+					"buffer": 38,
 					"file": "lib/abstract/messanger.js",
 					"settings":
 					{
@@ -1763,7 +1798,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 38,
+					"buffer": 39,
 					"file": "lib/router.js",
 					"settings":
 					{
@@ -1791,7 +1826,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 39,
+					"buffer": 40,
 					"file": "README.md",
 					"settings":
 					{
@@ -1818,7 +1853,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 40,
+					"buffer": 41,
 					"file": "test/pull-test.js",
 					"settings":
 					{
@@ -1845,7 +1880,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 41,
+					"buffer": 42,
 					"file": "src/concrete/messanger.coffee",
 					"settings":
 					{
@@ -1872,7 +1907,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 42,
+					"buffer": 43,
 					"file": "src/concrete/wrappedMessanger.coffee",
 					"settings":
 					{
@@ -1898,7 +1933,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 43,
+					"buffer": 44,
 					"file": "src/concrete/middleware.coffee",
 					"settings":
 					{
@@ -1925,7 +1960,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 44,
+					"buffer": 45,
 					"file": "/tmp/subl stdin FqzEWq.txt",
 					"settings":
 					{
@@ -1951,7 +1986,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 45,
+					"buffer": 46,
 					"file": "/tmp/subl stdin 1G83ai.txt",
 					"settings":
 					{
@@ -1977,7 +2012,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 46,
+					"buffer": 47,
 					"file": "src/concrete/routeCollection.coffee",
 					"settings":
 					{
@@ -2004,7 +2039,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 47,
+					"buffer": 48,
 					"file": "src/collect/dispatcher.coffee",
 					"settings":
 					{
@@ -2031,7 +2066,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 48,
+					"buffer": 49,
 					"file": "lib/concrete/dispatcher.js",
 					"settings":
 					{
@@ -2059,7 +2094,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 49,
+					"buffer": 50,
 					"file": "src/pull/plugin.coffee",
 					"settings":
 					{
@@ -2086,7 +2121,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 50,
+					"buffer": 51,
 					"file": "/Users/craig/Dropbox/Developer/Public/Structr/help",
 					"settings":
 					{
@@ -2112,7 +2147,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 51,
+					"buffer": 52,
 					"file": "src/concrete/director.coffee",
 					"settings":
 					{
@@ -2139,7 +2174,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 52,
+					"buffer": 53,
 					"file": "src/push/director.coffee",
 					"settings":
 					{
@@ -2165,7 +2200,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 53,
+					"buffer": 54,
 					"file": "src/collect/director.coffee",
 					"settings":
 					{
@@ -2191,7 +2226,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 54,
+					"buffer": 55,
 					"file": "src/pull/director.coffee",
 					"settings":
 					{
@@ -2218,7 +2253,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 55,
+					"buffer": 56,
 					"file": "src/concrete/wrappedMessenger.coffee",
 					"settings":
 					{
@@ -2244,7 +2279,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 56,
+					"buffer": 57,
 					"file": "src/pull/messenger.coffee",
 					"settings":
 					{
@@ -2271,7 +2306,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 57,
+					"buffer": 58,
 					"file": "src/push/messenger.coffee",
 					"settings":
 					{
@@ -2298,7 +2333,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 58,
+					"buffer": 59,
 					"file": "src/concrete/messenger.coffee",
 					"settings":
 					{
@@ -2325,7 +2360,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 59,
+					"buffer": 60,
 					"file": "/tmp/subl stdin PmuNsj.txt",
 					"settings":
 					{
@@ -2351,7 +2386,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 60,
+					"buffer": 61,
 					"file": "src/collections/linkedList.coffee",
 					"settings":
 					{
@@ -2378,7 +2413,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 61,
+					"buffer": 62,
 					"file": "lib/message.js",
 					"settings":
 					{
@@ -2406,7 +2441,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 62,
+					"buffer": 63,
 					"file": "lib/concrete/director.js",
 					"settings":
 					{
@@ -2434,7 +2469,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 63,
+					"buffer": 64,
 					"file": "lib/push/plugin.js",
 					"settings":
 					{
@@ -2462,7 +2497,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 64,
+					"buffer": 65,
 					"file": "lib/io/writer.js",
 					"settings":
 					{
@@ -2490,7 +2525,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 65,
+					"buffer": 66,
 					"file": "src/concrete/response.coffee",
 					"settings":
 					{
@@ -2517,7 +2552,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 66,
+					"buffer": 67,
 					"file": "lib/concrete/response.js",
 					"settings":
 					{
@@ -2545,7 +2580,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 67,
+					"buffer": 68,
 					"file": "lib/concrete/messenger.js",
 					"settings":
 					{
@@ -2573,7 +2608,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 68,
+					"buffer": 69,
 					"file": "lib/push/messenger.js",
 					"settings":
 					{
@@ -2601,7 +2636,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 69,
+					"buffer": 70,
 					"file": "lib/io/reader.js",
 					"settings":
 					{

@@ -30,7 +30,7 @@ module.exports = class extends LinkedQueue
 	data: (name) -> 
 
 		if arguments.length == 0
-			return _.extend {}, params query
+			return _.extend {}, @params @query
 		else if	arguments.length > 1 
 			obj = {}
 			for name in arguments
