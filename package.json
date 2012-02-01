@@ -13,7 +13,8 @@
     "dependencies": {
         "crema": "<0.2.0",
         "underscore": "*",
-        "dolce": "<0.2.0"
+        "dolce": "<0.2.0",
+	"outcome":"<0.2.0"
     },
     "devDependencies": {
         "ebnf-diagram": "*",
