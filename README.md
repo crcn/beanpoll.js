@@ -305,17 +305,6 @@ Returns TRUE if there's a listener after the current one.
 
 Moves onto the next route.
 
-#### request.forward(channel, callback)
-
-Forwards the current request to the given channel
-
-#### request.thru(channel[ ,options])
-       
-Treats the given channel as middleware   
-
-#### request.data
-
-Data is added here  
 
 
 
