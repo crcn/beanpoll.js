@@ -97,7 +97,7 @@ and
 
 ## Custom Routes
 
-You can easily create custom route handlers. Take [celer](/crcn/celeri) for example:
+You can easily create custom route handlers. Take [celeri](/crcn/celeri) for example:
 
 
 
