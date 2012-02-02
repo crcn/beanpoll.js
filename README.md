@@ -97,26 +97,72 @@ and
 
 ## Custom Routes
 
-You can easily create custom route handlers. For example:
+You can easily create custom route handlers. Take [celer](/crcn/celeri) for example:
+
+
 
 ```javascript
+
+var beanpoll = require('beanpoll'),
+structr = require('structr');
+
+//handles the message, response, and middleware
+var CmdMessagenger = structr({
+	
+	_next: function(middleware) {
+		
+		var self = this;	
+		this.message.cache(true);
+
+
+		//dump the data into the listener
+		this.message.dump(function(err, data) {
+			try {
+
+				//call the command handler, and wrap the LAST parameter as a next function
+				middleware.listener(Structr.copy(middleware.params, data), function() {
+					return self.next();	
+				});		
+
+			} catch(e) {
+				self.response.error(e)
+			}
+			
+		})
+
+	}
+
+}, beanpoll.Messenger);
+
+
+//the "Event Emitter"
+var CmdDirector = structr({
+
+	_newMessenger: function(message, middleware) {
+		return new CmdMessage(message, middleware, this);
+	}
+
+}, beanpoll.Director);
+
+
+
 var router = beanpoll.router();
 
+
+//use the new plugin
 router.use(function() {
-	
-
 	return {
-		
-		/**
-		 */
-
-		message: {
-			
-		}
+		name: 'console',
+		director: new CmdDirector('celeri', router)
 	}
 });
-       
-````      
+
+//use it:
+router.on('console say/hello', function(data, next) {
+	//do stuff here
+});
+
+````     
            
 Middleware can also be specified without using the token: `->`.An example:
 
