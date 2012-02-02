@@ -115,8 +115,6 @@ router.use(function() {
 		}
 	}
 });
-<<<<<<< HEAD
-=======
        
 ````      
            
@@ -182,25 +180,49 @@ router.on({
 Listens to the given routes
 
 - `type` - string or object. String would contain the route. Object would contain multiple routes / listeners
-- `listener` - function listening to the route given.                                                                                  
+- `listener` - function listening to the route given.           
 
+#### router.request(router)
 
-#### router.push(route[, data][, options])
+returns the request builder         
+
+```javascript
+
+router.request('signup/user').
+query({ username: 'blarg' }).
+headers({ 'Content-Type': 'application/json' }).
+
+//called when the second param is present. 
+success(function(response) {
+	
+}).
+
+//separated error from the response
+error(function(err) {
+	
+}).
+
+//called when there's a result, or error
+response(err, response) { 
+	
+}).
+
+//type of request: push, pull, collect, your own
+push();
+```                           
+
+#### router.push(route[, query][, headers])
 
 - `type` - the channel broadcast a message to.
 - `data` - the data to push to the given route
 - `options` - options for the given route
 	- `meta` - tags to use to filter out listeners
 	
-#### router.pull(route[, data][, options][, callback])
+#### router.pull(route[, query][, headers][, callback])
 
 same as push, but expects a response
 
 #### router.channels()
-
-returns all registered channels
-
-#### router.getRoute(route)
                       
 returns route expression
 
@@ -233,24 +255,6 @@ Treats the given channel as middleware
 Data is added here  
 
 
-### One last goodie
-
-Beanpole works well with coffeescript:
-
-
-````coffeescript
-
-router.on                        
-                   
-	#
-	'pull -method=GET say/hello': ->
-		"hello world!"           
-
-````
-
->>>>>>> master
-
-```
 
 
 
