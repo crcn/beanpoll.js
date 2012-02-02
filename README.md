@@ -112,6 +112,8 @@ var CmdMessagenger = structr({
 	_next: function(middleware) {
 		
 		var self = this;	
+
+		//incase we're dealing with an async function, flag for caching
 		this.message.cache(true);
 
 
