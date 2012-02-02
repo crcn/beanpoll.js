@@ -18,7 +18,7 @@ module.exports = (router) ->
 
 
 		if !!listener.route.tags.collect
-			router.request(listener.route.channel).tag(listener.tags).success(listener.callback).error(()->).collect();
+			router.request(listener.route.channel).tag(listener.tags).success(listener.callback).collect();
 		
 	
 	message: 
