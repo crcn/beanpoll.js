@@ -2,16 +2,38 @@ Director = require "./director"
 
 module.exports = (router) -> 
 	
+	###
+	###
+	
 	director = new Director("push", router)
 
+	###
+	###
+	
 	name: director.name
 
+	###
+	###
+	
 	director: director
+
+	###
+	###
+
+	newListener: (listener) ->
 		
+		router.request('new/listener').query(listener).push();
+		
+	###
+	###
+
 	router: 
 
 		push: (channel, query, headers) -> @request(channel, query, headers).push null
 
+	###
+	###
+	
 	message: 
 
 		push: (data) ->
