@@ -59,6 +59,7 @@ module.exports = class
 			messageWriter.callback new Error "Route \"#{crema.stringifyPaths(messageWriter.channel.paths)}\" does not exist" 
 			return @
 			
+			
 		# in pull bases, there will only be one listener. For push, there maybe multiple
 		for chain in chains
 
