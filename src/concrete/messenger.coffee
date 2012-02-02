@@ -15,6 +15,8 @@ module.exports = class extends LinkedQueue
 			
 		# ack callback
 		@response = new Response @
+
+		# dump the data into the ack
 		@response.reader().dump () => 
 			@message.callback.apply @message, arguments
 		, @message.headers
@@ -25,19 +27,36 @@ module.exports = class extends LinkedQueue
 	start:() -> @next()
 
 	###
+	 returns param, or query data
 	###
 
 	data: (name) -> 
 
 		if arguments.length == 0
-			return _.extend {}, @message.params, @message.query
+			return _.extend {}, @current.params, @message.query
 		else if	arguments.length > 1 
 			obj = {}
 			for name in arguments
 				obj[name] = @data(name)
 			obj
 
-		return @message.params[name] || @message.query[name];
+		return @current.params[name] || @message.query[name];
+
+	###
+	 flattens all param data into one object 
+	###
+
+	flattenData: (reset) ->
+		return @_allData if @_allData and not reset
+
+		cur = @current.getNextSibling()
+		allData = _.defaults(cur.params, @message.query)
+
+		while cur
+			_.defaults(allData, cur.params)
+			cur = cur.getNextSibling()
+		
+		return @_allData = allData
 
 	###
 	### 
