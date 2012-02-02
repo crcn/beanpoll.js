@@ -113,20 +113,16 @@ var CmdMessagenger = structr({
 		
 		var self = this;	
 
-		//dump the data into the listener
-		this.message.dump(function(err, data) {
-			try {
+		try {
 
-				//call the command handler, and wrap the LAST parameter as a next function
-				middleware.listener(Structr.copy(middleware.params, data), function() {
-					return self.next();	
-				});		
+			//call the command handler, and wrap the LAST parameter as a next function
+			middleware.listener(Structr.copy(middleware.params, data), function() {
+				return self.next();	
+			});		
 
-			} catch(e) {
-				self.response.error(e)
-			}
-			
-		})
+		} catch(e) {
+			self.response.error(e)
+		}
 
 	}
 
