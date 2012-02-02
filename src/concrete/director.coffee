@@ -52,7 +52,7 @@ module.exports = class
 		# replace the with an ack so we can return exactly HOW many listeners there are...
 		messageWriter.callback = () ->
 			messageWriter.running = !!(--numRunning)
-			oldAck.apply this, Array.prototype.concat.apply([], arguments, [numRunning, numChains]) if oldAck
+			oldAck.apply this, Array.apply(null, arguments).concat([numRunning, numChains]) if oldAck
 
 
 		if not !!chains.length and not @passive

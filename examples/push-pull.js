@@ -4,6 +4,7 @@ router.on({
 
 	
 	'collect name': function(req, res) {
+		res.write("BLAH")
 		res.end(name);
 	},
 
@@ -12,4 +13,6 @@ router.on({
 	}
 });
 
-router.collect('name')
+router.request('name').success(function(data) {
+	console.log(data)
+}).collect();
