@@ -13,10 +13,6 @@ module.exports = class extends Messenger
 
 	_next: (middleware) ->
 
-		## if this is middleware, then data coming from the MESSAGE should be cached incase
-		## we're dealing with an async request 
-		@message.cache @hasNext
-
 		middleware.listener.call this, @message, @response, @
 
 

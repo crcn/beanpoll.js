@@ -113,10 +113,6 @@ var CmdMessagenger = structr({
 		
 		var self = this;	
 
-		//incase we're dealing with an async function, flag for caching
-		this.message.cache(true);
-
-
 		//dump the data into the listener
 		this.message.dump(function(err, data) {
 			try {

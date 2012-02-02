@@ -8,8 +8,6 @@ module.exports = class extends Messenger
 
 	_next: (middleware) ->
 
-		## if we're not at the end, then cache incomming data.
-		@message.cache @hasNext
 
 		
 		middleware.listener.call this, @message.query, @

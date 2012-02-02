@@ -78,6 +78,8 @@ module.exports = class extends LinkedQueue
 			
 
 		try
+			## if we're not at the end, then cache incomming data.
+			@message.cache @hasNext
 
 			@_next middleware, args
 
