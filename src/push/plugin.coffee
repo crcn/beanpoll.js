@@ -22,7 +22,7 @@ module.exports = (router) ->
 
 	newListener: (listener) ->
 		
-		router.request('new/listener').query(listener).push();
+		router.request('new/listener').tag('private',true).query(listener).push();
 		
 	###
 	###

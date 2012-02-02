@@ -58,7 +58,7 @@ module.exports = class
 		if not !!chains.length and not @passive
 			messageWriter.callback new Error "Route \"#{crema.stringifyPaths(messageWriter.channel.paths)}\" does not exist" 
 			return @
-			
+
 			
 		# in pull bases, there will only be one listener. For push, there maybe multiple
 		for chain in chains
@@ -114,6 +114,8 @@ module.exports = class
 
 
 		search = $or: [ { $and: tags }, { unfilterable: $exists: true } ]
+
+		search
 
 	###
 	###
