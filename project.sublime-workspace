@@ -61,6 +61,7 @@
 				"line_ending": "Unix"
 			}
 		},
+<<<<<<< HEAD
 		{
 			"file": "src/pool.js",
 			"settings":
@@ -2313,6 +2314,91 @@
 					},
 					"type": "text"
 				},
+=======
+		{
+			"file": "/tmp/subl stdin Nc1hZB.txt",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 9424,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 136.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_require2",
+			"unableToLoad",
+			"Unable to load b",
+			"args",
+			"--all"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+>>>>>>> master
 				{
 					"buffer": 58,
 					"file": "src/pull/messenger.coffee",
@@ -2615,17 +2701,26 @@
 					"type": "text"
 				},
 				{
+<<<<<<< HEAD
 					"buffer": 69,
 					"file": "lib/concrete/messenger.js",
 					"settings":
 					{
 						"buffer_size": 2358,
+=======
+					"buffer": 3,
+					"file": "/tmp/subl stdin Nc1hZB.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+>>>>>>> master
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								478,
 								478
 							]
@@ -2656,13 +2751,21 @@
 							[
 								589,
 								589
+=======
+								0,
+								0
+>>>>>>> master
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+=======
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+>>>>>>> master
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -2671,29 +2774,50 @@
 					"type": "text"
 				},
 				{
+<<<<<<< HEAD
 					"buffer": 71,
 					"file": "lib/io/reader.js",
 					"settings":
 					{
 						"buffer_size": 5686,
+=======
+					"buffer": 4,
+					"file": "README.md",
+					"settings":
+					{
+						"buffer_size": 9424,
+>>>>>>> master
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								0,
 								0
+=======
+								7728,
+								7728
+>>>>>>> master
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 30.0,
+=======
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4506.0,
+>>>>>>> master
 						"zoom_level": 1.0
 					},
 					"type": "text"
