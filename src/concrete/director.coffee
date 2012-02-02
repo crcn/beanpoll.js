@@ -82,8 +82,23 @@ module.exports = class
 	###
 	
 	addListener: (route, callback) ->
+
+		disposable
+
+
+		## one tag present? remove listener on end
+		if route.tags.one
+			oldCallback = callback
+			callback    = () ->
+				oldCallback.apply this, arguments
+				disposable.dispose()
+
+		# validate the route incase we're dealing with a director where only ONE listener can be on each 
+		# channel
 		@_validateListener route, callback
-		@_collection.add route, callback
+
+		# set the disposable incase we're dealing with a route that listens ONCE for a request
+		disposable = @_collection.add route, callback
 
 
 	###
