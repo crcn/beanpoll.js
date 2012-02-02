@@ -49,9 +49,11 @@ module.exports = class extends LinkedQueue
 	flattenData: (reset) ->
 		return @_allData if @_allData and not reset
 
-		cur = @current.getNextSibling()
+		cur = @current
 		allData = _.defaults(cur.params, @message.query)
 
+		cur = cur.getNextSibling()
+		
 		while cur
 			_.defaults(allData, cur.params)
 			cur = cur.getNextSibling()
