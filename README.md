@@ -204,9 +204,32 @@ router.on({
 	'pull \
 	-public -method=POST \
 	remove/cache/subscribers -> \
+		profile/validate/SAVE_ARTICLE -> \
+			groups/:group/subscribers OR \
+			groups/:group/subscribers/add': function() {
+		
+	}
+})
+```
+
+You can also split it up:
+
+```javascript
+router.on({
+	'pull \
+	remove/cache/subscribers -> \
 	profile/validate/SAVE_ARTICLE -> \
-	groups/:group/subscribers OR \
-	groups/:group/subscribers/add': function() {
+		validate/group/subscribers': function() {
+		
+	}
+})
+
+router.on({
+	'pull \
+	-public -method=POST \
+	validate/group/subscribers ->
+		groups/:group/subscribers OR \
+		groups/:group/subscribers/add': function() {
 		
 	}
 })
