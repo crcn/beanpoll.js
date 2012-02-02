@@ -107,7 +107,7 @@ var beanpoll = require('beanpoll'),
 structr = require('structr');
 
 //handles the message, response, and middleware
-var CmdMessagenger = structr({
+var CmdMessenger = structr({
 	
 	_next: function(middleware) {
 		
@@ -133,7 +133,7 @@ var CmdMessagenger = structr({
 var CmdDirector = structr({
 
 	_newMessenger: function(message, middleware) {
-		return new CmdMessage(message, middleware, this);
+		return new CmdMessenger(message, middleware, this);
 	}
 
 }, beanpoll.Director);
