@@ -85,7 +85,6 @@ module.exports = class
 
 		disposable
 
-
 		## one tag present? remove listener on end
 		if route.tags.one
 			oldCallback = callback
