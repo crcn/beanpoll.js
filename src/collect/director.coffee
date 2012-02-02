@@ -10,9 +10,3 @@ module.exports = class extends Director
 	###
 
 	prepareListeners: (listeners) -> listeners
-
-	##
-	##
-
-	_validateListener: () -> # do nothing.
-		

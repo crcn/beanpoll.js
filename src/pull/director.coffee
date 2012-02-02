@@ -12,13 +12,6 @@ module.exports = class extends Director
 
 	_newMessenger: (message, middleware) -> new Messenger message, middleware, @
 
-	###
-	###
-
-	addListener: (route, callback) ->
-		@_validateListener route, callback
-		super route, callback
-
 	
 	###
 	###
@@ -31,12 +24,4 @@ module.exports = class extends Director
 
 	prepareListeners: (listeners) -> if !!listeners.length then [listeners[0]] else []
 
-	###
-	###
-
-	_validateListener: (route) ->
-
-		listeners = @_collection.get route.channel, route.tags
-
-		throw new Error "Route \"#{route.channel.value}\" already exists" if !!listeners.length
 		

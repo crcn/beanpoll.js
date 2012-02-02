@@ -82,6 +82,7 @@ module.exports = class
 	###
 	
 	addListener: (route, callback) ->
+		@_validateListener route, callback
 		@_collection.add route, callback
 
 
@@ -120,7 +121,8 @@ module.exports = class
 	###
 	###
 	
-	getListeners: (route, search) -> @_collection.get(route.channel, siftTags: @listenerQuery(search || route) ).chains
+	getListeners: (route, search) -> 
+		@_collection.get(route.channel, siftTags: @listenerQuery(search || route) ).chains
 		
 	###
 	###
@@ -133,6 +135,18 @@ module.exports = class
 	###
 	
 	_newMessenger: (message, middleware) -> new Messenger message, middleware, @
+	
+
+	###
+	###
+
+	_validateListener: (route) ->
+
+		return if @passive
+
+		listeners = @_collection.get route.channel, route.tags
+
+		throw new Error "Route \"#{route.channel.value}\" already exists" if !!listeners.length
 		
 
 
