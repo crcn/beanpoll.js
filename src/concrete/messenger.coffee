@@ -1,6 +1,6 @@
 LinkedQueue = require "../collections/linkedQueue"
-Response = require "./response"
-_ = require "underscore"
+Response    = require "./response"
+_ 		    = require "underscore"
 
 module.exports = class extends LinkedQueue
 	
@@ -26,8 +26,8 @@ module.exports = class extends LinkedQueue
 
 	start:() -> @next()
 
+
 	###
-	 returns param, or query data
 	###
 
 	data: (name) -> 

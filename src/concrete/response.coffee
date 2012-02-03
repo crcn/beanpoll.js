@@ -1,6 +1,7 @@
 Writer = require "../io/writer"
 Reader = require "../io/reader"
-_ = require "underscore"
+_      = require "underscore"
+outcome = require "outcome"
 
 
 class ResponseReader extends Reader
@@ -57,7 +58,18 @@ module.exports = class Response extends Writer
 	end: (chunk, encoding = "utf8") ->
 		@sendHeaders()
 		super chunk, encoding
-		
+
+	
+	###
+	 wrap-around for error handling
+	###
+
+	success: (success) -> 
+
+		if not @_outcome
+			@_outcome = outcome.error (err) => @error err 
+
+		@_outcome.success success
 
 	###
 	###
