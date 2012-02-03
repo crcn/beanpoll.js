@@ -16,7 +16,7 @@ module.exports = class extends Director
 	###
 	###
 
-	getListeners: (message) -> @prepareListeners super message
+	getListeners: (message, search) -> @prepareListeners super message, search
 
 
 	###

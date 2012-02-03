@@ -99,7 +99,9 @@ exports.Builder = class
 
 	hasListeners: (search) -> 
 		search = search ? { tags: @_ops.tags }
-		!!@router.directors[@type()].getListeners(channel: @_ops.channel, search).length
+
+
+		!!@router.directors[@type()].getListeners({channel: @_ops.channel }, search).length
 
 	###
 	###

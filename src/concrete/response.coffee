@@ -30,7 +30,7 @@ module.exports = class Response extends Writer
 	###
 	###
 
-	constructor: ()  ->
+	constructor: (@messenger)  ->
 		super()
 		@_headers = {}
 
