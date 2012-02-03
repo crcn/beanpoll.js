@@ -12,7 +12,7 @@ exports.Reader = class MessageReader extends Reader
 	 constructor
 	###
 	
-	constructor: (@writer, @from, @channel, @query = {}, @headers = {}, @tags = {}, @callback) ->
+	constructor: (@writer, @from, @channel, @query, @headers = {}, @tags = {}, @callback = null) ->
 		super writer
 
 		
