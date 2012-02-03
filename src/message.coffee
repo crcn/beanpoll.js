@@ -101,7 +101,7 @@ exports.Builder = class
 		search = search ? { tags: @_ops.tags }
 
 
-		!!@router.directors[@type()].getListeners({channel: @_ops.channel }, search).length
+		!!@router.director(@type()).getListeners({channel: @_ops.channel }, search).length
 
 	###
 	###

@@ -84,8 +84,7 @@ class Router
 				route.type = ops.type if ops.type
 				_.extend route.tags, ops.tags if ops.tags
 				
-
-				listenerDisposables.add @directors[route.type].addListener(route, callback)
+				listenerDisposables.add @director(route.type).addListener(route, callback)
 
 				## notify the plugins of a new listener
 				@_plugins.newListener route: route, callback: callback
@@ -93,6 +92,15 @@ class Router
 		
 		# finally return self
 		listenerDisposables
+
+	###
+	 returns the given director, or throws an error if it doesn't exist
+	###
+
+	director: (type) ->
+		director = @directors[type]
+		throw new Error "director #{type} does not exist" if not director
+		return director
 
 	###
 	###
@@ -105,7 +113,7 @@ class Router
 				return true if @directors[type].routeExists ops
 			return false
 
-		return @directors[ops.type].routeExists(ops);
+		return @director(ops.type).routeExists(ops);
 
 	###
 	###
@@ -121,7 +129,7 @@ class Router
 		return channels
 
 
-	dispatch: (messageWriter) -> @directors[messageWriter.type].dispatch(messageWriter)
+	dispatch: (messageWriter) -> @director(messageWriter.type).dispatch(messageWriter)
 	
 	###
 	 abreviated
