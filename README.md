@@ -94,6 +94,47 @@ and
 - Used to request data from many listeners (1 to many, similar to pull).
 - Expects a response.
 
+## Error Handling
+
+
+```javascript
+
+
+function auth(credits, callback) {
+	
+	if(credits.user != 'user' || credits.pass != 'pass') return callback(new Error('invalid credits'));
+
+	callback(false, { user: 'user', pass: 'pass' });
+}
+
+
+router.on({
+	
+	'pull authenticate': function(req, res) {
+		
+		//don't bother handling errors - done by response
+		auth(req.query, res.success(function(user) {
+			
+			res.end(user);
+
+		}));
+	}
+})
+
+
+
+//error
+var req = router.request('authenticate').
+error(function(err) {
+	console.log(err.stack);
+}).
+success(function(response) {
+	console.log(response);
+}).
+query({ user: 'user', pass: 'bad pass' }).
+pull();
+```
+
 
 ## Custom Routes
 
