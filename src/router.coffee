@@ -18,6 +18,10 @@ class Router
 		# gets plugged into by the plugin handler
 		@directors = {}
 
+		# expose the parser - crema really is a private lib - it could change
+		# anytime. This makes things a little more abstracted, a little more maintainable. That and dryer.
+		@parse = crema
+
 		@_messageBuilder = new MessageBuilder @
 
 		# registers the plugins to the router, and message writer
@@ -36,6 +40,7 @@ class Router
 	###
 	 uses a dispatcher
 	###
+
 
 	use: (plugin) -> @_plugins.add plugin
 
