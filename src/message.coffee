@@ -81,22 +81,25 @@ exports.Builder = class
 	 filterable tags
 	###
 	
-	tag: (keyOrTags, value) ->
-		return @_ops.filter if !arguments.length
-
-		@_ops.filter = {} if not @_ops.filter
-
-		if typeof keyOrTags == 'string' 
-			if arguments.length == 1 then return @_ops.filter[keyOrTags]
+	tag: (keyOrTags, value) -> 
+		@_objParam 'headers', arguments, (value) ->
 
 			if typeof value == 'boolean'
-				value = { $exists: value }
+				return { $exists: value }
 
-			@_ops.filter[keyOrTags] = value
-		else
-			@tag key, keyOrTags[key] for key of keyOrTags
+			return value
+	
+	###
+	 DEPRECATED
+	###
 
-		@
+	headers: (value) -> @_param 'headers', arguments
+
+	###
+	 The header data explaining the message, such as tags, content type, etc.
+	###
+
+	header: (keyOrHeaders, value) -> @_objParam 'headers', arguments
 
 	###
 	 DEPRECATED
@@ -136,11 +139,6 @@ exports.Builder = class
 	query: (value) -> @_param 'query', arguments
 
 
-	###
-	 The header data explaining the message, such as tags, content type, etc.
-	###
-
-	headers: (value) -> @_param 'headers', arguments
 		
 	###
 	 response handler, or ack
@@ -191,5 +189,29 @@ exports.Builder = class
 	_param: (name, args) ->
 		return @_ops[name] if !args.length
 		@_ops[name] = args[0]
+		@
+
+	
+	###
+	###
+
+	_objParam: (name, args, getValue) ->
+		return @_ops[name] if !args.length
+
+		@_ops[name] = {} if not @_ops[name]
+
+		keyOrObj = args[0]
+		value    = args[1]
+		
+		# obj(key, value)
+		if typeof keyOrObj == 'string' 
+			
+			# just one arg passed? return the value
+			if args.length == 1 then return @_ops.headers[keyOrObj]
+
+			@_ops.headers[keyOrObj] = getValue ? getValue value : value
+		else
+			@_objParam name, [key, keyOrObj[key]], getValue for key of keyOrObj
+
 		@
 
