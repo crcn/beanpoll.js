@@ -82,7 +82,7 @@ exports.Builder = class
 	###
 	
 	tag: (keyOrTags, value) -> 
-		@_objParam 'headers', arguments, (value) ->
+		@_objParam 'filter', arguments, (value) ->
 
 			if typeof value == 'boolean'
 				return { $exists: value }
@@ -93,7 +93,7 @@ exports.Builder = class
 	 DEPRECATED
 	###
 
-	headers: (value) -> @_param 'headers', arguments
+	headers: (value) -> @header value
 
 	###
 	 The header data explaining the message, such as tags, content type, etc.
@@ -202,6 +202,7 @@ exports.Builder = class
 
 		keyOrObj = args[0]
 		value    = args[1]
+
 		
 		# obj(key, value)
 		if typeof keyOrObj == 'string' 
@@ -209,7 +210,8 @@ exports.Builder = class
 			# just one arg passed? return the value
 			if args.length == 1 then return @_ops.headers[keyOrObj]
 
-			@_ops.headers[keyOrObj] = getValue ? getValue value : value
+			@_ops[name][keyOrObj] = if getValue then getValue value else value
+
 		else
 			@_objParam name, [key, keyOrObj[key]], getValue for key of keyOrObj
 
