@@ -56,7 +56,7 @@ module.exports = class
 
 
 		if not !!chains.length and not @passive
-			messageWriter.callback new Error "Route \"#{crema.stringifyPaths(messageWriter.channel.paths)}\" does not exist" 
+			messageWriter.callback new Error "#{@name} route \"#{crema.stringifyPaths(messageWriter.channel.paths)}\" does not exist" 
 			return @
 
 			
