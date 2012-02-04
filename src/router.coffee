@@ -105,19 +105,6 @@ class Router
 	###
 	###
 
-	routeExists: (ops) -> 
-		ops.channel = crema.parseChannel ops.channel if typeof ops.channel == 'string'
-
-		if not ops.type
-			for type of @directors
-				return true if @directors[type].routeExists ops
-			return false
-
-		return @director(ops.type).routeExists(ops);
-
-	###
-	###
-
 	channels: (ops) -> 
 
 		channels = []

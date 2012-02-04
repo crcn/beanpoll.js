@@ -118,21 +118,26 @@ module.exports = class
 
 	listenerQuery: (ops) ->
 
+		filter = []
+
+
+
+		# to array
+		for key of ops.filter 
+			tag = {}
+			tag[key] = ops.filter[key]
+			filter.push tag
 		
 		## FIXME - unfilterable should be specified in messenger
-		$or: [ { $and: ops.filter || [] }, { unfilterable: $exists: true } ]
+		$or: [ { $and: filter }, { unfilterable: $exists: true } ]
+		
 
 	###
 	###
 	
-	getListeners: (message) -> 
-		@_collection.get(message.channel, siftTags: @listenerQuery(message) ).chains
+	getListeners: (message, expand) -> 
+		@_collection.get(message.channel, siftTags: @listenerQuery(message), expand: expand ).chains
 		
-	###
-	###
-
-	routeExists: (route) -> @_collection.contains(route.channel, siftTags: @listenerQuery(route) )
-
 
 	###
 	 returns a new request
@@ -148,7 +153,7 @@ module.exports = class
 
 		return if @passive
 
-		listeners = @_collection.get route.channel, route.tags
+		listeners = @_collection.get route.channel, tags: route.tags, expand: false
 
 		throw new Error "Route \"#{route.channel.value}\" already exists" if !!listeners.length
 		

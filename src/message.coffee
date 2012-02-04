@@ -12,7 +12,7 @@ exports.Reader = class MessageReader extends Reader
 	 constructor
 	###
 	
-	constructor: (@writer, @from, @channel, @query, @headers = {}, @callback = null) ->
+	constructor: (@writer, @from, @channel, @query, @headers = {}, @filter = {}, @callback = null) ->
 		super writer
 
 		
@@ -34,6 +34,7 @@ exports.Writer = class MessageWriter extends Writer
 		@headers  = _ops.headers
 		@query    = _ops.query
 
+
 		super()
 
 
@@ -46,6 +47,7 @@ exports.Writer = class MessageWriter extends Writer
 			@channel, 
 			@query,
 			@headers,
+			@filter,
 			@callback
 
 	
@@ -100,12 +102,12 @@ exports.Builder = class
 	 DEPRECATED
 	###
 
-	hasListeners: () -> @exists()
+	hasListeners: () ->  @exists()
 
 	###
 	###
 
-	exists: () -> !!@router.director(@type()).getListeners({channel: @_ops.channel }).length
+	exists: () -> !!@router.director(@type()).getListeners({channel: @_ops.channel, filter: @_ops.filter }, false).length
 
 	###
 	###
