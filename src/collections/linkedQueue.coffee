@@ -34,11 +34,11 @@ module.exports = class LinkedQueue extends EventEmitter
 	 skips middleware
 	###
 
-	skipNext: (count = 2) ->
+	skipNext: (count = 1) ->
 
 		return false if !!@hasNext
 
-		while count-- and @hasNext
+		while (count--) and @hasNext
 			@_setNext()
 
 		@_onNext @current
