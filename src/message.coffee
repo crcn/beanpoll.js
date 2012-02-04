@@ -102,17 +102,6 @@ exports.Builder = class
 	header: (keyOrHeaders, value) -> @_objParam 'headers', arguments
 
 	###
-	 DEPRECATED
-	###
-
-	hasListeners: () ->  @exists()
-
-	###
-	###
-
-	exists: () -> !!@router.director(@type()).getListeners({channel: @_ops.channel, filter: @_ops.filter }, false).length
-
-	###
 	###
 
 	type: (value) -> @_param 'type', arguments
@@ -182,6 +171,17 @@ exports.Builder = class
 		writer = new MessageWriter @_ops
 		@router.dispatch writer
 		writer
+
+	###
+	 DEPRECATED
+	###
+
+	hasListeners: () ->  @exists()
+
+	###
+	###
+
+	exists: () -> !!@router.director(@type()).getListeners({channel: @_ops.channel, filter: @_ops.filter }, false).length
 
 	###
 	###

@@ -40,7 +40,8 @@ module.exports = class extends LinkedQueue
 				obj[name] = @data(name)
 			obj
 
-		return @current.params[name] || @message.query[name];
+
+		return @current.params[name] || (if @message.query then @message.query[name] else null)
 
 	###
 	 flattens all param data into one object 
