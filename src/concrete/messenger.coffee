@@ -65,7 +65,7 @@ module.exports = class extends LinkedQueue
 
 	_onNext: (middleware, args) ->
 
-		if args.length
+		if args and args.length
 
 			## error? Do not continue
 			if args[0]

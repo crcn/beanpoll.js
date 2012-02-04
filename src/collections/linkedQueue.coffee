@@ -34,9 +34,10 @@ module.exports = class LinkedQueue extends EventEmitter
 	 skips middleware
 	###
 
-	skipNext: (count = 1) ->
+	skipNext: (count = 2) ->
 
-		return false if !!@hasNext
+		return false if not @hasNext
+
 
 		while (count--) and @hasNext
 			@_setNext()
@@ -50,8 +51,8 @@ module.exports = class LinkedQueue extends EventEmitter
 	###
 	
 	_setNext: ->
-		@current = if !!@current then @current.getNextSibling() else @first
-		@hasNext = !!@current.getNextSibling()
+		@current = if @current then @current.getNextSibling() else @first
+		@hasNext = @current.getNextSibling()
 
 		if !@hasNext and not @ended
 			@ended = true
