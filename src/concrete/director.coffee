@@ -118,25 +118,15 @@ module.exports = class
 
 	listenerQuery: (ops) ->
 
-		tags = []
-		tag = {}
-
-		for tagName of ops.tags
-			ops.tags[tagName] = $exists: true if ops.tags[tagName] is true
-			tag = {}
-			tag[tagName] = ops.tags[tagName]
-			tags.push(tag)
-
-
-		search = $or: [ { $and: tags }, { unfilterable: $exists: true } ]
-
-		search
+		
+		## FIXME - unfilterable should be specified in messenger
+		$or: [ { $and: ops.filter || [] }, { unfilterable: $exists: true } ]
 
 	###
 	###
 	
-	getListeners: (route, search) -> 
-		@_collection.get(route.channel, siftTags: @listenerQuery(search || route) ).chains
+	getListeners: (message) -> 
+		@_collection.get(message.channel, siftTags: @listenerQuery(message) ).chains
 		
 	###
 	###

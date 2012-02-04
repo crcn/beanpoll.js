@@ -12,7 +12,7 @@ exports.Reader = class MessageReader extends Reader
 	 constructor
 	###
 	
-	constructor: (@writer, @from, @channel, @query, @headers = {}, @tags = {}, @callback = null) ->
+	constructor: (@writer, @from, @channel, @query, @headers = {}, @callback = null) ->
 		super writer
 
 		
@@ -25,9 +25,9 @@ exports.Writer = class MessageWriter extends Writer
 	constructor: (@_ops) -> 
 
 		@channel  = _ops.channel
-		@tags     = _ops.tags
 		@callback = _ops.callback
 		@next	  = _ops.next
+		@filter   = _ops.filter or {}
 		@pre	  = _ops.pre
 		@type     = _ops.type
 		@from	  = _ops.from
@@ -46,7 +46,6 @@ exports.Writer = class MessageWriter extends Writer
 			@channel, 
 			@query,
 			@headers,
-			@tags,
 			@callback
 
 	
@@ -80,28 +79,33 @@ exports.Builder = class
 	 filterable tags
 	###
 	
-	tag: (key, value) ->
-		return @_ops.tags if !arguments.length
+	tag: (keyOrTags, value) ->
+		return @_ops.filter if !arguments.length
 
-		@_ops.tags = {} if not @_ops.tags
+		@_ops.filter = {} if not @_ops.filter
 
-		if typeof key == 'string' 
-			if arguments.length == 1 then return @_ops.tags[key]
+		if typeof keyOrTags == 'string' 
+			if arguments.length == 1 then return @_ops.filter[keyOrTags]
 
-			@_ops.tags[key] = value
+			if typeof value == 'boolean'
+				value = { $exists: value }
+
+			@_ops.filter[keyOrTags] = value
 		else
-			@_ops.tags = key || {}
+			@tag key, keyOrTags[key] for key of keyOrTags
 
 		@
 
 	###
+	 DEPRECATED
 	###
 
-	hasListeners: (search) -> 
-		search = search ? { tags: @_ops.tags }
+	hasListeners: () -> @exists()
 
+	###
+	###
 
-		!!@router.director(@type()).getListeners({channel: @_ops.channel }, search).length
+	exists: () -> !!@router.director(@type()).getListeners({channel: @_ops.channel }).length
 
 	###
 	###
