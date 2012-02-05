@@ -36,14 +36,24 @@ module.exports = class Response extends Writer
 		@_headers = {}
 
 		
+
+
 	###
 	###
-	
-	headers: (typeOrObj, value) ->
+	header: (typeOrObj, value) ->
+		
+
 		if typeof typeOrObj == "object"
 			_.extend @_headers, typeOrObj
 		else
 			@_headers[typeOfObj] = value
+		@
+
+	###
+	 DEPRECATED
+	###
+
+	headers: (typeOrObj, value) -> @header typeOrObj, value
 			
 	###
 	###
