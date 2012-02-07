@@ -11,6 +11,7 @@
         "lib": "./lib"
     },
     "dependencies": {
+	"disposable":"*",
         "crema": "<0.2.0",
         "underscore": "*",
         "dolce": "<0.2.0",
