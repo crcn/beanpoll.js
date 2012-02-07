@@ -1,4 +1,4 @@
-Director = require "../concrete/Director"
+Director = require "../concrete/director"
 Messenger = require "./messenger"
 
 # 1 -> many event

@@ -1,4 +1,6 @@
-var router = require('../').router(), name = 'craig';
+var beanpoll = require('../'),
+router = beanpoll.router(),
+name = 'craig';
 
 router.on({
 
@@ -8,8 +10,9 @@ router.on({
 		res.end(name);
 	},
 
-	'push -collect name': function(name) {
+	'push name': function(name) {
 		console.log(name);
+		this.from.push('name','ret')
 	}
 });
 
@@ -20,9 +23,13 @@ setInterval(function() {
 	
 	for(var j = 50; j--;) {	
 
+		var rt = beanpoll.router();
+		rt.use(router.using());
+		rt.name = 'ff'
 
-		router.on({
-			'push -collect name': function() {
+		rt.on({
+			'push -collect name': function(name) {
+				console.log(name)
 			},
 			'collect name': function() {
 				
@@ -30,9 +37,11 @@ setInterval(function() {
 			'pull -collect name': function() {
 				
 			}
-		}).dispose();
+		});
 
 
-		router.push('name', i++);
+		router.request('name').from(rt).query(i++).push();
+
+
 	}
 }, 10)
