@@ -22,7 +22,7 @@
 			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 616,
+				"buffer_size": 617,
 				"line_ending": "Unix"
 			}
 		},
@@ -402,7 +402,7 @@
 			"file": "lib/router.js",
 			"settings":
 			{
-				"buffer_size": 3913,
+				"buffer_size": 3492,
 				"line_ending": "Unix"
 			}
 		},
@@ -581,7 +581,15 @@
 			"file": "src/concrete/messenger.coffee",
 			"settings":
 			{
-				"buffer_size": 1668,
+				"buffer_size": 1703,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/tmp/subl stdin MK2rFG.txt",
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -613,7 +621,7 @@
 			"file": "lib/message.js",
 			"settings":
 			{
-				"buffer_size": 5296,
+				"buffer_size": 6008,
 				"line_ending": "Unix"
 			}
 		},
@@ -648,7 +656,7 @@
 			"file": "src/concrete/response.coffee",
 			"settings":
 			{
-				"buffer_size": 1224,
+				"buffer_size": 1313,
 				"line_ending": "Unix"
 			}
 		},
@@ -672,7 +680,7 @@
 			"file": "lib/concrete/response.js",
 			"settings":
 			{
-				"buffer_size": 3069,
+				"buffer_size": 3074,
 				"line_ending": "Unix"
 			}
 		},
@@ -680,7 +688,7 @@
 			"file": "lib/concrete/messenger.js",
 			"settings":
 			{
-				"buffer_size": 2898,
+				"buffer_size": 2936,
 				"line_ending": "Unix"
 			}
 		},
@@ -902,7 +910,7 @@
 	"groups":
 	[
 		{
-			"selected": 70,
+			"selected": 79,
 			"sheets":
 			[
 				{
@@ -937,7 +945,7 @@
 					"file": "package.json",
 					"settings":
 					{
-						"buffer_size": 616,
+						"buffer_size": 617,
 						"regions":
 						{
 						},
@@ -1025,8 +1033,8 @@
 						"selection":
 						[
 							[
-								2535,
-								2535
+								3242,
+								3242
 							]
 						],
 						"settings":
@@ -1035,7 +1043,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2387.0,
+						"translation.y": 810.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2182,7 +2190,7 @@
 					"file": "lib/router.js",
 					"settings":
 					{
-						"buffer_size": 3913,
+						"buffer_size": 3492,
 						"regions":
 						{
 						},
@@ -2770,15 +2778,15 @@
 					"file": "src/concrete/messenger.coffee",
 					"settings":
 					{
-						"buffer_size": 1668,
+						"buffer_size": 1703,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1003,
-								1006
+								828,
+								828
 							]
 						],
 						"settings":
@@ -2787,13 +2795,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 105.0,
+						"translation.y": 150.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 71,
+					"file": "/tmp/subl stdin MK2rFG.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 72,
 					"file": "examples/outcome.js",
 					"settings":
 					{
@@ -2820,7 +2854,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 72,
+					"buffer": 73,
 					"file": "/tmp/subl stdin PmuNsj.txt",
 					"settings":
 					{
@@ -2846,7 +2880,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 73,
+					"buffer": 74,
 					"file": "src/collections/linkedList.coffee",
 					"settings":
 					{
@@ -2873,11 +2907,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 74,
+					"buffer": 75,
 					"file": "lib/message.js",
 					"settings":
 					{
-						"buffer_size": 5296,
+						"buffer_size": 6008,
 						"regions":
 						{
 						},
@@ -2901,7 +2935,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 75,
+					"buffer": 76,
 					"file": "lib/concrete/director.js",
 					"settings":
 					{
@@ -2929,7 +2963,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 76,
+					"buffer": 77,
 					"file": "lib/push/plugin.js",
 					"settings":
 					{
@@ -2957,7 +2991,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 77,
+					"buffer": 78,
 					"file": "lib/io/writer.js",
 					"settings":
 					{
@@ -2979,25 +3013,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 137.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 78,
+					"buffer": 79,
 					"file": "src/concrete/response.coffee",
 					"settings":
 					{
-						"buffer_size": 1224,
+						"buffer_size": 1313,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								872,
-								872
+								706,
+								706
 							]
 						],
 						"settings":
@@ -3006,13 +3040,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 255.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 79,
+					"buffer": 80,
 					"file": "/tmp/subl stdin YsQkuh.txt",
 					"settings":
 					{
@@ -3038,7 +3072,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 80,
+					"buffer": 81,
 					"file": "/tmp/subl stdin xrDx9r.txt",
 					"settings":
 					{
@@ -3064,11 +3098,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 81,
+					"buffer": 82,
 					"file": "lib/concrete/response.js",
 					"settings":
 					{
-						"buffer_size": 3069,
+						"buffer_size": 3074,
 						"regions":
 						{
 						},
@@ -3086,41 +3120,41 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 977.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 82,
-					"file": "lib/concrete/messenger.js",
-					"settings":
-					{
-						"buffer_size": 2898,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 465.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 83,
+					"file": "lib/concrete/messenger.js",
+					"settings":
+					{
+						"buffer_size": 2936,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 84,
 					"file": "lib/push/messenger.js",
 					"settings":
 					{
@@ -3148,7 +3182,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 84,
+					"buffer": 85,
 					"file": "lib/io/reader.js",
 					"settings":
 					{
@@ -3176,7 +3210,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 85,
+					"buffer": 86,
 					"file": "lib/pull/messenger.js",
 					"settings":
 					{
