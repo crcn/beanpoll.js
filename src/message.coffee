@@ -131,7 +131,7 @@ exports.Builder = class
 
 
 	### 
-	 Query would be something like ?name=craig&last=condon
+	 data that has been cleaned up after validation
 	###
 
 	sanitized: (value) -> @_param 'sanitized', arguments
