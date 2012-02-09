@@ -12,7 +12,7 @@ exports.Reader = class MessageReader extends Reader
 	 constructor
 	###
 	
-	constructor: (@writer, @from, @channel, @query, @headers = {}, @filter = {}, @callback = null) ->
+	constructor: (@writer, @from, @channel, @query, @sanitized = {}, @headers = {}, @filter = {}, @callback = null) ->
 		super writer
 
 		
@@ -33,6 +33,7 @@ exports.Writer = class MessageWriter extends Writer
 		@from	  = _ops.from
 		@headers  = _ops.headers
 		@query    = _ops.query
+		@sanitized = _ops.sanitized
 
 
 		super()
@@ -46,6 +47,7 @@ exports.Writer = class MessageWriter extends Writer
 			@from,
 			@channel, 
 			@query,
+			@sanitized,
 			@headers,
 			@filter,
 			@callback
@@ -127,6 +129,12 @@ exports.Builder = class
 
 	query: (value) -> @_param 'query', arguments
 
+
+	### 
+	 Query would be something like ?name=craig&last=condon
+	###
+
+	sanitized: (value) -> @_param 'sanitized', arguments
 
 		
 	###

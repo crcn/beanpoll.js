@@ -33,7 +33,7 @@ module.exports = class extends LinkedQueue
 	data: (name) -> 
 
 		if arguments.length == 0
-			return _.extend {}, @current.params, @message.query
+			return _.extend {}, @message.sanitized, @current.params, @message.query
 		else if	arguments.length > 1 
 			obj = {}
 			for name in arguments
@@ -41,7 +41,7 @@ module.exports = class extends LinkedQueue
 			obj
 
 
-		return @current.params[name] || (if @message.query then @message.query[name] else null)
+		return @message.sanitized[name] || @current.params[name] || (if @message.query then @message.query[name] else null)
 
 	###
 	 flattens all param data into one object 
