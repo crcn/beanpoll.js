@@ -1,7 +1,7 @@
 {
     "name": "beanpoll",
     "description": "Routing on Steroids",
-    "version": "0.2.12",
+    "version": "0.2.13",
     "author": "Craig Condon",
     "repository": {
         "type": "git",

@@ -22,7 +22,7 @@
 			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 637,
+				"buffer_size": 644,
 				"line_ending": "Unix"
 			}
 		},
@@ -581,7 +581,7 @@
 			"file": "src/pull/messenger.coffee",
 			"settings":
 			{
-				"buffer_size": 277,
+				"buffer_size": 304,
 				"line_ending": "Unix"
 			}
 		},
@@ -637,7 +637,7 @@
 			"file": "lib/message.js",
 			"settings":
 			{
-				"buffer_size": 6008,
+				"buffer_size": 6311,
 				"line_ending": "Unix"
 			}
 		},
@@ -712,7 +712,15 @@
 			"file": "lib/concrete/messenger.js",
 			"settings":
 			{
-				"buffer_size": 2936,
+				"buffer_size": 2992,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/tmp/subl stdin eaYUFD.txt",
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -944,7 +952,7 @@
 	"groups":
 	[
 		{
-			"selected": 86,
+			"selected": 70,
 			"sheets":
 			[
 				{
@@ -979,7 +987,7 @@
 					"file": "package.json",
 					"settings":
 					{
-						"buffer_size": 637,
+						"buffer_size": 644,
 						"regions":
 						{
 						},
@@ -2810,15 +2818,15 @@
 					"file": "src/pull/messenger.coffee",
 					"settings":
 					{
-						"buffer_size": 277,
+						"buffer_size": 304,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								157,
-								157
+								138,
+								138
 							]
 						],
 						"settings":
@@ -2871,8 +2879,8 @@
 						"selection":
 						[
 							[
-								747,
-								747
+								353,
+								353
 							]
 						],
 						"settings":
@@ -2881,7 +2889,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 45.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2997,7 +3005,7 @@
 					"file": "lib/message.js",
 					"settings":
 					{
-						"buffer_size": 6008,
+						"buffer_size": 6311,
 						"regions":
 						{
 						},
@@ -3116,8 +3124,8 @@
 						"selection":
 						[
 							[
-								706,
-								706
+								526,
+								526
 							]
 						],
 						"settings":
@@ -3242,15 +3250,15 @@
 					"file": "lib/concrete/messenger.js",
 					"settings":
 					{
-						"buffer_size": 2936,
+						"buffer_size": 2992,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								897,
-								897
+								0,
+								0
 							]
 						],
 						"settings":
@@ -3267,6 +3275,32 @@
 				},
 				{
 					"buffer": 87,
+					"file": "/tmp/subl stdin eaYUFD.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 88,
 					"file": "lib/push/messenger.js",
 					"settings":
 					{
@@ -3294,7 +3328,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 88,
+					"buffer": 89,
 					"file": "lib/io/reader.js",
 					"settings":
 					{
@@ -3322,7 +3356,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 89,
+					"buffer": 90,
 					"file": "lib/pull/messenger.js",
 					"settings":
 					{
@@ -3350,7 +3384,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 90,
+					"buffer": 91,
 					"file": "examples/mem-test.js",
 					"settings":
 					{

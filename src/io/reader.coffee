@@ -114,6 +114,7 @@ module.exports = class Reader extends Stream
 
 		ops = {} if not ops
 
+
 		# wrap the callback
 		wrappedCallback = @_dumpCallback callback, ops
 			
@@ -134,6 +135,17 @@ module.exports = class Reader extends Stream
 	###
 
 	_dumpCallback: (callback, ops) ->
+
+		if callback instanceof Stream
+			ops.stream = true
+			pipeTo     = callback
+			callback = (err, stream) =>
+				for type in @_listenTo()
+					do (type) =>
+						stream.on type, () => pipeTo.emit.apply pipeTo, [type].concat Array.prototype.slice.call arguments
+				null
+			
+						
 
 		# if the callback is an object, then it's a listener ~ a piped stream
 		if typeof callback == 'object'

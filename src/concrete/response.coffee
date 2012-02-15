@@ -34,6 +34,7 @@ module.exports = class Response extends Writer
 	constructor: (@messenger)  ->
 		super()
 		@_headers = {}
+		@once "write", => @sendHeaders()
 
 		
 
@@ -46,7 +47,7 @@ module.exports = class Response extends Writer
 		if typeof typeOrObj == "object"
 			_.extend @_headers, typeOrObj
 		else
-			@_headers[typeOfObj] = value
+			@_headers[typeOrObj] = value
 		@
 
 	###
@@ -58,16 +59,16 @@ module.exports = class Response extends Writer
 	###
 	###
 	
-	write: (chunk, encoding = "utf8") ->
-		@sendHeaders()
-		super chunk, encoding
+	##write: (chunk, encoding = "utf8") ->
+	##	@sendHeaders()
+	##	super chunk, encoding
 
 	###
 	###
 
-	end: (chunk, encoding = "utf8") ->
-		@sendHeaders()
-		super chunk, encoding
+	##end: (chunk, encoding = "utf8") ->
+	##	@sendHeaders()
+	##	super chunk, encoding
 
 	
 	###
