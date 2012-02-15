@@ -15,6 +15,7 @@ exports.Reader = class MessageReader extends Reader
 	constructor: (@writer, @from, @channel, @query, @sanitized = {}, @headers = {}, @filter = {}, @callback = null) ->
 		super writer
 
+
 		
 
 exports.Writer = class MessageWriter extends Writer

@@ -8,9 +8,13 @@ module.exports = class extends LinkedQueue
 	 constructor
 	###
 	
-	constructor: (@message, @first, @director) ->
+	constructor: (@request, @first, @director) ->
+
+		# deprecated
+		@message = @request
+
 		@router   = director.router 
-		@from = message.from
+		@from = request.from
 		super first
 			
 		# ack callback
@@ -18,8 +22,8 @@ module.exports = class extends LinkedQueue
 
 		# dump the data into the ack
 		@response.reader().dump () => 
-			@message.callback.apply @message, arguments
-		, @message.headers
+			@request.callback.apply @request, arguments
+		, @request.headers
 
 	###
 	###
@@ -33,7 +37,7 @@ module.exports = class extends LinkedQueue
 	data: (name) -> 
 
 		if arguments.length == 0
-			return _.extend {}, @message.sanitized, @current.params, @message.query
+			return _.extend {}, @request.sanitized, @current.params, @request.query
 		else if	arguments.length > 1 
 			obj = {}
 			for name in arguments
@@ -41,7 +45,8 @@ module.exports = class extends LinkedQueue
 			obj
 
 
-		return @message.sanitized[name] || @current.params[name] || (if @message.query then @message.query[name] else null)
+		return @request.sanitized[name] || @current.params[name] || (if @request.query then @request.query[name] else null)
+
 
 	###
 	 flattens all param data into one object 
@@ -51,7 +56,7 @@ module.exports = class extends LinkedQueue
 		return @_allData if @_allData and not reset
 
 		cur = @current
-		allData = _.defaults(cur.params, @message.query)
+		allData = _.defaults(cur.params, @request.query)
 
 		cur = cur.getNextSibling()
 		
@@ -75,12 +80,12 @@ module.exports = class extends LinkedQueue
 				_onNextData args[1]		
 
 
-		@message.params = middleware.params
+		@request.params = middleware.params
 			
 
 		try
 			## if we're not at the end, then cache incomming data.
-			@message.cache @hasNext
+			@request.cache @hasNext
 
 			@_next middleware, args
 
