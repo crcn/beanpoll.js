@@ -35,6 +35,7 @@ module.exports = class Response extends Writer
 		super()
 		@_headers = {}
 		@once "write", => @sendHeaders()
+		@once "end", => @sendHeaders()
 
 		
 
