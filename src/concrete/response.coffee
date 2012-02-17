@@ -34,7 +34,7 @@ module.exports = class Response extends Writer
 	constructor: (@messenger)  ->
 		super()
 		@_headers = {}
-		@once "write", => @sendHeaders()
+		@once "data", => @sendHeaders()
 		@once "end", => @sendHeaders()
 
 		
