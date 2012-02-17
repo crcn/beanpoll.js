@@ -5,7 +5,7 @@
     "author": "Craig Condon",
     "repository": {
         "type": "git",
-        "url": "http://github.com/crcn/beanpole.git"
+        "url": "http://github.com/crcn/beanpoll.js.git"
     },
     "directories": {
         "lib": "./lib"
