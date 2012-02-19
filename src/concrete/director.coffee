@@ -99,6 +99,11 @@ module.exports = class
 		# set the disposable incase we're dealing with a route that listens ONCE for a request
 		disposable = @_collection.add route, callback
 
+	###
+	###
+
+	removeListeners: (route) ->
+		@_collection.remove route.channel, tags: route.tags
 
 	###
 	###
