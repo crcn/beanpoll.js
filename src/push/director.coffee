@@ -10,4 +10,4 @@ module.exports = class extends Director
 	###
 	###
 
-	_newMessenger: (message, middleware) -> new Messenger message, middleware, @
+	_newMessenger: (request, middleware) -> new Messenger request, middleware, @

@@ -125,8 +125,6 @@ module.exports = class
 
 		filter = []
 
-
-
 		# to array
 		for key of ops.filter 
 			tag = {}

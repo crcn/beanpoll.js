@@ -21,5 +21,5 @@ module.exports = (router) ->
 			router.request(listener.route.channel).headers(listener.route.tags).success(listener.callback).collect();
 		
 	
-	message: 
+	request: 
 		collect: (query, callback) -> @_pull query, callback, director.name

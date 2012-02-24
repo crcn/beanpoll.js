@@ -6,7 +6,7 @@ module.exports = class extends Messenger
 	###
 
 	start: () ->
-		@response.req = @message
+		@response.req = @request
 		super()
 
 	###
@@ -14,7 +14,7 @@ module.exports = class extends Messenger
 
 	_next: (middleware) ->
 
-		middleware.listener.call this, @message, @response, @
+		middleware.listener.call this, @request, @response, @
 
 
 	###

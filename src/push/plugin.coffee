@@ -34,7 +34,7 @@ module.exports = (router) ->
 	###
 	###
 	
-	message: 
+	request: 
 
 		push: (data) ->
 			

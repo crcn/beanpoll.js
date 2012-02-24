@@ -10,7 +10,7 @@ module.exports = class extends LinkedQueue
 	
 	constructor: (@request, @first, @director) ->
 
-		# deprecated
+		# DEPRECATED
 		@message = @request
 
 		@router   = director.router 

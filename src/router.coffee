@@ -1,5 +1,5 @@
 crema 		   = require "crema"
-MessageBuilder = require("./message").Builder
+RequestBuilder = require("./request").Builder
 pushPlugin     = require "./push/plugin"
 pullPlugin     = require "./pull/plugin"
 collectPlugin  = require "./collect/plugin"
@@ -22,9 +22,9 @@ class Router
 		# anytime. This makes things a little more abstracted, a little more maintainable. That and dryer.
 		@parse = crema
 
-		@_messageBuilder = new MessageBuilder @
+		@_requestBuilder = new RequestBuilder @
 
-		# registers the plugins to the router, and message writer
+		# registers the plugins to the router, and request writer
 		@_plugins = new plugins @
 
 		# register the default plugins
@@ -117,7 +117,7 @@ class Router
 		return channels
 
 
-	dispatch: (messageWriter) -> @director(messageWriter.type).dispatch(messageWriter)
+	dispatch: (requestWriter) -> @director(requestWriter.type).dispatch(requestWriter)
 	
 	###
 	 abreviated
@@ -131,7 +131,7 @@ class Router
 
 	request: (channel, query, headers) ->
 			
-		@_messageBuilder.
+		@_requestBuilder.
 		clean().
 		channel(if typeof channel is "string" then crema.parseChannel(channel) else channel).
 		query(query).

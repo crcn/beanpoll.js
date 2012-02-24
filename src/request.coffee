@@ -6,7 +6,7 @@ outcome = require "outcome"
 
 
 
-exports.Reader = class MessageReader extends Reader
+exports.Reader = class RequestReader extends Reader
 	
 	###
 	 constructor
@@ -16,9 +16,10 @@ exports.Reader = class MessageReader extends Reader
 		super writer
 
 
+
 		
 
-exports.Writer = class MessageWriter extends Writer
+exports.Writer = class RequestWriter extends Writer
 
 	###
 	###
@@ -43,7 +44,7 @@ exports.Writer = class MessageWriter extends Writer
 	###
 
 	reader: (index, numListeners) ->
-		return new MessageReader @, 
+		return new RequestReader @, 
 			@from,
 			@channel, 
 			@query,
@@ -98,7 +99,7 @@ exports.Builder = class
 	headers: (value) -> @header value
 
 	###
-	 The header data explaining the message, such as tags, content type, etc.
+	 The header data explaining the request, such as tags, content type, etc.
 	###
 
 	header: (keyOrHeaders, value) -> @_objParam 'headers', arguments
@@ -176,7 +177,7 @@ exports.Builder = class
 		@_ops.callback = outcome error: @error(), success: @success(), callback: @response()
 		
 		@type type if type
-		writer = new MessageWriter @_ops
+		writer = new RequestWriter @_ops
 		@router.dispatch writer
 		writer
 
@@ -189,7 +190,12 @@ exports.Builder = class
 	###
 	###
 
-	exists: () -> !!@router.director(@type()).getListeners({channel: @_ops.channel, filter: @_ops.filter }, false).length
+	exists: () -> !!@listeners().length
+
+	###
+	###
+
+	listeners: () -> @router.director(@type()).getListeners({channel: @_ops.channel, filter: @_ops.filter }, false)
 
 	###
 	###

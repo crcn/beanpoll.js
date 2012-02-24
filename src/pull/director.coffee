@@ -10,13 +10,13 @@ module.exports = class extends Director
 	###
 	###
 
-	_newMessenger: (message, middleware) -> new Messenger message, middleware, @
+	_newMessenger: (request, middleware) -> new Messenger request, middleware, @
 
 	
 	###
 	###
 
-	getListeners: (message, search) -> @prepareListeners super message, search
+	getListeners: (request, search) -> @prepareListeners super request, search
 
 
 	###

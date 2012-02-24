@@ -45,7 +45,7 @@ module.exports = (router) ->
 	 extend the message builder
 	###
 
-	message: 
+	request: 
 		pull: (query, callback) -> @_pull query, callback, director.name
 		_pull: (query, callback, type) ->
 		

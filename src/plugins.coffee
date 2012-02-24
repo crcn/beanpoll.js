@@ -1,4 +1,4 @@
-Message = require './message'
+Request = require './request'
 _ 		= require 'underscore'
 
 module.exports = class 
@@ -30,8 +30,8 @@ module.exports = class
 		## assign by the name
 		@_pluginsByName[mod.name] = mod
 
-		## extending the prototype of the message
-		_.extend @router._messageBuilder, mod.message 
+		## extending the prototype of the request
+		_.extend @router._requestBuilder, mod.request 
 
 
 		## extend the router
