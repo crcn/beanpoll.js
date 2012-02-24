@@ -114,8 +114,10 @@ module.exports = class
 		for listener in @_collection.find ops
 			(tags: listener.tags,
 			type: @name,
-			value: listener.path,
-			segments: listener.segments)
+			path: {
+				value: listener.path,
+				segments: listener.segments
+			})
 
 	###
 	###
