@@ -7,7 +7,7 @@ exports.Messenger = require "./concrete/messenger"
 exports.Director  = require "./concrete/director"
 
 # the message which is sent to the particular request
-exports.Message   = require "./message"
+exports.Request   = require "./request"
 
 # the response to the message
 exports.Response  = require "./concrete/response"

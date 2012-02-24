@@ -113,9 +113,11 @@ module.exports = class
 		channels = []
 
 		for listener in @_collection.find ops
+			console.log(listener)
 			(tags: listener.tags,
 			type: @name,
-			path: listener.path)
+			value: listener.path,
+			paths: listener.paths)
 
 
 	###
