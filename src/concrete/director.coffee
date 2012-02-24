@@ -117,7 +117,6 @@ module.exports = class
 			value: listener.path,
 			segments: listener.segments)
 
-
 	###
 	###
 
@@ -133,7 +132,6 @@ module.exports = class
 		
 		## FIXME - unfilterable should be specified in messenger
 		$or: [ { $and: filter }, { unfilterable: $exists: true } ]
-		
 
 	###
 	###

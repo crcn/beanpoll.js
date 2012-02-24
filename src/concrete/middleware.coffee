@@ -8,11 +8,11 @@ module.exports = class Middleware extends LinkedList
 	
 	constructor: (item, @director) ->
 
+
 		@listener = item.value
 		@path     = segments: item.cmpSegments
 		@params   = item.params
 		@tags 	  = item.tags
-		@path     = item.path # path string
 
 	
 
