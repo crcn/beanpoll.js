@@ -23,19 +23,18 @@ exports.Writer = class MessageWriter extends Writer
 	###
 	###
 
-	constructor: (@_ops) -> 
+	constructor: (@_ops) ->  
 
-		@channel  = _ops.channel
-		@callback = _ops.callback
-		@next	  = _ops.next
-		@filter   = _ops.filter or {}
-		@pre	  = _ops.pre
-		@type     = _ops.type
-		@from	  = _ops.from
-		@headers  = _ops.headers
-		@query    = _ops.query
+		@next	   = _ops.next
+		@pre	   = _ops.pre
+		@type      = _ops.type
+		@from	   = _ops.from
+		@query     = _ops.query
+		@filter    = _ops.filter or {}
+		@headers   = _ops.headers
+		@channel   = _ops.channel
+		@callback  = _ops.callback
 		@sanitized = _ops.sanitized
-
 
 		super()
 
