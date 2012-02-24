@@ -1,6 +1,6 @@
 {
     "name": "beanpoll",
-    "description": "Routing on Steroids",
+    "description": "Routing with syntactic sugar",
     "version": "0.2.14",
     "author": "Craig Condon",
     "repository": {
