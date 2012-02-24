@@ -112,12 +112,11 @@ module.exports = class
 	paths: (ops) ->
 		
 		for listener in @_collection.find ops
+			console.log(listener)
 			(tags: listener.tags,
 			type: @name,
-			path: {
-				value: listener.path,
-				segments: listener.segments
-			})
+			value: listener.path,
+			segments: listener.segments)
 
 	###
 	###
