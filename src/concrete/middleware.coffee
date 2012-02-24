@@ -9,7 +9,7 @@ module.exports = class Middleware extends LinkedList
 	constructor: (item, @director) ->
 
 		@listener = item.value
-		@channel  = paths: item.cmpPath
+		@path     = segments: item.cmpSegments
 		@params   = item.params
 		@tags 	  = item.tags
 		@path     = item.path # path string
@@ -28,10 +28,10 @@ Middleware.wrap = (chain, pre, next, director) ->
 		prev = current
 
 	if typeof pre == 'function'
-		current.getFirstSibling().addPrevSibling new Middleware value: pre, params: {}, tags: {}, channel: paths: []
+		current.getFirstSibling().addPrevSibling new Middleware value: pre, params: {}, tags: {}, path: segments: []
 
 	if typeof next == 'function'
-		current.addNextSibling new Middleware value: next, params: {}, tags: {}, channel: paths: []
+		current.addNextSibling new Middleware value: next, params: {}, tags: {}, path: segments: []
 
 		
 	current.getFirstSibling()

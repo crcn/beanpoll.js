@@ -28,35 +28,36 @@ module.exports = class
 		@_collection = dolce.collection()
 
 	###
-	 returns number of listeners based on channel given
+	 returns number of listeners based on path given
 	###
 
-	numListeners: (channel, ops) -> @_collection.get(channel, ops).chains.length
+	numListeners: (path, ops) -> @_collection.get(path, ops).chains.length
 	
 	###
 	 dispatches a request
 	###
 	
-	dispatch: (messageWriter) ->
+	dispatch: (requestWriter) ->
+
 		
-		# find the listeners based on the channel given
-		chains = @getListeners messageWriter
+		# find the listeners based on the path given
+		chains = @getListeners requestWriter
 
 		numChains  = chains.length
 		numRunning = numChains
-		oldAck     = messageWriter.callback
+		oldAck     = requestWriter.callback
 
-		messageWriter.running = !!numChains
+		requestWriter.running = !!numChains
 
 
 		# replace the with an ack so we can return exactly HOW many listeners there are...
-		messageWriter.callback = () ->
-			messageWriter.running = !!(--numRunning)
+		requestWriter.callback = () ->
+			requestWriter.running = !!(--numRunning)
 			oldAck.apply this, Array.apply(null, arguments).concat([numRunning, numChains]) if oldAck
 
 
 		if not !!chains.length and not @passive
-			messageWriter.callback new Error "#{@name} route \"#{crema.stringifyPaths(messageWriter.channel.paths)}\" does not exist" 
+			requestWriter.callback new Error "#{@name} route \"#{crema.stringifySegments(requestWriter.path.segments)}\" does not exist" 
 			return @
 
 			
@@ -65,13 +66,13 @@ module.exports = class
 
 
 			# there needs to be a NEW reader for each listener.
-			messageReader = messageWriter.reader()
+			requestReader = requestWriter.reader()
 
 			# wrap the middleware  
-			middleware   = RequestMiddleware.wrap chain, messageWriter.pre, messageWriter.next, @
+			middleware   = RequestMiddleware.wrap chain, requestWriter.pre, requestWriter.next, @
 
 			# pass through the factory class which creates a new request, OR uses a recycled request 
-			messanger	     = @_newMessenger messageReader, middleware
+			messanger	     = @_newMessenger requestReader, middleware
 
 			# send the request
 			messanger.start()
@@ -93,7 +94,7 @@ module.exports = class
 				disposable.dispose()
 
 		# validate the route incase we're dealing with a director where only ONE listener can be on each 
-		# channel
+		# path
 		@_validateListener route, callback
 
 		# set the disposable incase we're dealing with a route that listens ONCE for a request
@@ -103,21 +104,17 @@ module.exports = class
 	###
 
 	removeListeners: (route) ->
-		@_collection.remove route.channel, tags: route.tags
+		@_collection.remove route.path, tags: route.tags
 
 	###
 	###
 
-	channels: (ops) ->
+	paths: (ops) ->
 		
-		channels = []
-
 		for listener in @_collection.find ops
-			console.log(listener)
 			(tags: listener.tags,
 			type: @name,
-			value: listener.path,
-			paths: listener.paths)
+			segments: listener.segments)
 
 
 	###
@@ -140,15 +137,15 @@ module.exports = class
 	###
 	###
 	
-	getListeners: (message, expand) -> 
-		@_collection.get(message.channel, siftTags: @listenerQuery(message), expand: expand ).chains
+	getListeners: (request, expand) -> 
+		@_collection.get(request.path, siftTags: @listenerQuery(request), expand: expand ).chains
 		
 
 	###
 	 returns a new request
 	###
 	
-	_newMessenger: (message, middleware) -> new Messenger message, middleware, @
+	_newMessenger: (request, middleware) -> new Messenger request, middleware, @
 	
 
 	###
@@ -158,9 +155,10 @@ module.exports = class
 
 		return if @passive
 
-		listeners = @_collection.get route.channel, tags: route.tags, expand: false
 
-		throw new Error "Route \"#{route.channel.value}\" already exists" if !!listeners.length
+		listeners = @_collection.get route.path, tags: route.tags, expand: false
+
+		throw new Error "Route \"#{route.path.value}\" already exists" if !!listeners.length
 		
 
 

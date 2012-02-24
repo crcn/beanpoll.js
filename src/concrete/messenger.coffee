@@ -11,7 +11,7 @@ module.exports = class extends LinkedQueue
 	constructor: (@request, @first, @director) ->
 
 		# DEPRECATED
-		@message = @request
+		@request = @request
 
 		@router   = director.router 
 		@from = request.from

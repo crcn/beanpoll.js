@@ -6,10 +6,10 @@ exports.Messenger = require "./concrete/messenger"
 # the "Event Emitter"
 exports.Director  = require "./concrete/director"
 
-# the message which is sent to the particular request
+# the request which is sent to the particular request
 exports.Request   = require "./request"
 
-# the response to the message
+# the response to the request
 exports.Response  = require "./concrete/response"
 
 

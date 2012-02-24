@@ -106,15 +106,15 @@ class Router
 	###
 	###
 
-	channels: (ops) -> 
+	paths: (ops) -> 
 
-		channels = []
+		paths = []
 
 		for name of @directors
 			director = @directors[name]
-			channels = channels.concat director.channels ops
+			paths = paths.concat director.paths ops
 
-		return channels
+		return paths
 
 
 	dispatch: (requestWriter) -> @director(requestWriter.type).dispatch(requestWriter)
@@ -129,11 +129,11 @@ class Router
 	 Initializes a new request
 	###
 
-	request: (channel, query, headers) ->
+	request: (path, query, headers) ->
 			
 		@_requestBuilder.
 		clean().
-		channel(if typeof channel is "string" then crema.parseChannel(channel) else channel).
+		path(if typeof path is "string" then crema.parsePath(path) else path).
 		query(query).
 		headers(headers);
 

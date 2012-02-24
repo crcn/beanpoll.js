@@ -12,7 +12,7 @@ exports.Reader = class RequestReader extends Reader
 	 constructor
 	###
 	
-	constructor: (@writer, @from, @channel, @query, @sanitized = {}, @headers = {}, @filter = {}, @callback = null) ->
+	constructor: (@writer, @from, @path, @query, @sanitized = {}, @headers = {}, @filter = {}, @callback = null) ->
 		super writer
 
 
@@ -28,12 +28,12 @@ exports.Writer = class RequestWriter extends Writer
 
 		@next	   = _ops.next
 		@pre	   = _ops.pre
+		@path      = _ops.path
 		@type      = _ops.type
 		@from	   = _ops.from
 		@query     = _ops.query
 		@filter    = _ops.filter or {}
 		@headers   = _ops.headers
-		@channel   = _ops.channel
 		@callback  = _ops.callback
 		@sanitized = _ops.sanitized
 
@@ -46,7 +46,7 @@ exports.Writer = class RequestWriter extends Writer
 	reader: (index, numListeners) ->
 		return new RequestReader @, 
 			@from,
-			@channel, 
+			@path, 
 			@query,
 			@sanitized,
 			@headers,
@@ -122,7 +122,7 @@ exports.Builder = class
 	###
 	###
 
-	channel: (value) -> @_param 'channel', arguments
+	path: (value) -> @_param 'path', arguments
 
 	### 
 	 Query would be something like ?name=craig&last=condon
@@ -195,7 +195,7 @@ exports.Builder = class
 	###
 	###
 
-	listeners: () -> @router.director(@type()).getListeners({channel: @_ops.channel, filter: @_ops.filter }, false)
+	listeners: () -> @router.director(@type()).getListeners({path: @_ops.path, filter: @_ops.filter }, false)
 
 	###
 	###

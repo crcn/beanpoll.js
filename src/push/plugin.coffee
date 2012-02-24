@@ -29,7 +29,7 @@ module.exports = (router) ->
 
 	router: 
 
-		push: (channel, query, headers) -> @request(channel, query, headers).push null
+		push: (path, query, headers) -> @request(path, query, headers).push null
 
 	###
 	###

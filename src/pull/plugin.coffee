@@ -19,7 +19,7 @@ module.exports = (router) ->
 	newListener: (listener) ->
 
 		if !!listener.route.tags.pull
-			router.request(listener.route.channel).headers(listener.route.tags).success(listener.callback).error(()->).pull();
+			router.request(listener.route.path).headers(listener.route.tags).success(listener.callback).error(()->).pull();
 		
 
 	###
@@ -27,8 +27,8 @@ module.exports = (router) ->
 	###
 
 	router: 
-		pull: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, director.name
-		_pull: (channel, query, headers, callback, type) ->
+		pull: (path, query, headers, callback) -> @_pull path, query, headers, callback, director.name
+		_pull: (path, query, headers, callback, type) ->
 		
 			if typeof query == 'function'
 				callback = query
@@ -39,10 +39,10 @@ module.exports = (router) ->
 				callback = headers
 				headers  = null
 
-			@request(channel, query, headers)[type] callback
+			@request(path, query, headers)[type] callback
 
 	###
-	 extend the message builder
+	 extend the request builder
 	###
 
 	request: 

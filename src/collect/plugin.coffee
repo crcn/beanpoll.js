@@ -12,13 +12,13 @@ module.exports = (router) ->
 	director: director
 
 	router: 
-		collect: (channel, query, headers, callback) -> @_pull channel, query, headers, callback, director.name
+		collect: (path, query, headers, callback) -> @_pull path, query, headers, callback, director.name
 
 	newListener: (listener) ->
 
 
 		if !!listener.route.tags.collect
-			router.request(listener.route.channel).headers(listener.route.tags).success(listener.callback).collect();
+			router.request(listener.route.path).headers(listener.route.tags).success(listener.callback).collect();
 		
 	
 	request: 
