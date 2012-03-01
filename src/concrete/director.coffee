@@ -39,9 +39,12 @@ module.exports = class
 	
 	dispatch: (requestWriter) ->
 
-		
-		# find the listeners based on the path given
-		chains = @getListeners requestWriter
+		try 
+			# find the listeners based on the path given
+			chains = @getListeners requestWriter, undefined, !@passive
+		catch e
+			return requestWriter.callback new Error "#{@name} #{e.message}"
+
 
 		numChains  = chains.length
 		numRunning = numChains
@@ -136,8 +139,8 @@ module.exports = class
 	###
 	###
 	
-	getListeners: (request, expand) -> 
-		@_collection.get(request.path, siftTags: @listenerQuery(request), expand: expand ).chains
+	getListeners: (request, expand, throwError) -> 
+		@_collection.get(request.path, siftTags: @listenerQuery(request), expand: expand, throwErrors: throwError ).chains
 		
 
 	###

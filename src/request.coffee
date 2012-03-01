@@ -43,7 +43,7 @@ exports.Writer = class RequestWriter extends Writer
 	###
 	###
 
-	reader: (index, numListeners) ->
+	reader: () ->
 		return new RequestReader @, 
 			@from,
 			@path, 

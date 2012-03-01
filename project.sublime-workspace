@@ -65,7 +65,7 @@
 			"file": "src/request.coffee",
 			"settings":
 			{
-				"buffer_size": 3527,
+				"buffer_size": 3508,
 				"line_ending": "Unix"
 			}
 		},
@@ -471,6 +471,14 @@
 			}
 		},
 		{
+			"file": "/tmp/subl stdin hsyAK9.txt",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "/tmp/subl stdin FqzEWq.txt",
 			"settings":
 			{
@@ -534,6 +542,14 @@
 			"settings":
 			{
 				"buffer_size": 3447,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/tmp/subl stdin 0y491l.txt",
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -921,6 +937,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"path:",
+			"dispatch",
+			".path",
+			"callback.",
+			".path",
 			"listener",
 			"numList",
 			"paths",
@@ -1043,12 +1064,7 @@
 			"console.",
 			".on",
 			"crema",
-			"replace",
-			"addRouteListener",
-			"with",
-			"_require2",
-			"unableToLoad",
-			"Unable to load b"
+			"replace"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1066,7 +1082,7 @@
 	"groups":
 	[
 		{
-			"selected": 56,
+			"selected": 52,
 			"sheets":
 			[
 				{
@@ -1234,15 +1250,15 @@
 					"file": "src/request.coffee",
 					"settings":
 					{
-						"buffer_size": 3527,
+						"buffer_size": 3508,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								207,
-								211
+								699,
+								699
 							]
 						],
 						"settings":
@@ -1251,7 +1267,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1490,7 +1506,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2342.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1665,8 +1681,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								445,
+								445
 							]
 						],
 						"settings":
@@ -1691,8 +1707,8 @@
 						"selection":
 						[
 							[
-								2368,
-								2373
+								2308,
+								2308
 							]
 						],
 						"settings":
@@ -1911,7 +1927,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 62.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2469,7 +2485,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1680.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2583,7 +2599,7 @@
 				},
 				{
 					"buffer": 57,
-					"file": "/tmp/subl stdin FqzEWq.txt",
+					"file": "/tmp/subl stdin hsyAK9.txt",
 					"settings":
 					{
 						"buffer_size": 0,
@@ -2609,7 +2625,7 @@
 				},
 				{
 					"buffer": 58,
-					"file": "/tmp/subl stdin 1G83ai.txt",
+					"file": "/tmp/subl stdin FqzEWq.txt",
 					"settings":
 					{
 						"buffer_size": 0,
@@ -2635,6 +2651,32 @@
 				},
 				{
 					"buffer": 59,
+					"file": "/tmp/subl stdin 1G83ai.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 60,
 					"file": "src/concrete/routeCollection.coffee",
 					"settings":
 					{
@@ -2661,7 +2703,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 60,
+					"buffer": 61,
 					"file": "src/collect/dispatcher.coffee",
 					"settings":
 					{
@@ -2688,7 +2730,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 61,
+					"buffer": 62,
 					"file": "lib/concrete/dispatcher.js",
 					"settings":
 					{
@@ -2716,7 +2758,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 62,
+					"buffer": 63,
 					"file": "src/pull/plugin.coffee",
 					"settings":
 					{
@@ -2743,7 +2785,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 63,
+					"buffer": 64,
 					"file": "/Users/craig/Dropbox/Developer/Public/Structr/help",
 					"settings":
 					{
@@ -2769,7 +2811,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 64,
+					"buffer": 65,
 					"file": "src/concrete/director.coffee",
 					"settings":
 					{
@@ -2780,8 +2822,8 @@
 						"selection":
 						[
 							[
-								2944,
-								2944
+								644,
+								644
 							]
 						],
 						"settings":
@@ -2790,40 +2832,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1321.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 65,
-					"file": "/tmp/subl stdin ug2FE4.txt",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 255.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 66,
-					"file": "/tmp/subl stdin Lio3QO.txt",
+					"file": "/tmp/subl stdin 0y491l.txt",
 					"settings":
 					{
 						"buffer_size": 0,
@@ -2849,7 +2865,7 @@
 				},
 				{
 					"buffer": 67,
-					"file": "/tmp/subl stdin C4epAb.txt",
+					"file": "/tmp/subl stdin ug2FE4.txt",
 					"settings":
 					{
 						"buffer_size": 0,
@@ -2875,6 +2891,58 @@
 				},
 				{
 					"buffer": 68,
+					"file": "/tmp/subl stdin Lio3QO.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 69,
+					"file": "/tmp/subl stdin C4epAb.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 70,
 					"file": "examples/push-pull-one.js",
 					"settings":
 					{
@@ -2901,7 +2969,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 69,
+					"buffer": 71,
 					"file": "src/push/director.coffee",
 					"settings":
 					{
@@ -2927,7 +2995,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 70,
+					"buffer": 72,
 					"file": "/tmp/subl stdin 8jcTPx.txt",
 					"settings":
 					{
@@ -2953,7 +3021,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 71,
+					"buffer": 73,
 					"file": "/tmp/subl stdin 1rnGSG.txt",
 					"settings":
 					{
@@ -2979,7 +3047,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 72,
+					"buffer": 74,
 					"file": "src/collect/director.coffee",
 					"settings":
 					{
@@ -3005,7 +3073,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 73,
+					"buffer": 75,
 					"file": "src/pull/director.coffee",
 					"settings":
 					{
@@ -3032,7 +3100,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 74,
+					"buffer": 76,
 					"file": "src/concrete/wrappedMessenger.coffee",
 					"settings":
 					{
@@ -3058,7 +3126,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 75,
+					"buffer": 77,
 					"file": "src/pull/messenger.coffee",
 					"settings":
 					{
@@ -3085,7 +3153,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 76,
+					"buffer": 78,
 					"file": "/tmp/subl stdin lh0jOb.txt",
 					"settings":
 					{
@@ -3111,7 +3179,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 77,
+					"buffer": 79,
 					"file": "src/push/messenger.coffee",
 					"settings":
 					{
@@ -3138,7 +3206,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 78,
+					"buffer": 80,
 					"file": "src/concrete/messenger.coffee",
 					"settings":
 					{
@@ -3165,7 +3233,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 79,
+					"buffer": 81,
 					"file": "/tmp/subl stdin heexYc.txt",
 					"settings":
 					{
@@ -3191,7 +3259,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 80,
+					"buffer": 82,
 					"file": "/tmp/subl stdin MK2rFG.txt",
 					"settings":
 					{
@@ -3217,7 +3285,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 81,
+					"buffer": 83,
 					"file": "examples/outcome.js",
 					"settings":
 					{
@@ -3244,7 +3312,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 82,
+					"buffer": 84,
 					"file": "/tmp/subl stdin PmuNsj.txt",
 					"settings":
 					{
@@ -3270,7 +3338,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 83,
+					"buffer": 85,
 					"file": "src/collections/linkedList.coffee",
 					"settings":
 					{
@@ -3297,7 +3365,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 84,
+					"buffer": 86,
 					"file": "lib/message.js",
 					"settings":
 					{
@@ -3325,7 +3393,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 85,
+					"buffer": 87,
 					"file": "lib/concrete/director.js",
 					"settings":
 					{
@@ -3353,7 +3421,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 86,
+					"buffer": 88,
 					"file": "lib/push/plugin.js",
 					"settings":
 					{
@@ -3381,7 +3449,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 87,
+					"buffer": 89,
 					"file": "lib/io/writer.js",
 					"settings":
 					{
@@ -3409,7 +3477,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 88,
+					"buffer": 90,
 					"file": "src/concrete/response.coffee",
 					"settings":
 					{
@@ -3436,7 +3504,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 89,
+					"buffer": 91,
 					"file": "examples/load.js",
 					"settings":
 					{
@@ -3462,7 +3530,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 90,
+					"buffer": 92,
 					"file": "/tmp/subl stdin K5cdH4.txt",
 					"settings":
 					{
@@ -3488,7 +3556,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 91,
+					"buffer": 93,
 					"file": "/tmp/subl stdin pFz0H7.txt",
 					"settings":
 					{
@@ -3514,7 +3582,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 92,
+					"buffer": 94,
 					"file": "/tmp/subl stdin YsQkuh.txt",
 					"settings":
 					{
@@ -3540,7 +3608,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 93,
+					"buffer": 95,
 					"file": "/tmp/subl stdin xrDx9r.txt",
 					"settings":
 					{
@@ -3566,7 +3634,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 94,
+					"buffer": 96,
 					"file": "lib/concrete/response.js",
 					"settings":
 					{
@@ -3594,7 +3662,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 95,
+					"buffer": 97,
 					"file": "lib/concrete/messenger.js",
 					"settings":
 					{
@@ -3622,7 +3690,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 96,
+					"buffer": 98,
 					"file": "/tmp/subl stdin eaYUFD.txt",
 					"settings":
 					{
@@ -3648,7 +3716,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 97,
+					"buffer": 99,
 					"file": "lib/push/messenger.js",
 					"settings":
 					{
@@ -3676,7 +3744,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 98,
+					"buffer": 100,
 					"file": "lib/io/reader.js",
 					"settings":
 					{
@@ -3704,7 +3772,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 99,
+					"buffer": 101,
 					"file": "lib/pull/messenger.js",
 					"settings":
 					{
@@ -3732,7 +3800,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 100,
+					"buffer": 102,
 					"file": "examples/mem-test.js",
 					"settings":
 					{
@@ -3759,7 +3827,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 101,
+					"buffer": 103,
 					"file": ".cupboard",
 					"settings":
 					{
@@ -3785,7 +3853,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 102,
+					"buffer": 104,
 					"file": "/tmp/subl stdin 1WLbt8.txt",
 					"settings":
 					{
