@@ -56,7 +56,7 @@ class Router
 	
 	on: (routeOrListeners, ops, callback) ->
 		
-		if typeof ops == 'function' 
+		if not callback
 			callback = ops
 			ops = {}
 			
@@ -83,7 +83,7 @@ class Router
 
 				route.type = ops.type if ops.type
 				_.extend route.tags, ops.tags if ops.tags
-				
+
 				listenerDisposables.add @director(route.type).addListener(route, callback)
 
 				## notify the plugins of a new listener
