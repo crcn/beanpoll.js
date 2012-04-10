@@ -32,6 +32,12 @@ module.exports = class Writer extends Stream
 	###
 	###
 
+	destroy: () ->
+		## called by node.js on pipe
+
+	###
+	###
+
 	reader: () ->
 		return new Reader @
 	
