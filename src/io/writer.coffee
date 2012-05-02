@@ -6,6 +6,7 @@ module.exports = class Writer extends Stream
 	constructor: () ->
 		super()
 		@_paused = false
+		@_reallyResumed = true
 		@setMaxListeners(0)
 		@on "pipe", (src) =>
 			@_source = src
@@ -39,15 +40,21 @@ module.exports = class Writer extends Stream
 	###
 
 	pause: () -> 
+		clearInterval @_resumeTimeout
+		@_source?.pause?() if not @_reallyResumed
 		@_paused = true
-		@_source?.pause?()
 
 	###
 	###
 
 	resume: () -> 
 		@_paused = false
-		@_source?.resume?()
+		clearInterval @_resumeTimeout
+		@_resumeTimeout = setTimeout ( () =>
+			return if @_paused
+			@_reallyResumed = true
+			@_source?.resume?()
+			), 1
 
 	###
 	###
@@ -60,5 +67,11 @@ module.exports = class Writer extends Stream
 
 	reader: () ->
 		return new Reader @
+
+
+	###
+	###
+
+	_resume: () ->
 	
 Writer::writable = true
