@@ -5,7 +5,12 @@ module.exports = class Writer extends Stream
 	
 	constructor: () ->
 		super()
+		@_paused = false
 		@setMaxListeners(0)
+		@on "pipe", (src) =>
+			@_source = src
+			@_source.pause() if @_paused
+
 	
 	###
 	###
@@ -17,6 +22,7 @@ module.exports = class Writer extends Stream
 	###
 	
 	write: (chunk, encoding = "utf8") ->
+		return false if @_paused
 		@emit "data", chunk, encoding
 		
 	###
@@ -28,6 +34,20 @@ module.exports = class Writer extends Stream
 		@ended = true
 		@emit "end"
 		@
+
+	###
+	###
+
+	pause: () -> 
+		@_paused = true
+		@_source?.pause?()
+
+	###
+	###
+
+	resume: () -> 
+		@_paused = false
+		@_source?.resume?()
 
 	###
 	###

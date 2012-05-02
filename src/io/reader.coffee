@@ -22,7 +22,7 @@ module.exports = class Reader extends Stream
 	 needs to be overridable incase there's more stuff to listen to (headers)
 	###
 
-	_listenTo: () -> ["data","end","error"]
+	_listenTo: () -> ["data", "end", "error"]
 
 	###
 	###

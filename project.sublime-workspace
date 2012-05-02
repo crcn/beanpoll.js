@@ -121,7 +121,7 @@
 			"file": "src/io/writer.coffee",
 			"settings":
 			{
-				"buffer_size": 584,
+				"buffer_size": 643,
 				"line_ending": "Unix"
 			}
 		},
@@ -896,6 +896,14 @@
 				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "/tmp/subl stdin VBlabF.txt",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -1122,6 +1130,7 @@
 	"groups":
 	[
 		{
+			"selected": 13,
 			"sheets":
 			[
 				{
@@ -1473,15 +1482,15 @@
 					"file": "src/io/writer.coffee",
 					"settings":
 					{
-						"buffer_size": 584,
+						"buffer_size": 643,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								567,
+								567
 							]
 						],
 						"settings":
@@ -4024,6 +4033,32 @@
 				{
 					"buffer": 109,
 					"file": "/tmp/subl stdin 1WLbt8.txt",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 110,
+					"file": "/tmp/subl stdin VBlabF.txt",
 					"settings":
 					{
 						"buffer_size": 0,
