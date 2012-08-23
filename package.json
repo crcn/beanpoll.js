@@ -24,8 +24,5 @@
         "outcome": "<0.2.0",
         "disposable": "0.0.1"
     },
-    "main": "./lib/index.js",
-    "mesh": {
-        "load": "./make.json"
-    }
+    "main": "./lib/index.js"
 }
