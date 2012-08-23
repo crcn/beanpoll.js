@@ -1,0 +1,31 @@
+{
+  "name": "beanpoll",
+  "description": "Routing with syntactic sugar",
+  "version": "0.2.17",
+  "author": "Craig Condon",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/crcn/beanpoll.js.git"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "dependencies": {
+    "disposable": "*",
+    "crema": "<0.2.0",
+    "underscore": "*",
+    "dolce": "<0.2.0",
+    "outcome": "<0.2.0"
+  },
+  "devDependencies": {
+    "ebnf-diagram": "*",
+    "vows": "<0.7.0",
+    "haba": "<0.1.0",
+    "outcome": "<0.2.0",
+    "disposable": "0.0.1"
+  },
+  "main": "./lib/index.js",
+  "mesh": {
+    "load": "./make.json"
+  }
+}
