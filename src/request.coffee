@@ -82,6 +82,7 @@ exports.Builder = class
 
 	###
 	 filterable tags
+	 DEPRECATED
 	###
 	
 	tag: (keyOrTags, value) -> 
@@ -91,6 +92,9 @@ exports.Builder = class
 				return { $exists: value }
 
 			return value
+
+	filter: (keyOrTag, value) ->
+		@tag keyOrTag, value
 	
 	###
 	 DEPRECATED
