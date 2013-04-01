@@ -2,7 +2,7 @@ dolce   = require "dolce"
 RequestMiddleware = require "./middleware"
 crema = require "crema"
 Messenger = require "./messenger"
-errors = require "../errors"
+comerr = require "comerr"
 
 
 ###
@@ -61,7 +61,7 @@ module.exports = class
 
 
 		if not !!chains.length and not @passive
-			requestWriter.callback new errors.NotFoundError "#{@name} route \"#{crema.stringifySegments(requestWriter.path.segments)}\" does not exist" 
+			requestWriter.callback new comerr.NotFound "#{@name} route \"#{crema.stringifySegments(requestWriter.path.segments)}\" does not exist" 
 			return @
 
 			

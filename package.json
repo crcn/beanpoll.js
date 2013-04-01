@@ -1,26 +1,29 @@
 {
-    "name": "beanpoll",
-    "description": "Routing with syntactic sugar",
-    "version": "0.2.18",
-    "author": "Craig Condon",
-    "repository": {
-        "type": "git",
-        "url": "http://github.com/crcn/beanpoll.js.git"
-    },
-    "directories": {
-        "lib": "./lib"
-    },
-    "dependencies": {
-        "disposable": "*",
-        "crema": "<0.2.0",
-        "underscore": "*",
-        "dolce": "<0.2.0",
-        "outcome": "<0.2.0"
-    },
-    "devDependencies": {
-        "vows": "<0.7.0",
-        "outcome": "<0.2.0",
-        "disposable": "0.0.1"
-    },
-    "main": "./lib/index.js"
+  "name": "beanpoll",
+  "description": "Routing with syntactic sugar",
+  "version": "0.2.18",
+  "author": "Craig Condon",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/crcn/beanpoll.js.git"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "dependencies": {
+    "disposable": "*",
+    "crema": "<0.2.0",
+    "underscore": "*",
+    "dolce": "<0.2.0",
+    "outcome": "<0.2.0",
+    "ebnf-diagram": "0.1.x",
+    "haba": "0.0.x",
+    "comerr": "0.0.x"
+  },
+  "devDependencies": {
+    "vows": "<0.7.0",
+    "outcome": "<0.2.0",
+    "disposable": "0.0.1"
+  },
+  "main": "./lib/index.js"
 }
