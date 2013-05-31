@@ -1,9 +1,0 @@
-{
-	"make": {
-		"web": {
-			"entry": "./lib/index.js",
-			"output": "./beanpoll.web.js",
-			"task": "sardines"
-		}
-	}
-}
